@@ -1,0 +1,62 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<SDM>
+   <OverallProperties
+      id="OverallProperties1"/>
+   <Page
+      id="Page2">
+      <property
+         name="wildcard">false</property>
+      <property
+         name="y">248.09766</property>
+      <property
+         name="x">150.68262</property>
+      <property
+         name="jspName">/ingreso.jsp</property>
+   </Page>
+   <Page
+      id="Page3">
+      <property
+         name="wildcard">false</property>
+      <property
+         name="y">260.44824</property>
+      <property
+         name="x">492.34863</property>
+      <property
+         name="jspName">/principal.jsp</property>
+   </Page>
+   <NavigationCase
+      islink="true"
+      id="NavigationCase4"
+      from="Page2"
+      to="Page3">
+      <property
+         name="fromOutcome">success</property>
+      <property
+         name="description">Navigation Case</property>
+      <property
+         name="sdm:polyPoints">R50,191.68262,247.74707,451.34863,260.09766,L50</property>
+   </NavigationCase>
+   <Page
+      id="Page5">
+      <property
+         name="wildcard">false</property>
+      <property
+         name="y">99.44824</property>
+      <property
+         name="x">372.6953</property>
+      <property
+         name="jspName">/errorAutenticacion.jsp</property>
+   </Page>
+   <NavigationCase
+      islink="true"
+      id="NavigationCase6"
+      from="Page2"
+      to="Page5">
+      <property
+         name="fromOutcome">failure</property>
+      <property
+         name="description">Navigation Case</property>
+      <property
+         name="sdm:polyPoints">T89,L82</property>
+   </NavigationCase>
+</SDM>

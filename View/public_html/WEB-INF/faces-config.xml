@@ -1,4 +1,14 @@
 <?xml version="1.0" encoding="windows-1252"?>
 <faces-config version="2.0" xmlns="http://java.sun.com/xml/ns/javaee">
-
+  <navigation-rule>
+    <from-view-id>/ingreso.jsp</from-view-id>
+    <navigation-case>
+      <from-outcome>success</from-outcome>
+      <to-view-id>/principal.jsp</to-view-id>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>failure</from-outcome>
+      <to-view-id>/errorAutenticacion.jsp</to-view-id>
+    </navigation-case>
+  </navigation-rule>
 </faces-config>
