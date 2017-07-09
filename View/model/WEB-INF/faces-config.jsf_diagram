@@ -30,11 +30,11 @@
       from="Page2"
       to="Page3">
       <property
-         name="fromOutcome">success</property>
+         name="fromOutcome">bien</property>
       <property
          name="description">Navigation Case</property>
       <property
-         name="sdm:polyPoints">R50,191.68262,247.74707,451.34863,260.09766,L50</property>
+         name="sdm:polyPoints">R54,191.68262,251.24707,451.34863,260.09766,L50</property>
    </NavigationCase>
    <Page
       id="Page5">
@@ -53,10 +53,10 @@
       from="Page2"
       to="Page5">
       <property
-         name="fromOutcome">failure</property>
+         name="fromOutcome">mal</property>
       <property
          name="description">Navigation Case</property>
       <property
-         name="sdm:polyPoints">T89,L82</property>
+         name="sdm:polyPoints">R46,191.68262,244.24707,331.6953,99.09766,L50</property>
    </NavigationCase>
 </SDM>
