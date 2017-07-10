@@ -1,7 +1,30 @@
 body
 {
-  background-color: #76D7C4;
+  background-color: #c3f9e7;
   color: black;
-  font-family: Arial;
+  font-family: Tahoma;
 }
 
+li {
+    padding:5px;
+    float:left;
+}
+
+#header{
+    width:25%;
+    float:left;
+}
+
+#nav{
+    width:75%;
+    float:left;
+}
+
+#nav-list{
+    list-style:none;
+}
+
+.clearfix:after{
+    clear: both;
+    display: table;
+}

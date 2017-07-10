@@ -10,14 +10,25 @@
             <link rel="stylesheet" type="text/css" href="../recursos/diseñoIngreso.css"
         </head>
         <body>
-            <h:form>
+        
+        <div id="head" style="text-align:center">
+            <h1>Ingreso</h1>
+        </div>
+        
+        <div id="main">
+        <h:form>
             <table align="center" width="338">
-            <tr><td align="center">Ingreso</td></tr>
             <tr><td>Nombre de usuario:<td><h:inputText/></td></td></tr>
             <tr><td>Contraseña:<td><h:inputSecret/></td></td></tr>
             <tr><td align="center"> <h:commandButton value="Ingresar" action="bien"/></td></tr>
             </table>
             </h:form>
+        </div>
+        
+        <div id="footer" style="margin-top:36%; text-align:right;">
+            <p>Copyrights SISE 2017</p>
+        </div>
+            
         </body>
     </html>
 </f:view>
