@@ -74,7 +74,7 @@
                                  
                                 <li>
                                     <!--<a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>-->
-                                    <h:outputLink>
+                                    <h:outputLink value="RegistroClientes.jsp">
                                         <h:outputText value="Administracion de Clientes"/>
                                     </h:outputLink>
                                     <!--<ul class="nav nav-second-level">
@@ -130,7 +130,8 @@
                                                         <h:outputText value="Descripcion:"/>
                                                     </label>
                                                      
-                                                    <h:inputText styleClass="form-control"/>
+                                                    <h:inputText styleClass="form-control"
+                                                                 value="#{beanRegistroServicios.descripcion}"/>
                                                     <p class="help-block">Introduzca una breve descripci&oacute;n del
                                                                           servicio.</p>
                                                 </div>
@@ -139,7 +140,8 @@
                                                         <h:outputText value="Tipo Servicio"/>
                                                     </label>
                                                      
-                                                    <h:selectOneMenu styleClass="form-control">
+                                                    <h:selectOneMenu styleClass="form-control"
+                                                                     value="#{beanRegistroServicios.tipoServicio}">
                                                         <f:selectItem itemLabel="Financieros" itemValue="Financieros"/>
                                                         <f:selectItem itemLabel="Mecanicos" itemValue="Mecanicos"/>
                                                         <f:selectItem itemLabel="Tecnicos" itemValue="Tecnicos"/>
@@ -152,7 +154,8 @@
                                                 <div class="form-group input-group">
                                                     <span class="input-group-addon">$</span>
                                                      
-                                                    <h:inputText styleClass="form-control"/>
+                                                    <h:inputText styleClass="form-control"
+                                                                 value="#{beanRegistroServicios.costo}"/>
                                                      
                                                     <span class="input-group-addon">.00</span>
                                                 </div>
@@ -162,11 +165,19 @@
                                                     </label>
                                                     <div class="checkbox">
                                                         <label>
-                                                            <h:selectBooleanCheckbox label="Activo"/>
+                                                            <h:selectBooleanCheckbox label="Activo"
+                                                                                     value="#{beanRegistroServicios.estado}"/>
                                                         </label>
                                                     </div>
                                                 </div>
-                                                <h:commandButton value="Registrar" styleClass="btn btn-success"/>
+                                                <h:commandButton value="Registrar" styleClass="btn btn-success"
+                                                                 action="#{beanRegistroServicios.validaNulos}"/>
+                                                 <div class="form-group">
+                                                    <label>
+                                                        <h:outputText value="#{beanRegistroServicios.nulos}"/>
+                                                    </label>
+                                                    <p class="help-block"></p>
+                                                </div>
                                             </h:form>
                                         </div>
                                         <!-- /.col-lg-6 (nested) -->

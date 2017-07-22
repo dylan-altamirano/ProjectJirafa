@@ -11,4 +11,19 @@
       <to-view-id>/errorAutenticacion.jsp</to-view-id>
     </navigation-case>
   </navigation-rule>
+  <managed-bean>
+    <managed-bean-name>beanIngreso</managed-bean-name>
+    <managed-bean-class>appProyecto.view.beanIngreso</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean>
+    <managed-bean-name>beanRegistroClientes</managed-bean-name>
+    <managed-bean-class>appProyecto.view.beanRegistroClientes</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean>
+    <managed-bean-name>beanRegistroServicios</managed-bean-name>
+    <managed-bean-class>appProyecto.view.beanRegistroServicios</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+  </managed-bean>
 </faces-config>

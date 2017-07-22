@@ -30,19 +30,28 @@
                             <h:form id="loginForm">
                                 <fieldset>
                                     <div class="form-group">
-                                        <h:inputText styleClass="form-control marcagua-user" id="usuario"/>
+                                        <h:inputText styleClass="form-control marcagua-user" id="usuario"
+                                                     value="#{beanIngreso.usuario}"/>
                                     </div>
                                     <div class="form-group">
-                                        <h:selectOneMenu label="Seleccione el rol..." styleClass="form-control">
+                                        <h:selectOneMenu label="Seleccione el rol..." styleClass="form-control"
+                                                         value="#{beanIngreso.rol}">
                                             <f:selectItem itemLabel="Administrador" itemValue="Administrador"/>
                                             <f:selectItem itemLabel="Corriente" itemValue="Corriente"/>
                                         </h:selectOneMenu>
                                     </div>
                                     <div class="form-group">
-                                        <h:inputSecret styleClass="form-control marcagua-pass" id="clave"/>
+                                        <h:inputSecret styleClass="form-control marcagua-pass" id="clave"
+                                                       value="#{beanIngreso.clave}"/>
                                     </div>
-                                    <h:commandButton value="Ingresar" action="bien"
+                                    <h:commandButton value="Ingresar" action="#{beanIngreso.validaNulos}"
                                                      styleClass="btn btn-lg btn-success btn-block"/>
+                                                     <div class="form-group">
+                                                    <label>
+                                                        <h:outputText value="#{beanIngreso.nulos}"/>
+                                                    </label>
+                                                    <p class="help-block"></p>
+                                                </div>
                                 </fieldset>
                             </h:form>
                         </div>
