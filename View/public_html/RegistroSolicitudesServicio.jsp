@@ -71,12 +71,14 @@
                                         <h:outputText value="Catalogo de Servicios"/>
                                     </h:outputLink>
                                 </li>
-                                  <li>
+                                 
+                                <li>
                                     <!--<a href="#"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>-->
                                     <h:outputLink value="RegistroTipoServicios.jsp">
                                         <h:outputText value="Tipos de Servicio"/>
                                     </h:outputLink>
                                 </li>
+                                 
                                 <li>
                                     <!--<a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>-->
                                     <h:outputLink value="RegistroClientes.jsp">
@@ -93,7 +95,7 @@
                                     <!-- /.nav-second-level -->
                                 </li>
                                  
-                               <li>
+                                <li>
                                     <!-- <a href="tables.html"><i class="fa fa-table fa-fw"></i> Tables</a>-->
                                     <h:outputLink value="RegistroSolicitudesServicio.jsp">
                                         <h:outputText value="Registro de Ordenes de Servicio"/>
@@ -116,7 +118,7 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <h1 class="page-header">
-                                <h:outputText value="Registro Servicios"/>
+                                <h:outputText value="Registro Tipo de Servicios"/>
                             </h1>
                         </div>
                         <!-- /.col-lg-12 -->
@@ -125,44 +127,73 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="panel panel-default">
-                                <div class="panel-heading">Introducción de datos</div>
+                                <div class="panel-heading">Introducci&oacute;n de datos</div>
                                 <div class="panel-body">
                                     <div class="row">
                                         <div class="col-lg-12">
                                             <h:form>
                                                 <div class="form-group">
                                                     <label>
-                                                        <h:outputText value="Descripcion:"/>
+                                                        <h:outputText value="Identificador:"/>
                                                     </label>
                                                      
-                                                    <h:inputText styleClass="form-control"
-                                                                 value="#{beanRegistroServicios.descripcion}"/>
-                                                    <p class="help-block">Introduzca una breve descripci&oacute;n del
-                                                                          servicio.</p>
+                                                    <h:inputText styleClass="form-control" value=""/>
                                                 </div>
-                                                <div class="form-group">
-                                                    <label>
-                                                        <h:outputText value="Tipo Servicio"/>
-                                                    </label>
+                                                <div class="form-group input-group">
+                                                    <span class="input-group-addon">Usuario</span>
                                                      
-                                                    <h:selectOneMenu styleClass="form-control"
-                                                                     value="#{beanRegistroServicios.tipoServicio}">
-                                                        <f:selectItem itemLabel="Financieros" itemValue="Financieros"/>
-                                                        <f:selectItem itemLabel="Mecanicos" itemValue="Mecanicos"/>
-                                                        <f:selectItem itemLabel="Tecnicos" itemValue="Tecnicos"/>
-                                                        <f:selectItem itemLabel="Construccion"
-                                                                      itemValue="Construccion"/>
-                                                        <f:selectItem itemLabel="Reclutamiento"
-                                                                      itemValue="Reclutamiento"/>
+                                                    <h:selectOneMenu styleClass="form-control" value="">
+                                                        <f:selectItem itemLabel="USUARIO 1" itemValue="USUARIO 1"/>
+                                                        <f:selectItem itemLabel="USUARIO 2" itemValue="USUARIO 2"/>
                                                     </h:selectOneMenu>
                                                 </div>
                                                 <div class="form-group input-group">
-                                                    <span class="input-group-addon">$</span>
+                                                    <span class="input-group-addon">Cliente</span>
                                                      
-                                                    <h:inputText styleClass="form-control"
-                                                                 value="#{beanRegistroServicios.costo}"/>
+                                                    <h:selectOneMenu styleClass="form-control" value="">
+                                                        <f:selectItem itemLabel="CLIENTE 1" itemValue="CLIENTE 1"/>
+                                                        <f:selectItem itemLabel="CLIENTE 2" itemValue="CLIENTE 2"/>
+                                                    </h:selectOneMenu>
+                                                </div>
+                                                <div class="form-group input-group">
+                                                    <span class="input-group-addon">Servicio</span>
                                                      
-                                                    <span class="input-group-addon">.00</span>
+                                                    <h:selectOneMenu styleClass="form-control" value="">
+                                                        <f:selectItem itemLabel="SERVICIO 1" itemValue="SERVICIO 1"/>
+                                                        <f:selectItem itemLabel="SERVICIO 2" itemValue="SERVICIO 2"/>
+                                                    </h:selectOneMenu>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>
+                                                        <h:outputText value="fecha Ejecución:"/>
+                                                    </label>
+                                                     
+                                                    <h:inputText styleClass="form-control" value=""/>
+                                                    <p class="help-block">Introduzca la fecha de ejecuci&oacute;n del
+                                                                          servicio.</p>
+                                                </div>
+                                                <div class="form-group input-group">
+                                                    <span class="input-group-addon">#</span>
+                                                     
+                                                    <h:inputText styleClass="form-control" value=""/>
+                                                     
+                                                    <span class="input-group-addon">horas</span>
+                                                </div>
+                                                <div class="form-group input-group">
+                                                    <span class="input-group-addon">Lugar de ejecuci&oacute;n</span>
+                                                     
+                                                    <h:selectOneMenu styleClass="form-control" value="">
+                                                        <f:selectItem itemLabel="DIRECCION 1" itemValue="DIRECCION 1"/>
+                                                        <f:selectItem itemLabel="DIRECCION 2" itemValue="DIRECCION 2"/>
+                                                    </h:selectOneMenu>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>
+                                                        <h:outputText value="Descripción:"/>
+                                                    </label>
+                                                     
+                                                    <h:inputText styleClass="form-control" value=""/>
+                                                    <p class="help-block">Introduzca el detalle del servicio.</p>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>
@@ -170,16 +201,39 @@
                                                     </label>
                                                     <div class="checkbox">
                                                         <label>
-                                                            <h:selectBooleanCheckbox label="Activo"
-                                                                                     value="#{beanRegistroServicios.estado}"/>
+                                                            <h:selectBooleanCheckbox label="Activo" value=""/>
                                                         </label>
                                                     </div>
                                                 </div>
-                                                <h:commandButton value="Registrar" styleClass="btn btn-success"
-                                                                 action="#{beanRegistroServicios.validaNulos}"/>
-                                                 <div class="form-group">
+                                                <div class="form-group input-group">
+                                                    <span class="input-group-addon">$</span>
+                                                     
+                                                    <h:inputText styleClass="form-control" value=""/>
+                                                     
+                                                    <span class="input-group-addon">.00</span>
+                                                </div>
+                                                <div class="form-group">
                                                     <label>
-                                                        <h:outputText value="#{beanRegistroServicios.nulos}"/>
+                                                        <h:outputText value="Observaciones:"/>
+                                                    </label>
+                                                     
+                                                    <h:inputText styleClass="form-control" value=""/>
+                                                </div>
+                                                <div class="form-group input-group">
+                                                    <span class="input-group-addon">%</span>
+                                                     
+                                                    <h:inputText styleClass="form-control" value=""/>
+                                                </div>
+                                                <h:commandButton value="Registrar" styleClass="btn btn-success"
+                                                                 action=""/>
+                                                <h:commandButton value="Editar" styleClass="btn btn-success" action=""/>
+                                                <h:commandButton value="Eliminar" styleClass="btn btn-success"
+                                                                 action=""/>
+                                                <h:commandButton value="Limpiar" styleClass="btn btn-success"
+                                                                 action=""/>
+                                                <div class="form-group">
+                                                    <label>
+                                                        <h:outputText value=""/>
                                                     </label>
                                                     <p class="help-block"></p>
                                                 </div>

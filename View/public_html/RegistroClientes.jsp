@@ -67,7 +67,12 @@
                                         <h:outputText value="Catalogo de Servicios"/>
                                     </h:outputLink>
                                 </li>
-                                 
+                                  <li>
+                                    <!--<a href="#"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>-->
+                                    <h:outputLink value="RegistroTipoServicios.jsp">
+                                        <h:outputText value="Tipos de Servicio"/>
+                                    </h:outputLink>
+                                </li>
                                 <li>
                                     <!--<a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>-->
                                     <h:outputLink value="RegistroClientes.jsp">
@@ -86,7 +91,7 @@
                                  
                                 <li>
                                     <!-- <a href="tables.html"><i class="fa fa-table fa-fw"></i> Tables</a>-->
-                                    <h:outputLink>
+                                    <h:outputLink value="RegistroSolicitudesServicio.jsp">
                                         <h:outputText value="Registro de Ordenes de Servicio"/>
                                     </h:outputLink>
                                 </li>

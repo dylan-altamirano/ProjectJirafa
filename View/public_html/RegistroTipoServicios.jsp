@@ -5,6 +5,13 @@
 <f:view>
     <html>
         <head>
+            <meta http-equiv="Content-Type" content="text/html; charset=windows-1252"/>
+            <title>RegistroTipoServicios</title>
+        </head>
+        <body></body>
+    </html>
+    <html>
+        <head>
             <meta http-equiv="X-UA-Compatible" content="IE=edge charset=utf-8"></meta>
             <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
             <meta name="description" content=""></meta>
@@ -71,12 +78,14 @@
                                         <h:outputText value="Catalogo de Servicios"/>
                                     </h:outputLink>
                                 </li>
-                                  <li>
+                                 
+                                <li>
                                     <!--<a href="#"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>-->
                                     <h:outputLink value="RegistroTipoServicios.jsp">
                                         <h:outputText value="Tipos de Servicio"/>
                                     </h:outputLink>
                                 </li>
+                                 
                                 <li>
                                     <!--<a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>-->
                                     <h:outputLink value="RegistroClientes.jsp">
@@ -116,7 +125,7 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <h1 class="page-header">
-                                <h:outputText value="Registro Servicios"/>
+                                <h:outputText value="Registro Tipo de Servicios"/>
                             </h1>
                         </div>
                         <!-- /.col-lg-12 -->
@@ -125,44 +134,28 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="panel panel-default">
-                                <div class="panel-heading">Introducción de datos</div>
+                                <div class="panel-heading">Introducci&oacute;n de datos</div>
                                 <div class="panel-body">
                                     <div class="row">
                                         <div class="col-lg-12">
                                             <h:form>
                                                 <div class="form-group">
                                                     <label>
+                                                        <h:outputText value="Identificador:"/>
+                                                    </label>
+                                                     
+                                                    <h:inputText styleClass="form-control"
+                                                                 value=""/>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>
                                                         <h:outputText value="Descripcion:"/>
                                                     </label>
                                                      
                                                     <h:inputText styleClass="form-control"
-                                                                 value="#{beanRegistroServicios.descripcion}"/>
+                                                                 value=""/>
                                                     <p class="help-block">Introduzca una breve descripci&oacute;n del
                                                                           servicio.</p>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>
-                                                        <h:outputText value="Tipo Servicio"/>
-                                                    </label>
-                                                     
-                                                    <h:selectOneMenu styleClass="form-control"
-                                                                     value="#{beanRegistroServicios.tipoServicio}">
-                                                        <f:selectItem itemLabel="Financieros" itemValue="Financieros"/>
-                                                        <f:selectItem itemLabel="Mecanicos" itemValue="Mecanicos"/>
-                                                        <f:selectItem itemLabel="Tecnicos" itemValue="Tecnicos"/>
-                                                        <f:selectItem itemLabel="Construccion"
-                                                                      itemValue="Construccion"/>
-                                                        <f:selectItem itemLabel="Reclutamiento"
-                                                                      itemValue="Reclutamiento"/>
-                                                    </h:selectOneMenu>
-                                                </div>
-                                                <div class="form-group input-group">
-                                                    <span class="input-group-addon">$</span>
-                                                     
-                                                    <h:inputText styleClass="form-control"
-                                                                 value="#{beanRegistroServicios.costo}"/>
-                                                     
-                                                    <span class="input-group-addon">.00</span>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>
@@ -171,15 +164,15 @@
                                                     <div class="checkbox">
                                                         <label>
                                                             <h:selectBooleanCheckbox label="Activo"
-                                                                                     value="#{beanRegistroServicios.estado}"/>
+                                                                                     value=""/>
                                                         </label>
                                                     </div>
                                                 </div>
                                                 <h:commandButton value="Registrar" styleClass="btn btn-success"
-                                                                 action="#{beanRegistroServicios.validaNulos}"/>
-                                                 <div class="form-group">
+                                                                 action=""/>
+                                                <div class="form-group">
                                                     <label>
-                                                        <h:outputText value="#{beanRegistroServicios.nulos}"/>
+                                                        <h:outputText value=""/>
                                                     </label>
                                                     <p class="help-block"></p>
                                                 </div>
