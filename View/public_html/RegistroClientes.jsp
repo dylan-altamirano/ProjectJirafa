@@ -91,7 +91,7 @@
                                  
                                 <li>
                                     <!-- <a href="tables.html"><i class="fa fa-table fa-fw"></i> Tables</a>-->
-                                    <h:outputLink value="RegistroSolicitudesServicio.jsp">
+                                    <h:outputLink value="SolicitudesServicios.jsp">
                                         <h:outputText value="Registro de Ordenes de Servicio"/>
                                     </h:outputLink>
                                 </li>
@@ -248,12 +248,12 @@
                                                 </div>
                                                 <h:commandButton value="Registrar" styleClass="btn btn-success"
                                                                  action="#{beanRegistroClientes.validaNulos}"/>
-                                                 <div class="form-group">
-                                                    <label>
-                                                        <h:outputText value="#{beanRegistroClientes.nulos}"/>
-                                                    </label>
-                                                    <p class="help-block"></p>
-                                                </div>
+                                                <h:commandButton value="Editar" styleClass="btn btn-success"
+                                                                 style="margin-left:10px"/>
+                                                <h:commandButton value="Eliminar" styleClass="btn btn-success"
+                                                                 style="margin-left:10px"/>
+                                                <h:commandButton value="Cancelar" styleClass="btn btn-success"
+                                                                 style="margin-left:10px"/>
                                             </h:form>
                                         </div>
                                         <!-- /.col-lg-6 (nested) -->

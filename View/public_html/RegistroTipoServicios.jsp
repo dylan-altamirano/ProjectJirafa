@@ -7,7 +7,12 @@
         <head>
             <meta http-equiv="Content-Type" content="text/html; charset=windows-1252"/>
             <title>RegistroTipoServicios</title>
-             <meta http-equiv="X-UA-Compatible" content="IE=edge charset=utf-8"></meta>
+        </head>
+        <body></body>
+    </html>
+    <html>
+        <head>
+            <meta http-equiv="X-UA-Compatible" content="IE=edge charset=utf-8"></meta>
             <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
             <meta name="description" content=""></meta>
             <meta name="author" content=""></meta>
@@ -20,10 +25,9 @@
             <link href="recursos/css/sb-admin-2.css" rel="stylesheet"></link>
             <!-- Custom Fonts -->
             <link href="recursos/css/font-awesome.min.css" rel="stylesheet" type="text/css"></link>
-        
         </head>
         <body>
-          <!--main container-->
+            <!--main container-->
             <div id="wrapper">
                 <!-- Navigation -->
                 <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
@@ -100,7 +104,7 @@
                                  
                                <li>
                                     <!-- <a href="tables.html"><i class="fa fa-table fa-fw"></i> Tables</a>-->
-                                    <h:outputLink value="RegistroSolicitudesServicio.jsp">
+                                    <h:outputLink value="SolicitudesServicios.jsp">
                                         <h:outputText value="Registro de Ordenes de Servicio"/>
                                     </h:outputLink>
                                 </li>
@@ -141,7 +145,7 @@
                                                     </label>
                                                      
                                                     <h:inputText styleClass="form-control"
-                                                                 value="#{beanRegistroTipoServicios.identificador}"/>
+                                                                 value=""/>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>
@@ -149,7 +153,7 @@
                                                     </label>
                                                      
                                                     <h:inputText styleClass="form-control"
-                                                                 value="#{beanRegistroTipoServicios.descripcion}"/>
+                                                                 value=""/>
                                                     <p class="help-block">Introduzca una breve descripci&oacute;n del
                                                                           servicio.</p>
                                                 </div>
@@ -160,18 +164,17 @@
                                                     <div class="checkbox">
                                                         <label>
                                                             <h:selectBooleanCheckbox label="Activo"
-                                                                                     value="#{beanRegistroTipoServicios.estado}"/>
+                                                                                     value=""/>
                                                         </label>
                                                     </div>
                                                 </div>
                                                 <h:commandButton value="Registrar" styleClass="btn btn-success"
-                                                                 action="#{beanRegistroTipoServicios.ValidaNulos}"/>
-                                                <div class="form-group">
-                                                    <label>
-                                                        <h:outputText value="#{beanRegistroTipoServicios.nulos}"/>
-                                                    </label>
-                                                    <p class="help-block"></p>
-                                                </div>
+                                                                 style="margin-right:10px"/>
+                                                <h:commandButton value="Editar" styleClass="btn btn-success"
+                                                                 style="margin-right:10px"/>
+                                                <h:commandButton value="Eliminar" styleClass="btn btn-success"
+                                                                 style="margin-right:10px"/>
+                                                <h:commandButton value="Cancelar" styleClass="btn btn-success"/>
                                             </h:form>
                                         </div>
                                         <!-- /.col-lg-6 (nested) -->
@@ -191,5 +194,5 @@
             <!-- /#wrapper -->
             <!-- /#wrapper -->
         </body>
-    </html> 
+    </html>
 </f:view>
