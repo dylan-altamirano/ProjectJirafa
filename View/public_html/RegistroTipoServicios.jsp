@@ -7,12 +7,7 @@
         <head>
             <meta http-equiv="Content-Type" content="text/html; charset=windows-1252"/>
             <title>RegistroTipoServicios</title>
-        </head>
-        <body></body>
-    </html>
-    <html>
-        <head>
-            <meta http-equiv="X-UA-Compatible" content="IE=edge charset=utf-8"></meta>
+             <meta http-equiv="X-UA-Compatible" content="IE=edge charset=utf-8"></meta>
             <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
             <meta name="description" content=""></meta>
             <meta name="author" content=""></meta>
@@ -25,9 +20,10 @@
             <link href="recursos/css/sb-admin-2.css" rel="stylesheet"></link>
             <!-- Custom Fonts -->
             <link href="recursos/css/font-awesome.min.css" rel="stylesheet" type="text/css"></link>
+        
         </head>
         <body>
-            <!--main container-->
+          <!--main container-->
             <div id="wrapper">
                 <!-- Navigation -->
                 <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
@@ -145,7 +141,7 @@
                                                     </label>
                                                      
                                                     <h:inputText styleClass="form-control"
-                                                                 value=""/>
+                                                                 value="#{beanRegistroTipoServicios.identificador}"/>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>
@@ -153,7 +149,7 @@
                                                     </label>
                                                      
                                                     <h:inputText styleClass="form-control"
-                                                                 value=""/>
+                                                                 value="#{beanRegistroTipoServicios.descripcion}"/>
                                                     <p class="help-block">Introduzca una breve descripci&oacute;n del
                                                                           servicio.</p>
                                                 </div>
@@ -164,15 +160,15 @@
                                                     <div class="checkbox">
                                                         <label>
                                                             <h:selectBooleanCheckbox label="Activo"
-                                                                                     value=""/>
+                                                                                     value="#{beanRegistroTipoServicios.estado}"/>
                                                         </label>
                                                     </div>
                                                 </div>
                                                 <h:commandButton value="Registrar" styleClass="btn btn-success"
-                                                                 action=""/>
+                                                                 action="#{beanRegistroTipoServicios.ValidaNulos}"/>
                                                 <div class="form-group">
                                                     <label>
-                                                        <h:outputText value=""/>
+                                                        <h:outputText value="#{beanRegistroTipoServicios.nulos}"/>
                                                     </label>
                                                     <p class="help-block"></p>
                                                 </div>
@@ -195,5 +191,5 @@
             <!-- /#wrapper -->
             <!-- /#wrapper -->
         </body>
-    </html>
+    </html> 
 </f:view>

@@ -26,4 +26,9 @@
     <managed-bean-class>appProyecto.view.beanRegistroServicios</managed-bean-class>
     <managed-bean-scope>request</managed-bean-scope>
   </managed-bean>
+  <managed-bean>
+    <managed-bean-name>beanRegistroTipoServicios</managed-bean-name>
+    <managed-bean-class>appProyecto.view.beanRegistroTipoServicios</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+  </managed-bean>
 </faces-config>
