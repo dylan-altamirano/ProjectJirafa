@@ -36,6 +36,17 @@
       <value n="ejbMetaDataPrefs" v="PREFASANNON"/>
       <value n="ejbVersion" v="3.0"/>
    </hash>
+   <hash n="oracle.ide.model.DependencyConfiguration">
+      <list n="dependencyList">
+         <hash>
+            <hash n="dependable">
+               <url n="sourceOwnerURL" path="../appProyecto.jws"/>
+               <url n="sourceURL" path="../DAO/DAO.jpr"/>
+            </hash>
+            <value n="recognizerId" v="oracle.jdeveloper.library"/>
+         </hash>
+      </list>
+   </hash>
    <hash n="oracle.ide.model.TechnologyScopeConfiguration">
       <list n="technologyScope">
          <string v="Database"/>

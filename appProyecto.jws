@@ -20,6 +20,7 @@
       <string v="oracle.jdeveloper.model.PathsConfiguration/ApplicationSrcContentSet"/>
    </list>
    <list n="listOfChildren">
+      <hash><url n="URL" path="DAO/DAO.jpr"/></hash>
       <hash><url n="URL" path="Model/Model.jpr"/></hash>
       <hash><url n="URL" path="View/View.jpr"/></hash>
    </list>
