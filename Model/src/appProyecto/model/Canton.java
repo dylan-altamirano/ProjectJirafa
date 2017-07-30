@@ -7,6 +7,5 @@ public class Canton {
     public boolean Estado;
     
     public Canton() {
-        super();
     }
 }
