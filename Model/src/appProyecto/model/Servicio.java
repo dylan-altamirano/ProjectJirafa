@@ -1,14 +1,18 @@
 package appProyecto.model;
 
 public class Servicio {
-   public String ID;
-   public String Descripcion;
-   public TipoServicio tipo;
-   public double precioPorHora;
-   public boolean estado;
+   private String ID;
+   private String Descripcion;
+   private TipoServicio tipo;
+   private double precioPorHora;
+   private boolean estado;
    
     public Servicio() {
-    
+        this.ID = "";
+        this.Descripcion = "";
+        this.tipo = new TipoServicio();
+        this.precioPorHora = 0.0;
+        this.estado = true;
     }
 
     public Servicio(String ID, String Descripcion, TipoServicio tipo, double precioPorHora, boolean estado) {

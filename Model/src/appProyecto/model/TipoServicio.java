@@ -6,7 +6,9 @@ public class TipoServicio {
     public boolean Estado;
     
     public TipoServicio() {
-        
+        this.ID = "";
+        this.Descripcion = "";
+        this.Estado = true;
     }
 
     public TipoServicio(String ID, String Descripcion, boolean Estado) {
