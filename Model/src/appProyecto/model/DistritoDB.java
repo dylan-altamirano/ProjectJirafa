@@ -26,7 +26,7 @@ public class DistritoDB {
 
             //Se crea la sentencia de búsqueda
             select = 
-            "Select  IDDistrito, IDCanton, Descripcion, Estado" +
+            "Select  ID, IDCanton, Descripcion, Estado" +
             "from Distrito where IDCanton = " + codCanton;
             
             //Se ejecuta la sentencia SQL
@@ -34,7 +34,7 @@ public class DistritoDB {
 
             while (rsEM.next()) {
 
-                int IDDistrito = rsEM.getInt("IDDistrito");
+                int IDDistrito = rsEM.getInt("ID");
                 int IDCanton = rsEM.getInt("IDCanton");
                 String Descripcion = rsEM.getString("Descripcion");
                 boolean estado = rsEM.getBoolean("Estado");
