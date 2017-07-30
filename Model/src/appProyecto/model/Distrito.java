@@ -1,9 +1,9 @@
 package appProyecto.model;
 
 public class Distrito {
-    public int idDistrito;
-    public String descripcion;
-    public boolean estado;
+    private int idDistrito;
+    private String descripcion;
+    private boolean estado;
     
     public Distrito() {
         

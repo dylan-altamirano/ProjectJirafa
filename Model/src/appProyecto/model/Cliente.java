@@ -1,14 +1,14 @@
 package appProyecto.model;
 
 public class Cliente {
-    public String ID;
-    public String Nombre;
-    public String Correo;
-    public String Fax;
-    public double DescAplicable;
+    private String ID;
+    private String Nombre;
+    private String Correo;
+    private String Fax;
+    private double DescAplicable;
    
-    public String Estado;
-    public String Telefono;
+    private String Estado;
+    private String Telefono;
 
     public Cliente() {
         super();

@@ -1,9 +1,9 @@
 package appProyecto.model;
 
 public class Provincia {
-    public int ID;
-    public String Descripcion;
-    public boolean Estado;
+    private int ID;
+    private String Descripcion;
+    private boolean Estado;
     
     public Provincia() {
         super();

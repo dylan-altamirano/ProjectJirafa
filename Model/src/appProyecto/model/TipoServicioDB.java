@@ -17,14 +17,14 @@ public class TipoServicioDB {
      
     }
     
-    public void mvAgregarTipoServicio(TipoServicio ser) throws SNMPExceptions {
+    public void mvAgregarTipoServicio(TipoServicio servicio) throws SNMPExceptions {
         String strSQL = "";
         try {
             //Se obtienen los valores del objeto Empresa
            TipoServicio tips = new TipoServicio();
-            tips = ser;
+            tips = servicio;
             strSQL = 
-                    "INSERT INTO TipoServicio (ID,Descripcion,estado) VALUES " +
+                    "INSERT INTO TipoServicio (ID,descripcion,estado) VALUES " +
                     "(" + tips.getID() + ",'" + tips.getDescripcion() + "'," +  
                     tips.isEstado() + "')";
             //Se ejecuta la sentencia SQL
@@ -40,9 +40,9 @@ public class TipoServicioDB {
         
         }
     }
-    public void mvActualizarTipoServicio(TipoServicio ser) throws SNMPExceptions, SQLException, NamingException {
+    public void mvActualizarTipoServicio(TipoServicio servicio) throws SNMPExceptions, SQLException, NamingException {
         TipoServicio tips = new TipoServicio();
-         tips = ser;
+         tips = servicio;
             
         String id = tips.getID();
         String descripcion = tips.getDescripcion();
@@ -70,12 +70,12 @@ public class TipoServicioDB {
             while (rsEM.next()) {
             
                 String ID = rsEM.getString("ID");
-                String descripcion = rsEM.getString("Descripcion");
+                String descripcion = rsEM.getString("descripcion");
                 boolean estado = rsEM.getBoolean("estado");
                 
-            
-                TipoServicio tipoServicio2 = new TipoServicio(ID,descripcion,estado);
-                ts = tipoServicio2;
+                ts.setID(ID);
+                ts.setDescripcion(descripcion);
+                ts.setEstado(estado);
             }
             rsEM.close();
             
@@ -90,7 +90,7 @@ public class TipoServicioDB {
         return ts;
     }
     
-    public  LinkedList<TipoServicio> moCargarTipoServicio() throws SNMPExceptions, SQLException {
+    public  LinkedList<TipoServicio> moCargarTipoServicioSegunEstado(boolean bandera) throws SNMPExceptions, SQLException {
           String select = "";
           LinkedList<TipoServicio> listaTipoServicio = new LinkedList<TipoServicio>();
           
@@ -100,7 +100,7 @@ public class TipoServicioDB {
 
               //Se crea la sentencia de búsqueda
               select = 
-                      "SELECT * FROM TipoServicio";
+                      "SELECT * FROM TipoServicio where estado="+bandera;
               
               //Se ejecuta la sentencia SQL
               ResultSet rsEM = accesoDatos.ejecutaSQLRetornaRS(select);
@@ -112,9 +112,9 @@ public class TipoServicioDB {
                   boolean estado = rsEM.getBoolean("estado");
                   
                   
-                  TipoServicio tipoServicio2 = new TipoServicio(ID,descripcion,estado);
+                  TipoServicio tipoServicio = new TipoServicio(ID,descripcion,estado);
                   
-                  listaTipoServicio.add(tipoServicio2);
+                  listaTipoServicio.add(tipoServicio);
               }
               rsEM.close();
           } catch (SQLException e) {

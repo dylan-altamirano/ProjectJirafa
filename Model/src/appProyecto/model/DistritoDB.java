@@ -26,7 +26,7 @@ public class DistritoDB {
 
             //Se crea la sentencia de búsqueda
             select = 
-            "Select  ID, Descripcion, Estado" +
+            "Select  ID, descripcion, estado" +
             "from Distrito where IDCanton = " + codCanton;
             
             //Se ejecuta la sentencia SQL
@@ -35,8 +35,8 @@ public class DistritoDB {
             while (rsEM.next()) {
 
                 int IDDistrito = rsEM.getInt("ID");
-                String Descripcion = rsEM.getString("Descripcion");
-                boolean estado = rsEM.getBoolean("Estado");
+                String Descripcion = rsEM.getString("descripcion");
+                boolean estado = rsEM.getBoolean("estado");
                 
                 
                 Distrito dis = new Distrito(IDDistrito,Descripcion,estado);
@@ -56,7 +56,6 @@ public class DistritoDB {
         
         return listaDistritosPorCanton;
         
-        return listaDistrito;
     }
     public Distrito obtenerDistrito(int codigoDistrito) throws SNMPExceptions {
         String strSQL = "";
@@ -64,15 +63,15 @@ public class DistritoDB {
         try {
 
             strSQL = 
-                    "Select  Descripcion, Estado" +
+                    "Select  descripcion, dstado" +
                 "from Distrito where ID = " + codigoDistrito;
             //Se ejecuta la sentencia SQL
             ResultSet rsEM = accesoDatos.ejecutaSQLRetornaRS(strSQL);
             while (rsEM.next()) {
             
                 int IDDistrito = rsEM.getInt("ID");
-                String Descripcion = rsEM.getString("Descripcion");
-                boolean estado = rsEM.getBoolean("Estado");
+                String Descripcion = rsEM.getString("descripcion");
+                boolean estado = rsEM.getBoolean("estado");
                 
                 
                 Distrito dis = new Distrito(IDDistrito,Descripcion,estado);

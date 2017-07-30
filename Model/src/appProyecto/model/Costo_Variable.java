@@ -6,7 +6,6 @@ public class Costo_Variable {
     private TipoCosto tipo;
     
     public Costo_Variable() {
-        super();
     }
 
     public Costo_Variable(double monto, TipoCosto tipo) {
@@ -14,6 +13,7 @@ public class Costo_Variable {
         this.monto = monto;
         this.tipo = tipo;
     }
+
 
     public void setMonto(double monto) {
         this.monto = monto;
