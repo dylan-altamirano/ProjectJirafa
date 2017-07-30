@@ -1,7 +1,7 @@
 package appProyecto.model;
 
 public class Provincia {
-    private int ID;
+    private String ID;
     private String Descripcion;
     private boolean Estado;
     
@@ -9,7 +9,7 @@ public class Provincia {
         super();
     }
 
-    public Provincia(int ID, String Descripcion, boolean Estado) {
+    public Provincia(String ID, String Descripcion, boolean Estado) {
         super();
         this.ID = ID;
         this.Descripcion = Descripcion;
@@ -17,11 +17,11 @@ public class Provincia {
     }
 
 
-    public void setID(int ID) {
+    public void setID(String ID) {
         this.ID = ID;
     }
 
-    public int getID() {
+    public String getID() {
         return ID;
     }
 

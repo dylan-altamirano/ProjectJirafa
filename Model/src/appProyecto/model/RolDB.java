@@ -88,7 +88,7 @@ public class RolDB {
         return rol;
     }
     
-    public  LinkedList<Rol> moCargarRoles() throws SNMPExceptions, SQLException {
+    public  LinkedList<Rol> moCargarRolesSegunEstado(boolean estado) throws SNMPExceptions, SQLException {
           String select = "";
           LinkedList<Rol> listaRoles = new LinkedList<Rol>();
           
@@ -98,7 +98,7 @@ public class RolDB {
 
               //Se crea la sentencia de búsqueda
               select = 
-                      "SELECT * FROM Rol";
+                      "SELECT * FROM Rol where estado="+estado;
               
               //Se ejecuta la sentencia SQL
               ResultSet rsEM = accesoDatos.ejecutaSQLRetornaRS(select);
@@ -107,10 +107,10 @@ public class RolDB {
 
                   String id = rsEM.getString("id");
                   String descripcion = rsEM.getString("descripcion");
-                  boolean estado = rsEM.getBoolean("estado");
+                  boolean est = rsEM.getBoolean("estado");
                   
                   
-                  Rol roll = new Rol(id, descripcion, estado);
+                  Rol roll = new Rol(id, descripcion, est);
                   
                   listaRoles.add(roll);
               }

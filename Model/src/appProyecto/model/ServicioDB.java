@@ -63,7 +63,7 @@ public class ServicioDB {
     public Servicio obtenerServicio(String codigo) throws SNMPExceptions, SQLException {
          //  ResultSet rsPA = null;
            String strSQL = "";
-           Servicio servicio;
+           Servicio servicio=null;
            try {
            //  open();
                strSQL = 
@@ -97,7 +97,7 @@ public class ServicioDB {
        }
         
         
-    public LinkedList<Servicio> consultarServiciosSegunEstado(boolean estado) throws SNMPExceptions, SQLException {
+    public LinkedList<Servicio> obtenerServiciosSegunEstado(boolean estado) throws SNMPExceptions, SQLException {
          //  ResultSet rsPA = null;
            String strSQL = "";
            Servicio servicio;
@@ -119,7 +119,7 @@ public class ServicioDB {
                 servicio.setPrecioPorHora(rsSERVICIO.getDouble("precio_por_hora"));
                 servicio.setEstado(rsSERVICIO.getBoolean("estado"));   
                
-               listaServicio.add(servicio);
+               listaServicios.add(servicio);
                
                }
                rsSERVICIO.close();
@@ -134,7 +134,7 @@ public class ServicioDB {
             //  accesoDatos.closeResultSet(rsPA);
           // close();
            }
-           return listaServicio;
+           return listaServicios;
        }
     
     /**
@@ -164,4 +164,40 @@ public class ServicioDB {
           // close();
            }
     }
+    
+    /**
+     *Consulta la existencia de un registro dentro del repositorio de datos.
+     * @param codigo
+     * @return
+     * @throws SNMPExceptions
+     * @throws SQLException
+     */
+    public boolean consultarServicio(int codigo) throws SNMPExceptions, SQLException {
+           ResultSet rsSERVICIO = null;
+           String select = "";
+           try {
+            //  open();
+               boolean existe = false;
+               select = 
+               "Select ID, descripcion, IDTipo_Servicio, precio_por_hora, estado where ID ="+codigo;
+
+               
+               //Se ejecuta la sentencia SQL
+               rsSERVICIO = accesoDatos.ejecutaSQLRetornaRS(select);
+
+               if (rsSERVICIO.next()) {
+                   existe = true;
+               }
+               return existe;
+           } catch (SQLException e) {
+               throw new SNMPExceptions(SNMPExceptions.SQL_EXCEPTION, 
+                                       e.getMessage(), e.getErrorCode());
+           }catch (Exception e) {
+               throw new SNMPExceptions(SNMPExceptions.SQL_EXCEPTION, 
+                                       e.getMessage());
+           } finally {
+               accesoDatos.closeResultSet(rsSERVICIO);
+             // close(); 
+           }
+       }
 }

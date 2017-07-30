@@ -1,14 +1,14 @@
 package appProyecto.model;
 
 public class Canton {
-    private int ID;
+    private String ID;
     private String Descripcion;
     private boolean Estado;
     
     public Canton() {
     }
 
-    public Canton(int ID, String Descripcion, boolean Estado) {
+    public Canton(String ID, String Descripcion, boolean Estado) {
         super();
         this.ID = ID;
         this.Descripcion = Descripcion;
@@ -16,11 +16,11 @@ public class Canton {
     }
 
 
-    public void setID(int ID) {
+    public void setID(String ID) {
         this.ID = ID;
     }
 
-    public int getID() {
+    public String getID() {
         return ID;
     }
 
