@@ -101,7 +101,7 @@ public class ProvinciaDB {
            try {
            //  open();
                strSQL = 
-                       "select Provincia.ID, Provincia.descripcion, Provincia.estado from Direccion join Distrito on Distrito.ID = Direccion.IDDistrito join Provincia on Provincia.ID = Distrito.IDProvincia join Provincia on Provincia.ID = Provincia.IDProvincia where IDCliente ="+codigoCliente;
+                       "select Provincia.ID, Provincia.descripcion, Provincia.estado from Direccion join Distrito on Distrito.ID = Direccion.IDDistrito join Canton on Canton.ID = Distrito.IDCanton join Provincia on Provincia.ID = Canton.IDProvincia where IDCliente ="+codigoCliente;
                //Se ejecuta la sentencia SQL
                ResultSet rsProvincia = accesoDatos.ejecutaSQLRetornaRS(strSQL);
                while (rsProvincia.next()) {
