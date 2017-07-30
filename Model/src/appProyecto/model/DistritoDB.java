@@ -26,7 +26,7 @@ public class DistritoDB {
 
             //Se crea la sentencia de búsqueda
             select = 
-            "Select  ID, IDCanton, Descripcion, Estado" +
+            "Select  ID, Descripcion, Estado" +
             "from Distrito where IDCanton = " + codCanton;
             
             //Se ejecuta la sentencia SQL
@@ -35,12 +35,11 @@ public class DistritoDB {
             while (rsEM.next()) {
 
                 int IDDistrito = rsEM.getInt("ID");
-                int IDCanton = rsEM.getInt("IDCanton");
                 String Descripcion = rsEM.getString("Descripcion");
                 boolean estado = rsEM.getBoolean("Estado");
                 
                 
-                Distrito dis = new Distrito(IDDistrito,IDCanton,Descripcion,estado);
+                Distrito dis = new Distrito(IDDistrito,Descripcion,estado);
                 
                 listaDistritosPorCanton.add(dis);
             }
@@ -65,19 +64,18 @@ public class DistritoDB {
         try {
 
             strSQL = 
-                    "Select  IDCanton, Descripcion, Estado" +
-                "from Distrito where IDDistrito = " + codigoDistrito;
+                    "Select  Descripcion, Estado" +
+                "from Distrito where ID = " + codigoDistrito;
             //Se ejecuta la sentencia SQL
             ResultSet rsEM = accesoDatos.ejecutaSQLRetornaRS(strSQL);
             while (rsEM.next()) {
             
-                int IDDistrito = rsEM.getInt("IDDistrito");
-                int IDCanton = rsEM.getInt("IDCanton");
+                int IDDistrito = rsEM.getInt("ID");
                 String Descripcion = rsEM.getString("Descripcion");
                 boolean estado = rsEM.getBoolean("Estado");
                 
                 
-                Distrito dis = new Distrito(IDDistrito,IDCanton,Descripcion,estado);
+                Distrito dis = new Distrito(IDDistrito,Descripcion,estado);
                 distrito = dis;
             }
             rsEM.close();
