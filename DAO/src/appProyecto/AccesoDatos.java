@@ -182,7 +182,7 @@ public class AccesoDatos implements Serializable {
     * @throws SQLException
     * @throws ClassNotFoundException
     */
-    public int ejecutaMatrizSQL(String pvcSQL) throws SNMPExceptions {
+    public int ejecutaMatrizSQL(String pvcSQL) throws SNMPExceptions, SQLException {
 
        String strSQL[] = null;
        int i = 0;

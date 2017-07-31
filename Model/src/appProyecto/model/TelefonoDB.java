@@ -19,6 +19,13 @@ public class TelefonoDB {
         super();
     }
     
+    /**
+     *Inserta varios numeros de clientes basados en el arreglo el cliente tiene en su 
+     * cartera de numeros a utilizar.
+     * @param cliente
+     * @throws SNMPExceptions
+     * @throws SQLException
+     */
     public void insertar(Cliente cliente) throws SNMPExceptions, SQLException {
         
             StringBuilder strSQL = new StringBuilder();
@@ -30,12 +37,9 @@ public class TelefonoDB {
                 
                 
                 //Se ejecuta la sentencia SQL
-                accesoDatos.ejecutaMatrizSQL(strSQL.toString());
+                int i= accesoDatos.ejecutaMatrizSQL(strSQL.toString());
             
-            } catch (SQLException e) {
-                throw new SNMPExceptions(SNMPExceptions.SQL_EXCEPTION, 
-                                        e.getMessage(), e.getErrorCode());
-            }catch (Exception e) {
+            } catch (Exception e) {
                 throw new SNMPExceptions(SNMPExceptions.SQL_EXCEPTION, 
                                         e.getMessage());
             } finally {
