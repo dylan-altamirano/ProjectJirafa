@@ -1,7 +1,7 @@
 package appProyecto.model;
 
 public class Distrito {
-    private int idDistrito;
+    private String idDistrito;
     private String descripcion;
     private boolean estado;
     
@@ -9,17 +9,17 @@ public class Distrito {
         
     }
 
-    public Distrito(int CodDistrito, String DescDistrito, boolean logActivo) {
+    public Distrito(String CodDistrito, String DescDistrito, boolean logActivo) {
         this.idDistrito = CodDistrito;
         this.descripcion = DescDistrito;
         this.estado = logActivo;
     }
 
-    public void setIdDistrito(int CodDistrito) {
+    public void setIdDistrito(String CodDistrito) {
         this.idDistrito = CodDistrito;
     }
 
-    public int getIdDistrito() {
+    public String getIdDistrito() {
         return idDistrito;
     }
 
