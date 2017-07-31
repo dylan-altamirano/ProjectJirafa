@@ -1,10 +1,10 @@
 package appProyecto.model;
 
 public class Telefono {
-    public String ID;
-    public String numero;
-    public TipoTelefono tipoTele;
-    public boolean Estado;
+    private String ID;
+    private String numero;
+    private TipoTelefono tipoTele;
+    private boolean Estado;
     
     public Telefono() {
        
