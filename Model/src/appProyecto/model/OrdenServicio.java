@@ -2,6 +2,7 @@ package appProyecto.model;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.LinkedList;
 
 public class OrdenServicio {
     
@@ -13,18 +14,29 @@ public class OrdenServicio {
     private Direccion lugarEjecucion;
     private String detalle;
     private boolean estado;
-    private ArrayList<Costo_Variable> arrayCostos_Variables;
+    private LinkedList<Costo_Variable> arrayCostos_Variables;
     private double descuentoAplicado;
     private String observaciones;
     private Usuario usuario;
     
     public OrdenServicio() {
-        super();
+        this.id = "";
+        this.cliente = new Cliente();
+        this.servicio = new Servicio();
+        this.fecha = new Date();
+        this.estimacion_horas = 0;
+        this.lugarEjecucion = new Direccion();
+        this.detalle = "";
+        this.estado = true;
+        this.arrayCostos_Variables = new LinkedList<Costo_Variable>();
+        this.descuentoAplicado = 0.0;
+        this.observaciones = "";
+        this.usuario = new Usuario();
     }
 
     public OrdenServicio(String id, Cliente cliente, Servicio servicio, Date fecha, int estimacion_horas,
                          Direccion lugarEjecucion, String detalle, boolean estado,
-                         ArrayList<Costo_Variable> arrayCostos_Variables, double descuentoAplicado,
+                         LinkedList<Costo_Variable> arrayCostos_Variables, double descuentoAplicado,
                          String observaciones, Usuario usuario) {
        
         this.id = id;
@@ -40,6 +52,26 @@ public class OrdenServicio {
         this.observaciones = observaciones;
         this.usuario = usuario;
     }
+
+//Metodos
+    /**
+     *Calcula el total del monto a pagar por los costos variables de la orden
+     * de servicio. Retorna un valor que sera almacenado como total.
+     * @return
+     */
+    public double montoTotalCostosVariables(){
+      
+      double monto=0.0;  
+        
+        for (Costo_Variable costo_Variable : arrayCostos_Variables) {
+            monto += costo_Variable.getMonto();
+        }
+        
+        return monto;
+    }
+
+
+
 
     public void setId(String id) {
         this.id = id;
@@ -105,11 +137,11 @@ public class OrdenServicio {
         return estado;
     }
 
-    public void setArrayCostos_Variables(ArrayList<Costo_Variable> arrayCostos_Variables) {
+    public void setArrayCostos_Variables(LinkedList<Costo_Variable> arrayCostos_Variables) {
         this.arrayCostos_Variables = arrayCostos_Variables;
     }
 
-    public ArrayList<Costo_Variable> getArrayCostos_Variables() {
+    public LinkedList<Costo_Variable> getArrayCostos_Variables() {
         return arrayCostos_Variables;
     }
 
