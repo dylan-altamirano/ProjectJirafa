@@ -1,7 +1,7 @@
 package appProyecto.model;
 
 public class Costo_Variable {
-    
+    private String id;
     private double monto;
     private TipoCosto tipo;
     
@@ -29,5 +29,13 @@ public class Costo_Variable {
 
     public TipoCosto getTipo() {
         return tipo;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getId() {
+        return id;
     }
 }
