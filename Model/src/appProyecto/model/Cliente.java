@@ -9,7 +9,7 @@ public class Cliente {
     private String Fax;
     private double DescAplicable;
     private Direccion direccion;
-    private String Estado;
+    private boolean Estado;
     
     private ArrayList<Telefono> arrayTelefonos;
     
@@ -19,7 +19,7 @@ public class Cliente {
     }
 
     public Cliente(String ID, String Nombre, String Correo, String Fax, double DescAplicable, Direccion direccion,
-                   String Estado, ArrayList<Telefono> arrayTelefonos) {
+                   boolean Estado, ArrayList<Telefono> arrayTelefonos) {
         super();
         this.ID = ID;
         this.Nombre = Nombre;
@@ -79,11 +79,11 @@ public class Cliente {
         return direccion;
     }
 
-    public void setEstado(String Estado) {
+    public void setEstado(boolean Estado) {
         this.Estado = Estado;
     }
 
-    public String getEstado() {
+    public boolean getEstado() {
         return Estado;
     }
 
