@@ -42,12 +42,12 @@ public class AccesoDatos implements Serializable {
         
         public int ejecutaSQL(String pvcSQL)throws SNMPExceptions, SQLException, NamingException  {
                        
-            dbConn = DriverManager.getConnection("jdbc:weblogic:sqlserver://localhost:1433;databaseName=", "sa", "123456");
+            dbConn = DriverManager.getConnection("jdbc:weblogic:sqlserver://localhost:1433;databaseName=servicios", "sa", "123456");
             try{
                 
                 stmt = dbConn.createStatement();
                 
-                if(getDataSource().equals("jdbc/DS_Feriado")){
+                if(getDataSource().equals("jdbc/Servicios")){
                     String formatoFechaSQL = "Alter session set NLS_DATE_FORMAT = 'dd-mm--yy'";
                     stmt.execute(formatoFechaSQL);
                     }
@@ -85,11 +85,11 @@ public class AccesoDatos implements Serializable {
     */
     public ResultSet ejecutaSQLRetornaRS(String pvcSQL) throws SNMPExceptions, SQLException, NamingException {
       ResultSet rs = null;
-      dbConn = DriverManager.getConnection("jdbc:weblogic:sqlserver://localhost:1433;databaseName=", "sa", "123456");
+      dbConn = DriverManager.getConnection("jdbc:weblogic:sqlserver://localhost:1433;databaseName=servicios", "sa", "123456");
       try {
               stmt = dbConn.createStatement();
 
-              if(getDataSource().equals("jdbc/DS_Feriado")){ 
+              if(getDataSource().equals("jdbc/Servicios")){ 
                   String formatoFechaSQL = "Alter session set NLS_DATE_FORMAT = 'dd-mm-yy' ";
                 stmt.execute(formatoFechaSQL);
                 }            
@@ -128,7 +128,7 @@ public class AccesoDatos implements Serializable {
            /* Obtiene la conexión hacia la base de datos */
            stmt = dbConn.createStatement();
            
-           if(getDataSource().equals("jdbc/DS_Feriado")){
+           if(getDataSource().equals("jdbc/Servicios")){
                String formatoFechaSQL = "Alter session set NLS_DATE_FORMAT = 'dd-mm-yy'";
                stmt.execute(formatoFechaSQL);
            }         
@@ -192,7 +192,7 @@ public class AccesoDatos implements Serializable {
            /* Obtiene la conexión hacia la base de datos */
            stmt = dbConn.createStatement();
            
-           if(getDataSource().equals("jdbc/DS_Feriado")){
+           if(getDataSource().equals("jdbc/Servicios")){
                String formatoFechaSQL = "Alter session set NLS_DATE_FORMAT = 'dd-mm-yy'";
                stmt.execute(formatoFechaSQL);
            }         
@@ -246,7 +246,7 @@ public class AccesoDatos implements Serializable {
     try {
         stmt = dbConn.createStatement();
 
-        if(getDataSource().equals("jdbc/DS_Feriado")){
+        if(getDataSource().equals("jdbc/Servicios")){
            String formatoFechaSQL = "Alter session set NLS_DATE_FORMAT = 'dd-mm-yy' ";
            stmt.execute(formatoFechaSQL);
         }            
