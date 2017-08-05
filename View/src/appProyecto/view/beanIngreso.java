@@ -1,5 +1,12 @@
 package appProyecto.view;
 
+import appProyecto.SNMPExceptions;
+import java.sql.SQLException;
+import java.util.LinkedList;
+import javax.naming.NamingException;
+import appProyecto.model.UsuarioDB;
+import appProyecto.model.Usuario;
+
 /**
  * Bean encargado de manejar la parte de ingreso al sistema.
  */
@@ -36,7 +43,41 @@ public class beanIngreso {
         }
         return "";
     }
-
+    
+    /**
+     *Método que valida la veracidad de las credenciales de un usuario en
+     * específico. 
+     * @return
+     */
+    public String validarUsuario(){
+        
+        Usuario usuario = new Usuario();
+        UsuarioDB usuarioDb = new UsuarioDB();
+        
+        if (this.validaNulos()) {
+            
+            try {
+                
+                usuario = usuarioDb.moBuscarUsuario(this.getUsuario(), this.getClave());
+                
+                if (usuario!=null) {
+                    return "correcto";
+                }
+                
+                
+            } catch (Exception e) {
+                
+                e.printStackTrace();
+                return "falso";
+            }
+            
+        }
+        
+        
+        
+        return "falso";
+    }
+    
     public void setUsuario(String Nombre) {
         this.Usuario = Nombre;
     }
