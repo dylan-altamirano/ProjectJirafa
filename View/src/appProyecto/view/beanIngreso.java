@@ -54,6 +54,7 @@ public class beanIngreso {
         Usuario usuario = new Usuario();
         UsuarioDB usuarioDb = new UsuarioDB();
         
+        //Valida que los campos no esten nulos
         if (this.validaNulos()) {
             
             try {
