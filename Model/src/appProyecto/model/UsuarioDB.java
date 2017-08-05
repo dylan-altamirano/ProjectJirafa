@@ -71,9 +71,11 @@ public class UsuarioDB {
                 String claveUsuario = rsEM.getString("clave");
                 boolean estado = rsEM.getBoolean("estado");
                 
+                
+                usu.setId(idUsuario);
+                usu.setClave(claveUsuario);
+                usu.setEstado(estado);
             
-                /*Usuario usuario2 = new Usuario(idUsuario, claveUsuario, estado);
-                usu = usuario2;*/
             }
             rsEM.close();
             
@@ -88,7 +90,7 @@ public class UsuarioDB {
         return usu;
     }
     
-    public  LinkedList<Usuario> moCargarUsuarios() throws SNMPExceptions, SQLException {
+    public  LinkedList<Usuario> moCargarUsuariosPorEstado(boolean bandera) throws SNMPExceptions, SQLException {
           String select = "";
           LinkedList<Usuario> listaUsuarios = new LinkedList<Usuario>();
           
@@ -98,7 +100,7 @@ public class UsuarioDB {
 
               //Se crea la sentencia de búsqueda
               select = 
-                      "SELECT * FROM Usuario";
+                      "SELECT * FROM Usuario where estado="+bandera;
               
               //Se ejecuta la sentencia SQL
               ResultSet rsEM = accesoDatos.ejecutaSQLRetornaRS(select);
@@ -110,9 +112,13 @@ public class UsuarioDB {
                   boolean estado = rsEM.getBoolean("estado");
                   
                   
-                  /*Usuario usuario2 = new Usuario(idUsuario, claveUsuario, estado);
-                  usu = usuario2;
-                  listaUsuarios.add(usuario2);*/
+                  Usuario usuario = new Usuario();
+                  
+                  usuario.setId(idUsuario);
+                  usuario.setClave(claveUsuario);
+                  usuario.setEstado(estado);
+                  
+                  listaUsuarios.add(usuario);
               }
               rsEM.close();
           } catch (SQLException e) {

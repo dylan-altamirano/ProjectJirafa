@@ -1,5 +1,8 @@
 package appProyecto.view;
 
+/**
+ * Bean encargado de manejar la parte de ingreso al sistema.
+ */
 public class beanIngreso {
     public String Usuario;
     public String Rol;
@@ -8,6 +11,10 @@ public class beanIngreso {
     public beanIngreso() {
     }
     
+    /**
+     *Este método valida que los campos de ingreso al sistema no queden vacíos.
+     * @return
+     */
     public String validaNulos(){
         if(this.getUsuario().equalsIgnoreCase("") || 
            this.getRol().equalsIgnoreCase("") || this.getClave().equalsIgnoreCase("")){
