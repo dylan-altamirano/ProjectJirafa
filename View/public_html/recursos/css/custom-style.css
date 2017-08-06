@@ -1,0 +1,10 @@
+/*Proporciona un estilo personalizado para cualquier panel*/
+.panel-custom{
+    background-color:#ffffff;
+    border-color:#ffcccc;
+}
+
+.clearfix:after{
+    clear: both;
+    display: table;
+}

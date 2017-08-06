@@ -12,6 +12,7 @@
             <title>Ingreso</title>
             <!-- Bootstrap Core CSS -->
             <link href="recursos/css/bootstrap.min.css" rel="stylesheet"></link>
+            
             <!-- MetisMenu CSS -->
             <link href="recursos/css/metisMenu.min.css" rel="stylesheet"></link>
             <!-- Custom CSS -->

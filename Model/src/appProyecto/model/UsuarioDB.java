@@ -58,7 +58,7 @@ public class UsuarioDB {
     public Usuario moBuscarUsuario(String id, String clave) throws SNMPExceptions, SQLException {
 
         String strSQL = "";
-        Usuario usu = new Usuario();
+        Usuario usu = null;
         try {
 
             strSQL = 
@@ -70,6 +70,8 @@ public class UsuarioDB {
                 String idUsuario = rsEM.getString("ID");
                 String claveUsuario = rsEM.getString("clave");
                 boolean estado = rsEM.getBoolean("estado");
+                
+                usu = new Usuario();
                 
                 usu.setId(idUsuario);
                 usu.setClave(claveUsuario);

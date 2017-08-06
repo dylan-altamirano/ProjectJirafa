@@ -18,30 +18,31 @@
             <link href="recursos/css/sb-admin-2.css" rel="stylesheet"></link>
             <!-- Custom Fonts -->
             <link href="recursos/css/font-awesome.min.css" rel="stylesheet" type="text/css"></link>
+            <link href="recursos/css/custom-style.css" rel="stylesheet"></link>
         </head>
         <body>
-            <div id="wrapper">
-                <div id="page-wrapper">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <h1 class="page-header">
-                                    <h:outputText value="Autenticacion de sesion de usuario fallida. Por favor, vuelva a intentarlo."/>
-                                    <small>
-                                        <h:outputLink>
-                                            <h:outputText value="Regresar"/>
-                                        </h:outputLink>
-                                    </small>
-                                </h1>
-                            </div>
-                            <!-- /.col-lg-12 -->
+            <!--Card-->
+            <div class="container" style="margin-top:5%;">
+                <div class="row">
+                    <!--Card content-->
+                    <div class="panel panel-danger">
+                        <!--Title-->
+                        <div class="panel-heading">
+                            <h:outputText value="Autenticación fallida"/>
                         </div>
-                        <!-- /.row -->
+                        <!--Text-->
+                        <div class="panel-body">
+                            <h:outputText value="El usuario o contraseña introducidos son incorrectos o inexistentes."/>
+                        </div>
+                        <div class="panel-footer panel-custom">
+                            <h:outputLink value="ingreso.jsp">
+                                <h:outputText value="Volver a la página de ingreso al sistema."/>
+                            </h:outputLink>
+                        </div>
                     </div>
-                    <!-- /.container-fluid -->
                 </div>
-                <!-- /#page-wrapper -->
             </div>
+            <!--/.Card-->
             <!-- jQuery -->
             <script type="text/javascript" src="recursos/js/jquery.min.js"></script>
             <!-- Bootstrap Core JavaScript -->
@@ -50,6 +51,7 @@
             <script type="text/javascript" src="recursos/js/metisMenu.min.js"></script>
             <!-- Custom Theme JavaScript -->
             <script type="text/javascript" src="recursos/js/sb-admin-2.js"></script>
+            <!-- Bootstrap tooltips -->
         </body>
     </html>
 </f:view>
