@@ -3,11 +3,11 @@
   <navigation-rule>
     <from-view-id>/ingreso.jsp</from-view-id>
     <navigation-case>
-      <from-outcome>bien</from-outcome>
+      <from-outcome>correcto</from-outcome>
       <to-view-id>/principal.jsp</to-view-id>
     </navigation-case>
     <navigation-case>
-      <from-outcome>mal</from-outcome>
+      <from-outcome>falso</from-outcome>
       <to-view-id>/errorAutenticacion.jsp</to-view-id>
     </navigation-case>
   </navigation-rule>

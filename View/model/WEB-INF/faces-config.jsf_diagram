@@ -30,7 +30,7 @@
       from="Page2"
       to="Page3">
       <property
-         name="fromOutcome">bien</property>
+         name="fromOutcome">correcto</property>
       <property
          name="description">Navigation Case</property>
       <property
@@ -53,7 +53,7 @@
       from="Page2"
       to="Page5">
       <property
-         name="fromOutcome">mal</property>
+         name="fromOutcome">falso</property>
       <property
          name="description">Navigation Case</property>
       <property

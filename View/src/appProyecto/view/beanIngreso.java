@@ -1,6 +1,11 @@
 package appProyecto.view;
 
 import appProyecto.SNMPExceptions;
+
+import appProyecto.model.Rol;
+
+import appProyecto.model.RolDB;
+
 import java.sql.SQLException;
 import java.util.LinkedList;
 import javax.naming.NamingException;
@@ -53,15 +58,22 @@ public class beanIngreso {
         
         Usuario usuario = new Usuario();
         UsuarioDB usuarioDb = new UsuarioDB();
+        LinkedList<Rol> roles = new LinkedList<Rol>();
+        RolDB rolDb = new RolDB();
         
         //Valida que los campos no esten nulos
         if (this.validaNulos()) {
             
             try {
-                
+                //Obtiene primero el usuario del repositorio de datos
                 usuario = usuarioDb.moBuscarUsuario(this.getUsuario(), this.getClave());
+                //Obtiene el rol del respositorio de datos segun el usuario
+                roles = rolDb.moBuscarRolesSegunUsuario(this.getUsuario());
                 
                 if (usuario!=null) {
+                //Agrega el rol al usuario    
+                usuario.setArrayRoles(roles);
+                    
                     return "correcto";
                 }
                 

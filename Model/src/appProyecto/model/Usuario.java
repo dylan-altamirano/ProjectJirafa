@@ -1,27 +1,37 @@
 package appProyecto.model;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class Usuario {
     public String id;
     public String clave;
     public boolean estado;
-    public ArrayList<Rol> arrayRoles;
+    public LinkedList<Rol> arrayRoles;
     
     public Usuario() {
         
     }
-    public Usuario(String id, String clave, boolean estado, ArrayList<Rol> arrayRoles) {
+    public Usuario(String id, String clave, boolean estado, LinkedList<Rol> arrayRoles) {
         
         this.id = id;
         this.clave = clave;
         this.estado = estado;
         this.arrayRoles = arrayRoles;
     }
+    
+    /**
+     *Agrega un rol al array de roles de usuario.
+     * @param rol
+     */
+    public void agregarRol(Rol rol){
+        this.arrayRoles.add(rol);
+    }
+    
     public void setId(String id) {
         this.id = id;
     }
-
+    
     public String getId() {
         return id;
     }
@@ -42,11 +52,11 @@ public class Usuario {
         return estado;
     }
 
-    public void setArrayRoles(ArrayList<Rol> arrayRoles) {
+    public void setArrayRoles(LinkedList<Rol> arrayRoles) {
         this.arrayRoles = arrayRoles;
     }
 
-    public ArrayList<Rol> getArrayRoles() {
+    public LinkedList<Rol> getArrayRoles() {
         return arrayRoles;
     }
 }

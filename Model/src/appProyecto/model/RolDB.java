@@ -23,7 +23,7 @@ public class RolDB {
            Rol rol = new Rol();
             rol = r;
             strSQL = 
-                    "INSERT INTO Rol (id,descripcion,estado) VALUES " +
+                    "INSERT INTO rol VALUES " +
                     "(" + rol.getId() + ",'" + rol.getDescripcion() + "'," +  
                     rol.isEstado() + "')";
             //Se ejecuta la sentencia SQL
@@ -49,9 +49,9 @@ public class RolDB {
         
         //Se crea la sentencia de actualización
         String update = 
-                "UPDATE TipoFeriado SET estado = " + estado + 
+                "UPDATE rol SET estado = " + estado + 
                 ", descripcion= '" + descripcion +
-                "' where Rol = " + id;
+                "' where ID = " + id;
         //Se ejecuta la sentencia SQL
         accesoDatos.ejecutaSQL(update);
     }
@@ -62,12 +62,12 @@ public class RolDB {
         try {
 
             strSQL = 
-                    "Select id, descripcion, estado from Rol where id =" + codigo;
+                    "Select ID, descripcion, estado from Rol where ID =" + codigo;
             //Se ejecuta la sentencia SQL
             ResultSet rsEM = accesoDatos.ejecutaSQLRetornaRS(strSQL);
             while (rsEM.next()) {
             
-                String id = rsEM.getString("id");
+                String id = rsEM.getString("ID");
                 String descripcion = rsEM.getString("descripcion");
                 boolean estado = rsEM.getBoolean("estado");
                 
@@ -88,6 +88,52 @@ public class RolDB {
         return rol;
     }
     
+    /**
+     *Método que busca roles específicos para un usuario.
+     * @param idUsuario
+     * @return
+     * @throws SNMPExceptions
+     * @throws SQLException
+     */
+    public LinkedList<Rol> moBuscarRolesSegunUsuario(String idUsuario) throws SNMPExceptions, SQLException {
+
+        String strSQL = "";
+        Rol rol = null;
+        LinkedList<Rol> listaRoles = new LinkedList<Rol>();
+        
+        try {
+
+            strSQL = 
+                    "select rol.ID, rol.descripcion, rol.estado from usuarioRol join usuario on usuario.ID = usuarioRol.IDUsuario join rol on rol.ID= usuarioRol.IDRol where ID =" + idUsuario;
+            //Se ejecuta la sentencia SQL
+            ResultSet rsEM = accesoDatos.ejecutaSQLRetornaRS(strSQL);
+            while (rsEM.next()) {
+            
+                String id = rsEM.getString("ID");
+                String descripcion = rsEM.getString("descripcion");
+                boolean estado = rsEM.getBoolean("estado");
+                
+                rol = new Rol();
+                
+                rol.setId(id);
+                rol.setDescripcion(descripcion);
+                rol.setEstado(estado);
+                
+                listaRoles.add(rol);    
+            }
+            rsEM.close();
+            
+        } catch (SQLException e) {
+            throw new SNMPExceptions(SNMPExceptions.SQL_EXCEPTION, 
+                                    e.getMessage(), e.getErrorCode());
+        }catch (Exception e) {
+            throw new SNMPExceptions(SNMPExceptions.SQL_EXCEPTION, 
+                                    e.getMessage());
+        } finally {
+        }
+        return listaRoles;
+    }    
+    
     public  LinkedList<Rol> moCargarRolesSegunEstado(boolean estado) throws SNMPExceptions, SQLException {
           String select = "";
           LinkedList<Rol> listaRoles = new LinkedList<Rol>();
@@ -98,14 +144,14 @@ public class RolDB {
 
               //Se crea la sentencia de búsqueda
               select = 
-                      "SELECT * FROM Rol where estado="+estado;
+                      "SELECT * FROM rol where estado="+estado;
               
               //Se ejecuta la sentencia SQL
               ResultSet rsEM = accesoDatos.ejecutaSQLRetornaRS(select);
 
               while (rsEM.next()) {
 
-                  String id = rsEM.getString("id");
+                  String id = rsEM.getString("ID");
                   String descripcion = rsEM.getString("descripcion");
                   boolean est = rsEM.getBoolean("estado");
                   

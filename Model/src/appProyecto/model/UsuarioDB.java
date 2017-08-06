@@ -71,7 +71,6 @@ public class UsuarioDB {
                 String claveUsuario = rsEM.getString("clave");
                 boolean estado = rsEM.getBoolean("estado");
                 
-                
                 usu.setId(idUsuario);
                 usu.setClave(claveUsuario);
                 usu.setEstado(estado);
