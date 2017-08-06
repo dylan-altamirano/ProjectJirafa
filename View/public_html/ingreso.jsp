@@ -44,7 +44,7 @@
                                         <h:inputSecret styleClass="form-control marcagua-pass" id="clave"
                                                        value="#{beanIngreso.clave}"/>
                                     </div>
-                                    <h:commandButton value="Ingresar" action="#{beanIngreso.validaNulos}"
+                                    <h:commandButton value="Ingresar" action="#{beanIngreso.validarUsuario}"
                                                      styleClass="btn btn-lg btn-success btn-block"/>
                                                      <div class="form-group">
                                                     <label>

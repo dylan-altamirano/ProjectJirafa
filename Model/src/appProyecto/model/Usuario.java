@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class Usuario {
-    public String id;
-    public String clave;
-    public boolean estado;
-    public LinkedList<Rol> arrayRoles;
+    private String id;
+    private String clave;
+    private boolean estado;
+    private LinkedList<Rol> arrayRoles;
     
     public Usuario() {
         

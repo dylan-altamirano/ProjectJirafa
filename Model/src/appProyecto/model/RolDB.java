@@ -104,7 +104,7 @@ public class RolDB {
         try {
 
             strSQL = 
-                    "select rol.ID, rol.descripcion, rol.estado from usuarioRol join usuario on usuario.ID = usuarioRol.IDUsuario join rol on rol.ID= usuarioRol.IDRol where ID =" + idUsuario;
+                    "select rol.ID, rol.descripcion, rol.estado from usuarioRol join usuario on usuario.ID = usuarioRol.IDUsuario join rol on rol.ID= usuarioRol.IDRol where usuario.ID ='" + idUsuario+"'";
             //Se ejecuta la sentencia SQL
             ResultSet rsEM = accesoDatos.ejecutaSQLRetornaRS(strSQL);
             while (rsEM.next()) {

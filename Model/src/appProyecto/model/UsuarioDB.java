@@ -62,12 +62,12 @@ public class UsuarioDB {
         try {
 
             strSQL = 
-                    "Select estado from Usuario where id =" +id + "&&" + "clave = " + clave;
+                    "Select ID, clave, estado from usuario where ID ='" +id + "' and " + "clave = '" + clave+"'";
             //Se ejecuta la sentencia SQL
             ResultSet rsEM = accesoDatos.ejecutaSQLRetornaRS(strSQL);
             while (rsEM.next()) {
             
-                String idUsuario = rsEM.getString("id");
+                String idUsuario = rsEM.getString("ID");
                 String claveUsuario = rsEM.getString("clave");
                 boolean estado = rsEM.getBoolean("estado");
                 

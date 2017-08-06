@@ -1,6 +1,6 @@
 package appProyecto.view;
 
-import appProyecto.SNMPExceptions;
+
 
 import appProyecto.model.Rol;
 
@@ -27,7 +27,7 @@ public class beanIngreso {
      *Este método valida que los campos de ingreso al sistema no queden vacíos.
      * @return
      */
-    public String validaNulos(){
+    public boolean validaNulos(){
         if(this.getUsuario().equalsIgnoreCase("") || 
            this.getRol().equalsIgnoreCase("") || this.getClave().equalsIgnoreCase("")){
         if(this.getUsuario().equalsIgnoreCase("")){
@@ -44,9 +44,9 @@ public class beanIngreso {
         }
         }
         else{
-            return "bien";
+            return true;
         }
-        return "";
+        return false;
     }
     
     /**
@@ -73,10 +73,14 @@ public class beanIngreso {
                 if (usuario!=null) {
                 //Agrega el rol al usuario    
                 usuario.setArrayRoles(roles);
-                    
-                    return "correcto";
+                //Por ultimo se revisa que el rol seleccionado se encuentre de los roles que el posee el usuario 
+                for (Rol rol : roles) {
+                    if (rol.getDescripcion().equalsIgnoreCase(this.getRol())) {
+                            return "correcto";           
+                        }        
                 }
-                
+                 
+                }
                 
             } catch (Exception e) {
                 
