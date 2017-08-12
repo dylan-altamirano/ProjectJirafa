@@ -119,28 +119,21 @@
                         </div>
                         <!-- /.col-lg-12 -->
                     </div>
+                    <div class="row">
+                        <div class="jumbotron">
+                            <h1 class="display-3">Bienvenido al Sistema</h1>
+                            <p class="lead">Administre los servicios, clientes y facturaci&oacute;n desde un sitio
+                                            centralizado como es la consola de administraci&oacute;n del sistema.</p>
+                            <hr class="my-4"></hr>
+                            <p>Utiliza una estructura sencilla de manejar con resultados concretos y precisos.</p>
+                            <p class="lead">
+                                <a class="btn btn-primary btn-lg" href="#" role="button">Aprenda m&aacute;s</a>
+                            </p>
+                        </div>
+                    </div>
                     <!-- /.row -->
                     <div class="row">
-                        <div class="col-sm-6">
-                            <div class="card">
-                                <div class="card-block">
-                                    <h3 class="card-title">Special title treatment</h3>
-                                    <p class="card-text">With supporting text below as a natural lead-in to additional
-                                                         content.</p>
-                                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="card">
-                                <div class="card-block">
-                                    <h3 class="card-title">Special title treatment</h3>
-                                    <p class="card-text">With supporting text below as a natural lead-in to additional
-                                                         content.</p>
-                                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                                </div>
-                            </div>
-                        </div>
+                        
                     </div>
                     <!-- /.row -->
                 </div>
