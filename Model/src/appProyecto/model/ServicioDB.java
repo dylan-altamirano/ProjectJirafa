@@ -172,7 +172,7 @@ public class ServicioDB {
      * @throws SNMPExceptions
      * @throws SQLException
      */
-    public boolean consultarServicio(int codigo) throws SNMPExceptions, SQLException {
+    public boolean consultarServicio(String codigo) throws SNMPExceptions, SQLException {
            ResultSet rsSERVICIO = null;
            String select = "";
            try {
