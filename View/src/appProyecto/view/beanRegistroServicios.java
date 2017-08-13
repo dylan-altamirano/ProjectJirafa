@@ -12,6 +12,7 @@ import appProyecto.model.TipoServicio;
 import appProyecto.model.TipoServicioDB;
 
 public class beanRegistroServicios {
+    private String codigo;
     private String Descripcion;
     private String TipoServicio;
     private String Estado;
@@ -99,13 +100,13 @@ public class beanRegistroServicios {
      *Consulta la existencia de un servicio en la base de datos
      * @return
      */
-    private boolean consultarServicio(){
+    private boolean consultarServicio(String codigo){
         
         boolean bandera = false;
         ServicioDB servicioDB = new ServicioDB();
         try {
             
-            bandera = servicioDB.consultarServicio("");
+            bandera = servicioDB.consultarServicio(codigo);
             
         } catch (Exception e) {
             // TODO: Add catch code
@@ -114,12 +115,64 @@ public class beanRegistroServicios {
         
         return bandera;
     }
-
+    
+    /**
+     *valida que los datos sean correctos y guarda o modifica los registros segun la necesidad
+     * @return
+     */
     public String validar(){
         
         if (this.validaNulos()) {
             
-            
+            if (consultarServicio(this.getCodigo())) {
+                
+                Servicio servicio = new Servicio();
+                
+                TipoServicioDB tipoDB = new TipoServicioDB();
+                TipoServicio tipo = new TipoServicio();
+                
+                try {
+                    
+                    tipo = tipoDB.moBuscarTipoServicio(this.getTipoServicio());
+                    
+                } catch (Exception e) {
+                    // TODO: Add catch code
+                    e.printStackTrace();
+                }
+                
+                //construimos el objeto servicio
+                servicio.setDescripcion(this.getDescripcion());
+                servicio.setID(this.getCodigo());
+                servicio.setEstado(Boolean.getBoolean(this.getEstado()));
+                servicio.setPrecioPorHora(Double.parseDouble(this.getCosto()));
+                servicio.setTipo(tipo);
+                
+                //actualizamos el servicio ya que existe en la base de datos
+                this.actualizarServicio(servicio);
+            }else{
+                Servicio servicio = new Servicio();
+                
+                TipoServicioDB tipoDB = new TipoServicioDB();
+                TipoServicio tipo = new TipoServicio();
+                
+                try {
+                    
+                    tipo = tipoDB.moBuscarTipoServicio(this.getTipoServicio());
+                    
+                } catch (Exception e) {
+                    // TODO: Add catch code
+                    e.printStackTrace();
+                }
+                
+                //construimos el objeto servicio
+                servicio.setDescripcion(this.getDescripcion());
+                servicio.setID(this.getCodigo());
+                servicio.setEstado(Boolean.getBoolean(this.getEstado()));
+                servicio.setPrecioPorHora(Double.parseDouble(this.getCosto()));
+                servicio.setTipo(tipo);
+                //guardamos el objeto servicio ya que este no existe en la base de datos
+                this.insertarServicio(servicio);
+            }
             
             
         }
@@ -166,5 +219,13 @@ public class beanRegistroServicios {
 
     public String getNulos() {
         return Nulos;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
+
+    public String getCodigo() {
+        return codigo;
     }
 }
