@@ -11,6 +11,10 @@ import appProyecto.model.ServicioDB;
 import appProyecto.model.TipoServicio;
 import appProyecto.model.TipoServicioDB;
 
+import java.util.List;
+
+import javax.faces.model.SelectItem;
+
 public class beanRegistroServicios {
     private String codigo;
     private String Descripcion;
@@ -19,8 +23,36 @@ public class beanRegistroServicios {
     private String Costo;
     private String Nulos;
     
+    private LinkedList<TipoServicio> listaTipoServicios;
+    private List<SelectItem> tipoServicios = new LinkedList<SelectItem>();
+    private String tipoServicioSeleccionado="";
+    
     public beanRegistroServicios() {
+        cargaComboTipoServicio();
     }
+    
+    /**
+     * Combo cargar tipos de servicios
+     */
+    public void cargaComboTipoServicio(){
+        
+        TipoServicioDB tipoDB = new TipoServicioDB();
+
+               try {
+                   this.listaTipoServicios = tipoDB.moCargarTipoServicioSegunEstado(true);
+
+                   for (TipoServicio tipo : listaTipoServicios) {
+
+                       this.tipoServicios.add(new SelectItem(tipo.getID(), this.getDescripcion()));
+                   }
+
+
+               } catch (Exception e) {
+                   // TODO: Add catch code
+                   e.printStackTrace();
+               } 
+    }
+    
     
     /**
      *Método que valida que los campos no queden nulos
@@ -227,5 +259,29 @@ public class beanRegistroServicios {
 
     public String getCodigo() {
         return codigo;
+    }
+
+    public void setListaTipoServicios(LinkedList<TipoServicio> listaTipoServicios) {
+        this.listaTipoServicios = listaTipoServicios;
+    }
+
+    public LinkedList<TipoServicio> getListaTipoServicios() {
+        return listaTipoServicios;
+    }
+
+    public void setTipoServicios(List<SelectItem> tipoServicios) {
+        this.tipoServicios = tipoServicios;
+    }
+
+    public List<SelectItem> getTipoServicios() {
+        return tipoServicios;
+    }
+
+    public void setTipoServicioSeleccionado(String tipoServicioSeleccionado) {
+        this.tipoServicioSeleccionado = tipoServicioSeleccionado;
+    }
+
+    public String getTipoServicioSeleccionado() {
+        return tipoServicioSeleccionado;
     }
 }

@@ -143,17 +143,9 @@
                                                 <div class="form-group">
                                                     <label>
                                                         <h:outputText value="Tipo Servicio"/>
-                                                    </label>
-                                                     
-                                                    <h:selectOneMenu styleClass="form-control"
-                                                                     value="#{beanRegistroServicios.tipoServicio}">
-                                                        <f:selectItem itemLabel="Financieros" itemValue="Financieros"/>
-                                                        <f:selectItem itemLabel="Mecanicos" itemValue="Mecanicos"/>
-                                                        <f:selectItem itemLabel="Tecnicos" itemValue="Tecnicos"/>
-                                                        <f:selectItem itemLabel="Construccion"
-                                                                      itemValue="Construccion"/>
-                                                        <f:selectItem itemLabel="Reclutamiento"
-                                                                      itemValue="Reclutamiento"/>
+                                                    </label><h:selectOneMenu styleClass="form-control">
+                                                        <f:selectItem itemValue="#{null}" itemLabel="-- select one --"/>
+                                                        <f:selectItems value="#{beanRegistroServicios.tipoServicios}"/>
                                                     </h:selectOneMenu>
                                                 </div>
                                                 <div class="form-group input-group">
@@ -167,13 +159,10 @@
                                                 <div class="form-group">
                                                     <label>
                                                         <h:outputText value="Estado:"/>
-                                                    </label>
-                                                    <div class="checkbox">
-                                                        <label>
-                                                            <h:selectBooleanCheckbox label="Activo"
-                                                                                     value="#{beanRegistroServicios.estado}"/>
-                                                        </label>
-                                                    </div>
+                                                    </label><h:selectOneMenu styleClass="form-control">
+                                                        <f:selectItem itemLabel="Activo" itemValue="1"/>
+                                                        <f:selectItem itemLabel="Inactivo" itemValue="2"/>
+                                                    </h:selectOneMenu>
                                                 </div>
                                                 <h:commandButton value="Registrar" styleClass="btn btn-success"
                                                                  action="#{beanRegistroServicios.validaNulos}"/>
