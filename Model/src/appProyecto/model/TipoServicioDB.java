@@ -64,7 +64,7 @@ public class TipoServicioDB {
         try {
 
             strSQL = 
-                    "Select ID, Descripcion, estado from TipoServicio where ID =" + codigo;
+                    "Select ID, Descripcion, estado from TipoServicio where ID ='" + codigo+"'";
             //Se ejecuta la sentencia SQL
             ResultSet rsEM = accesoDatos.ejecutaSQLRetornaRS(strSQL);
             while (rsEM.next()) {
