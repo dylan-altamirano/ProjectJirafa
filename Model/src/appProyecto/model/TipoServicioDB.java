@@ -100,7 +100,7 @@ public class TipoServicioDB {
 
               //Se crea la sentencia de búsqueda
               select = 
-                      "SELECT * FROM TipoServicio where estado='"+bandera+"'";
+                      "SELECT ID, descripcion, estado FROM TipoServicio where estado='"+bandera+"'";
               
               //Se ejecuta la sentencia SQL
               ResultSet rsEM = accesoDatos.ejecutaSQLRetornaRS(select);

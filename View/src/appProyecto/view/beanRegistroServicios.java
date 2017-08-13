@@ -43,7 +43,7 @@ public class beanRegistroServicios {
 
                    for (TipoServicio tipo : listaTipoServicios) {
 
-                       this.tipoServicios.add(new SelectItem(tipo.getID(), this.getDescripcion()));
+                       this.tipoServicios.add(new SelectItem(tipo.getID(), tipo.getDescripcion()));
                    }
 
 
@@ -153,6 +153,8 @@ public class beanRegistroServicios {
      * @return
      */
     public String validar(){
+        
+        this.setTipoServicio(this.getTipoServicioSeleccionado());
         
         if (this.validaNulos()) {
             

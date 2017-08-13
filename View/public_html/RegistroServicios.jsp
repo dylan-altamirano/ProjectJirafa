@@ -130,6 +130,13 @@
                                     <div class="row">
                                         <div class="col-lg-12">
                                             <h:form>
+                                              <div class="form-group">
+                                                    <label>
+                                                        <h:outputText value="Identificador:"/>
+                                                    </label><h:inputText value="#{beanRegistroServicios.codigo}"
+                                                                         styleClass="form-control"/>
+                                                    <p class="help-block">Introduzca una identificación para el servicio.</p>
+                                                </div>
                                                 <div class="form-group">
                                                     <label>
                                                         <h:outputText value="Descripcion:"/>
@@ -143,7 +150,8 @@
                                                 <div class="form-group">
                                                     <label>
                                                         <h:outputText value="Tipo Servicio"/>
-                                                    </label><h:selectOneMenu styleClass="form-control">
+                                                    </label><h:selectOneMenu styleClass="form-control"
+                                                                             value="#{beanRegistroServicios.tipoServicioSeleccionado}">
                                                         <f:selectItem itemValue="#{null}" itemLabel="-- select one --"/>
                                                         <f:selectItems value="#{beanRegistroServicios.tipoServicios}"/>
                                                     </h:selectOneMenu>
@@ -159,15 +167,14 @@
                                                 <div class="form-group">
                                                     <label>
                                                         <h:outputText value="Estado:"/>
-                                                    </label><h:selectOneMenu styleClass="form-control">
+                                                    </label><h:selectOneMenu styleClass="form-control"
+                                                                             value="#{beanRegistroServicios.estado}">
                                                         <f:selectItem itemLabel="Activo" itemValue="1"/>
                                                         <f:selectItem itemLabel="Inactivo" itemValue="2"/>
                                                     </h:selectOneMenu>
                                                 </div>
                                                 <h:commandButton value="Registrar" styleClass="btn btn-success"
-                                                                 action="#{beanRegistroServicios.validaNulos}"/>
-                                                <h:commandButton value="Editar" styleClass="btn btn-success"
-                                                                 style="margin-left:10px"/>
+                                                                 action="#{beanRegistroServicios.validar}"/>
                                                 <h:commandButton value="Eliminar" styleClass="btn btn-success"
                                                                  style="margin-left:10px"/>
                                                 <h:commandButton value="Cancelar" styleClass="btn btn-success"
