@@ -149,7 +149,7 @@ public class beanRegistroServicios {
     }
     
     /**
-     *valida que los datos sean correctos y guarda o modifica los registros segun la necesidad
+     *Valida que los datos sean correctos y guarda o modifica los registros segun la necesidad
      * @return
      */
     public String validar(){
