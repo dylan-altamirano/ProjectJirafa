@@ -71,12 +71,14 @@
                                         <h:outputText value="Catalogo de Servicios"/>
                                     </h:outputLink>
                                 </li>
-                                  <li>
+                                 
+                                <li>
                                     <!--<a href="#"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>-->
                                     <h:outputLink value="RegistroTipoServicios.jsp">
                                         <h:outputText value="Tipos de Servicio"/>
                                     </h:outputLink>
                                 </li>
+                                 
                                 <li>
                                     <!--<a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>-->
                                     <h:outputLink value="RegistroClientes.jsp">
@@ -93,7 +95,7 @@
                                     <!-- /.nav-second-level -->
                                 </li>
                                  
-                               <li>
+                                <li>
                                     <!-- <a href="tables.html"><i class="fa fa-table fa-fw"></i> Tables</a>-->
                                     <h:outputLink value="SolicitudesServicios.jsp">
                                         <h:outputText value="Registro de Ordenes de Servicio"/>
@@ -125,17 +127,18 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="panel panel-default">
-                                <div class="panel-heading">Introducción de datos</div>
+                                <div class="panel-heading">Introducci&oacute;n de datos</div>
                                 <div class="panel-body">
                                     <div class="row">
                                         <div class="col-lg-12">
                                             <h:form>
-                                              <div class="form-group">
+                                                <div class="form-group">
                                                     <label>
                                                         <h:outputText value="Identificador:"/>
                                                     </label><h:inputText value="#{beanRegistroServicios.codigo}"
                                                                          styleClass="form-control"/>
-                                                    <p class="help-block">Introduzca una identificación para el servicio.</p>
+                                                    <p class="help-block">Introduzca una identificaci&oacute;n para el
+                                                                          servicio.</p>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>
@@ -190,6 +193,41 @@
                             <!-- /.panel -->
                         </div>
                         <!-- /.col-lg-12 -->
+                        <div class="col-lg-12">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">Consulta</div>
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <h:form>
+                                                <div class="form-group">
+                                                    <label>
+                                                        <h:outputText value="Buscar por:"/>
+                                                    </label><h:selectOneMenu styleClass="form-control">
+                                                        <f:selectItem itemValue="#{null}"
+                                                                      itemLabel="-- Seleccione uno --"/>
+                                                        <f:selectItem itemLabel="Identificador" itemValue="1"/>
+                                                        <f:selectItem itemLabel="Nombre" itemValue="2"/>
+                                                        <f:selectItem itemLabel="Activos" itemValue="3"/>
+                                                    </h:selectOneMenu>
+                                                </div>
+                                                <div class="form-group">
+                                                     <h:inputText value="#{beanRegistroServicios.codigo}"
+                                                                 styleClass="form-control"/>
+                                                    <p class="help-block">Introduzca el valor a buscar.</p>
+                                                </div>
+                                                <h:commandButton value="BUSCAR" styleClass="btn btn-primary"/>
+                                            </h:form>
+                                        </div>
+                                        <!--/.col-lg-12-->
+                                    </div>
+                                    <!--/.row-->
+                                </div>
+                                <!--/.panel-body-->
+                            </div>
+                            <!--/.panel-->
+                        </div>
+                        <!--/.col-lg-12-->
                     </div>
                     <!-- /.row -->
                 </div>
