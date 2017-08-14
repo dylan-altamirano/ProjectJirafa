@@ -269,7 +269,7 @@
                         </div>
                         <!--/.col-lg-6-->
                         <div class="col-lg-6">
-                            <div class="alert alert-info" style="display:none;" role="alert" id="mensajeConfirmacion">
+                            <div class="alert alert-info" hide role="alert" id="mensajeConfirmacion">
                                 <h:outputText value="#{beanRegistroServicios.mensajeConfirmacion}" id="mensaje"/>
                             </div>
                         </div>
@@ -283,7 +283,7 @@
             <script type="text/javascript">
             
             function showMessage(){
-                $('#mensajeConfirmacion').show();
+                    $('#mensajeConfirmacion').toggle();
             }
 
             </script>
