@@ -269,7 +269,7 @@
                         </div>
                         <!--/.col-lg-6-->
                         <div class="col-lg-6">
-                            <div class="alert alert-info" hide role="alert" id="mensajeConfirmacion">
+                            <div class="alert alert-info" style="display:none" role="alert" id="mensajeConfirmacion">
                                 <h:outputText value="#{beanRegistroServicios.mensajeConfirmacion}" id="mensaje"/>
                             </div>
                         </div>
@@ -279,14 +279,19 @@
                 <!-- /#page-wrapper -->
             </div>
             <!-- /#wrapper -->
-            <!-- /#wrapper -->   
+            <!-- /#wrapper -->
             <script type="text/javascript">
-            
-            function showMessage(){
-                    $('#mensajeConfirmacion').toggle();
-            }
-
+              function showMessage() {
+                  $('#mensajeConfirmacion').toggle();
+              }
             </script>
+            <script type="text/javascript" src="recursos/js/jquery.min.js"></script>
+            <!-- Bootstrap Core JavaScript -->
+            <script type="text/javascript" src="recursos/js/bootstrap.min.js"></script>
+            <!-- Metis Menu Plugin JavaScript -->
+            <script type="text/javascript" src="recursos/js/metisMenu.min.js"></script>
+            <!-- Custom Theme JavaScript -->
+            <script type="text/javascript" src="recursos/js/sb-admin-2.js"></script>
         </body>
     </html>
 </f:view>
