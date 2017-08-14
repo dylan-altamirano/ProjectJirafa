@@ -272,7 +272,7 @@
                 <!-- /#page-wrapper -->
             </div>
             <!-- /#wrapper -->
-            <!-- /#wrapper -->
+            <!-- /#wrapper -->            
         </body>
     </html>
 </f:view>

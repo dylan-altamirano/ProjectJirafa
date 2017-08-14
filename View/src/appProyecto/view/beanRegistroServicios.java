@@ -33,6 +33,9 @@ public class beanRegistroServicios {
     private String opcionFiltrado;
     private String valorBuscado;
     
+    //mensaje
+    private String mensajeConfirmacion;
+    
     public beanRegistroServicios() {
         cargaComboTipoServicio();
     }
@@ -275,12 +278,16 @@ public class beanRegistroServicios {
                 //construimos el objeto servicio
                 servicio.setDescripcion(this.getDescripcion());
                 servicio.setID(this.getCodigo());
-                servicio.setEstado(Boolean.getBoolean(this.getEstado()));
+                servicio.setEstado(this.getEstado()=="1"?true:false);
                 servicio.setPrecioPorHora(Double.parseDouble(this.getCosto()));
                 servicio.setTipo(tipo);
                 
                 //actualizamos el servicio ya que existe en la base de datos
                 this.actualizarServicio(servicio);
+                
+                this.setMensajeConfirmacion("Se ha actualizado el registro con exito");
+                
+                //this.limpiarControles();
             }else{
                 Servicio servicio = new Servicio();
                 
@@ -299,11 +306,15 @@ public class beanRegistroServicios {
                 //construimos el objeto servicio
                 servicio.setDescripcion(this.getDescripcion());
                 servicio.setID(this.getCodigo());
-                servicio.setEstado(Boolean.getBoolean(this.getEstado()));
+                servicio.setEstado(this.getEstado()=="1"?true:false);
                 servicio.setPrecioPorHora(Double.parseDouble(this.getCosto()));
                 servicio.setTipo(tipo);
                 //guardamos el objeto servicio ya que este no existe en la base de datos
                 this.insertarServicio(servicio);
+                
+                this.setMensajeConfirmacion("Se ha guardao el registro con exito");
+                
+               // this.limpiarControles();
             }
             
             
@@ -338,6 +349,17 @@ public class beanRegistroServicios {
             break;
         default:
         }
+        
+        
+    }
+    
+    public void limpiarControles(){
+        this.setCodigo("");
+        this.setCosto("");
+        this.setDescripcion("");
+        this.setEstado("");
+        this.setListaServicios(null);
+        this.setOpcionFiltrado("");
         
         
     }
@@ -437,5 +459,13 @@ public class beanRegistroServicios {
 
     public String getValorBuscado() {
         return valorBuscado;
+    }
+
+    public void setMensajeConfirmacion(String mensajeConfirmacion) {
+        this.mensajeConfirmacion = mensajeConfirmacion;
+    }
+
+    public String getMensajeConfirmacion() {
+        return mensajeConfirmacion;
     }
 }
