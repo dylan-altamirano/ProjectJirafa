@@ -1,9 +1,9 @@
 package appProyecto.model;
 
 public class TipoServicio {
-    public String ID;
-    public String Descripcion;
-    public boolean Estado;
+    private String ID;
+    private String Descripcion;
+    private boolean Estado;
     
     public TipoServicio() {
         this.ID = "";

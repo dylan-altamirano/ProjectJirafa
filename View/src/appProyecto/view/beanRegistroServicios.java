@@ -27,6 +27,12 @@ public class beanRegistroServicios {
     private List<SelectItem> tipoServicios = new LinkedList<SelectItem>();
     private String tipoServicioSeleccionado="";
     
+    //lista de servicios
+    static LinkedList<Servicio> listaServicios = new LinkedList<Servicio>();
+    
+    private String opcionFiltrado;
+    private String valorBuscado;
+    
     public beanRegistroServicios() {
         cargaComboTipoServicio();
     }
@@ -149,6 +155,25 @@ public class beanRegistroServicios {
     }
     
     /**
+     *Consulta la existencia de un servicio en la base de datos
+     * @return
+     */
+    private Servicio obtenerServicio(String codigo){
+        Servicio servicio = new Servicio();
+        ServicioDB servicioDB = new ServicioDB();
+        try {
+            
+            servicio = servicioDB.obtenerServicio(codigo);
+            
+        } catch (Exception e) {
+            // TODO: Add catch code
+            e.printStackTrace();
+        }
+        
+        return servicio;
+    }
+    
+    /**
      *Valida que los datos sean correctos y guarda o modifica los registros segun la necesidad
      * @return
      */
@@ -214,6 +239,26 @@ public class beanRegistroServicios {
         
         return "";
     }
+    
+    /**
+     * Llena la lista de filtrado de registros a mostrar cuando estos son consultados.
+     */
+    public void obtenerLista(){
+        
+        switch (Integer.getInteger(this.getOpcionFiltrado())) {
+        case 1:
+            
+            if (this.consultarServicio(this.getValorBuscado())) {
+                this.getListaServicios().add(this.obtenerServicio(this.getValorBuscado()));
+            }
+            
+            break;
+        default:
+        }
+        
+        
+    }
+
 
     public void setDescripcion(String Descripcion) {
         this.Descripcion = Descripcion;
@@ -285,5 +330,29 @@ public class beanRegistroServicios {
 
     public String getTipoServicioSeleccionado() {
         return tipoServicioSeleccionado;
+    }
+
+    public void setOpcionFiltrado(String opcionFiltrado) {
+        this.opcionFiltrado = opcionFiltrado;
+    }
+
+    public String getOpcionFiltrado() {
+        return opcionFiltrado;
+    }
+
+    public static void setListaServicios(LinkedList<Servicio> listaServicios) {
+        beanRegistroServicios.listaServicios = listaServicios;
+    }
+
+    public static LinkedList<Servicio> getListaServicios() {
+        return listaServicios;
+    }
+
+    public void setValorBuscado(String valorBuscado) {
+        this.valorBuscado = valorBuscado;
+    }
+
+    public String getValorBuscado() {
+        return valorBuscado;
     }
 }

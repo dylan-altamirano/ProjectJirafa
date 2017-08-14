@@ -2,6 +2,11 @@
 <%@ page contentType="text/html;charset=windows-1252"%>
 <%@ taglib uri="http://java.sun.com/jsf/html" prefix="h"%>
 <%@ taglib uri="http://java.sun.com/jsf/core" prefix="f"%>
+<%@ page import="java.util.LinkedList"%>
+<%@ page import="appProyecto.view.beanRegistroServicios"%>
+<%@ page import="appProyecto.model.Servicio"%>
+<%@ page import="appProyecto.model.ServicioDB"%>
+<%@ page import="appProyecto.model.TipoServicio"%>
 <f:view>
     <html>
         <head>
@@ -193,7 +198,8 @@
                                         <div class="form-group">
                                             <label>
                                                 <h:outputText value="Buscar por:"/>
-                                            </label><h:selectOneMenu styleClass="form-control">
+                                            </label><h:selectOneMenu styleClass="form-control"
+                                                                     value="#{beanRegistroServicios.opcionFiltrado}">
                                                 <f:selectItem itemValue="#{null}" itemLabel="-- Seleccione uno --"/>
                                                 <f:selectItem itemLabel="Identificador" itemValue="1"/>
                                                 <f:selectItem itemLabel="Nombre" itemValue="2"/>
@@ -201,11 +207,12 @@
                                             </h:selectOneMenu>
                                         </div>
                                         <div class="form-group">
-                                            <h:inputText value="#{beanRegistroServicios.codigo}"
+                                            <h:inputText value="#{beanRegistroServicios.valorBuscado}"
                                                          styleClass="form-control"/>
                                             <p class="help-block">Introduzca el valor a buscar.</p>
                                         </div>
-                                        <h:commandButton value="BUSCAR" styleClass="btn btn-primary"/>
+                                        <h:commandButton value="BUSCAR" styleClass="btn btn-primary"
+                                                         action="#{beanRegistroServicios.obtenerLista}"/>
                                     </h:form>
                                 </div>
                                 <!--/.panel-body-->
@@ -217,9 +224,41 @@
                         <div class="col-lg-6">
                             <div class="panel panel-default">
                                 <div class="panel-heading">Consulta</div>
-                                <div class="panel-body">
-                                    
-                                </div>
+                                <table class="table">
+                                    <tr>
+                                        <th>Codigo</th>
+                                        <th>Descripcion</th>
+                                        <th>Codigo</th>
+                                        <th>Tipo</th>
+                                        <th>Precio</th>
+                                        <th>Estado</th>
+                                    </tr>
+                                     
+                                    <%         
+                    beanRegistroServicios servicioBean = new beanRegistroServicios();//Instancia del beans
+                    //EmpresaDB eDB = new EmpresaDB();
+                    
+                     //metodo que llena la lista
+                    
+                    LinkedList<Servicio> lista = new LinkedList<Servicio>();// ArrayList
+                    
+                    lista = servicioBean.getListaServicios(); //Se llenar la lista
+                    
+                    for (int i=0;i<lista.size();i++){
+                       out.println("<tr id='t"+lista.get(i).getID()+"'>");
+                       out.println("<td>"+lista.get(i).getDescripcion()+"</td>");
+                       out.println("<td>"+lista.get(i).getTipo().getDescripcion()+"</td>");
+                       out.println("<td>"+lista.get(i).getPrecioPorHora()+"</td>");
+                       String estado="";
+                       if(lista.get(i).isEstado()==true){estado="Activo";}
+                       else{estado="Inactivo";}
+
+                       out.println("<td>"+estado+"</td>");
+                       out.println("<td align='center'>"+"<button type='button' onclick='editar(t"+lista.get(i).getID()+")'>EDITAR</button></td>");
+                       out.println("</tr>");
+                    }
+                     %>
+                                </table>
                                 <!--/.panel-body-->
                             </div>
                             <!--/.panel-->
