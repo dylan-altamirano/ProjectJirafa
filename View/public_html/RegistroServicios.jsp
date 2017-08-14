@@ -116,7 +116,7 @@
                 </nav>
                 <div id="page-wrapper">
                     <div class="row">
-                        <div class="col-lg-12">
+                        <div class="col-lg-6">
                             <h1 class="page-header">
                                 <h:outputText value="Registro Servicios"/>
                             </h1>
@@ -125,12 +125,12 @@
                     </div>
                     <!-- /.row -->
                     <div class="row">
-                        <div class="col-lg-12">
+                        <div class="col-lg-6">
                             <div class="panel panel-default">
                                 <div class="panel-heading">Introducci&oacute;n de datos</div>
                                 <div class="panel-body">
-                                    <div class="row">
-                                        <div class="col-lg-12">
+                                   <!-- <div class="row"> -->
+                                   <!--     <div class="col-lg-6">-->
                                             <h:form>
                                                 <div class="form-group">
                                                     <label>
@@ -176,16 +176,16 @@
                                                         <f:selectItem itemLabel="Inactivo" itemValue="2"/>
                                                     </h:selectOneMenu>
                                                 </div>
-                                                <h:commandButton value="Registrar" styleClass="btn btn-success"
+                                                <h:commandButton value="Registrar" styleClass="btn btn-primary"
                                                                  action="#{beanRegistroServicios.validar}"/>
-                                                <h:commandButton value="Eliminar" styleClass="btn btn-success"
+                                                <h:commandButton value="Eliminar" styleClass="btn btn-primary"
                                                                  style="margin-left:10px"/>
-                                                <h:commandButton value="Cancelar" styleClass="btn btn-success"
+                                                <h:commandButton value="Cancelar" styleClass="btn btn-primary"
                                                                  style="margin-left:10px"/>
                                             </h:form>
-                                        </div>
+                                       <!-- </div>-->
                                         <!-- /.col-lg-6 (nested) -->
-                                    </div>
+                                    <!--</div>-->
                                     <!-- /.row (nested) -->
                                 </div>
                                 <!-- /.panel-body -->
@@ -193,12 +193,12 @@
                             <!-- /.panel -->
                         </div>
                         <!-- /.col-lg-12 -->
-                        <div class="col-lg-12">
+                        <div class="col-lg-6">
                             <div class="panel panel-default">
                                 <div class="panel-heading">Consulta</div>
                                 <div class="panel-body">
-                                    <div class="row">
-                                        <div class="col-lg-12">
+                                   <!-- <div class="row">-->
+                                      <!--  <div class="col-lg-6">-->
                                             <h:form>
                                                 <div class="form-group">
                                                     <label>
@@ -218,9 +218,9 @@
                                                 </div>
                                                 <h:commandButton value="BUSCAR" styleClass="btn btn-primary"/>
                                             </h:form>
-                                        </div>
+                                      <!--  </div>-->
                                         <!--/.col-lg-12-->
-                                    </div>
+                                    <!--</div>-->
                                     <!--/.row-->
                                 </div>
                                 <!--/.panel-body-->
