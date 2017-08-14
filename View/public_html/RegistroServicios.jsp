@@ -134,7 +134,7 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading">Introducci&oacute;n de datos</div>
                                 <div class="panel-body">
-                                    <h:form>
+                                    <h:form id="frmRegistro">
                                         <div class="form-group">
                                             <label>
                                                 <h:outputText value="Identificador:"/>
@@ -178,7 +178,8 @@
                                             </h:selectOneMenu>
                                         </div>
                                         <h:commandButton value="Registrar" styleClass="btn btn-primary"
-                                                         action="#{beanRegistroServicios.validar}"/>
+                                                         action="#{beanRegistroServicios.validar}" id="cmdRegistrar"
+                                                         onclick="showMessage()"/>
                                         <h:commandButton value="Eliminar" styleClass="btn btn-primary"
                                                          style="margin-left:10px"/>
                                         <h:commandButton value="Cancelar" styleClass="btn btn-primary"
@@ -213,7 +214,8 @@
                                             <p class="help-block">Introduzca el valor a buscar.</p>
                                         </div>
                                         <h:commandButton value="BUSCAR" styleClass="btn btn-primary"
-                                                         action="#{beanRegistroServicios.obtenerLista}"/>
+                                                         action="#{beanRegistroServicios.obtenerLista}"
+                                                         onclick="showMessage()"/>
                                     </h:form>
                                 </div>
                                 <!--/.panel-body-->
@@ -267,7 +269,7 @@
                         </div>
                         <!--/.col-lg-6-->
                         <div class="col-lg-6">
-                            <div class="alert alert-info" role="alert">
+                            <div class="alert alert-info" style="display:none;" role="alert" id="mensajeConfirmacion">
                                 <h:outputText value="#{beanRegistroServicios.mensajeConfirmacion}" id="mensaje"/>
                             </div>
                         </div>
@@ -277,7 +279,14 @@
                 <!-- /#page-wrapper -->
             </div>
             <!-- /#wrapper -->
-            <!-- /#wrapper -->            
+            <!-- /#wrapper -->   
+            <script type="text/javascript">
+            
+            function showMessage(){
+                $('#mensajeConfirmacion').show();
+            }
+
+            </script>
         </body>
     </html>
 </f:view>
