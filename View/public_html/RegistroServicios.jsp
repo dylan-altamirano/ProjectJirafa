@@ -228,10 +228,10 @@
                                     <tr>
                                         <th>Codigo</th>
                                         <th>Descripcion</th>
-                                        <th>Codigo</th>
                                         <th>Tipo</th>
                                         <th>Precio</th>
                                         <th>Estado</th>
+                                        <th></th>
                                     </tr>
                                      
                                     <%         
@@ -246,6 +246,7 @@
                     
                     for (int i=0;i<lista.size();i++){
                        out.println("<tr id='t"+lista.get(i).getID()+"'>");
+                       out.println("<td>"+lista.get(i).getID()+"</td>");
                        out.println("<td>"+lista.get(i).getDescripcion()+"</td>");
                        out.println("<td>"+lista.get(i).getTipo().getDescripcion()+"</td>");
                        out.println("<td>"+lista.get(i).getPrecioPorHora()+"</td>");

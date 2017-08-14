@@ -161,9 +161,13 @@ public class beanRegistroServicios {
     private Servicio obtenerServicio(String codigo){
         Servicio servicio = new Servicio();
         ServicioDB servicioDB = new ServicioDB();
+        TipoServicioDB tipoDB = new TipoServicioDB();
+        
         try {
             
             servicio = servicioDB.obtenerServicio(codigo);
+            //Llena el objeto tipo servicio con la informacion que se encuentra del ID en tipo servicio
+            servicio.setTipo(tipoDB.moBuscarTipoServicio(servicio.getTipo().getID()));
             
         } catch (Exception e) {
             // TODO: Add catch code

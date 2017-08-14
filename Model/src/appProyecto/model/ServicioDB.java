@@ -67,14 +67,14 @@ public class ServicioDB {
            try {
            //  open();
                strSQL = 
-                       "Select descripcion, IDTipo_Servicio, precio_por_hora, estado from servicio where ID='"+codigo+"'";
+                       "Select ID, descripcion, IDTipo_Servicio, precio_por_hora, estado from servicio where ID='"+codigo+"'";
                //Se ejecuta la sentencia SQL
                ResultSet rsSERVICIO = accesoDatos.ejecutaSQLRetornaRS(strSQL);
                while (rsSERVICIO.next()) {
                    
                 servicio = new Servicio();
                
-                servicio.setID(codigo);
+                servicio.setID(rsSERVICIO.getString("ID"));
                 servicio.setDescripcion(rsSERVICIO.getString("descripcion"));
                 servicio.getTipo().setID(rsSERVICIO.getString("IDTipo_Servicio")); //Solo se trae el ID del tipo servicio para adjuntarle el objeto completo despues  
                 servicio.setPrecioPorHora(rsSERVICIO.getDouble("precio_por_hora"));
