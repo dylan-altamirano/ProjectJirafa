@@ -287,7 +287,7 @@ public class beanRegistroServicios {
                 
                 this.setMensajeConfirmacion("Se ha actualizado el registro con exito");
                 
-                //this.limpiarControles();
+                this.limpiarControles();
             }else{
                 Servicio servicio = new Servicio();
                 
@@ -314,7 +314,7 @@ public class beanRegistroServicios {
                 
                 this.setMensajeConfirmacion("Se ha guardao el registro con exito");
                 
-               // this.limpiarControles();
+               this.limpiarControles();
             }
             
             
@@ -358,7 +358,7 @@ public class beanRegistroServicios {
         this.setCosto("");
         this.setDescripcion("");
         this.setEstado("");
-        this.setListaServicios(null);
+        this.listaServicios = new LinkedList<Servicio>();
         this.setOpcionFiltrado("");
         
         

@@ -266,6 +266,11 @@
                             <!--/.panel-->
                         </div>
                         <!--/.col-lg-6-->
+                        <div class="col-lg-6">
+                            <div class="alert alert-info" role="alert">
+                                <h:outputText value="#{beanRegistroServicios.mensajeConfirmacion}" id="mensaje"/>
+                            </div>
+                        </div>
                     </div>
                     <!-- /.row -->
                 </div>
