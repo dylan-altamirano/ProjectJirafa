@@ -96,7 +96,13 @@ public class ServicioDB {
            return servicio;
        }
         
-        
+    /**
+     *Obtiene los registros de los servicios que se encuentran activos.
+     * @param estado
+     * @return
+     * @throws SNMPExceptions
+     * @throws SQLException
+     */
     public LinkedList<Servicio> obtenerServiciosSegunEstado(boolean estado) throws SNMPExceptions, SQLException {
          //  ResultSet rsPA = null;
            String strSQL = "";
@@ -136,6 +142,100 @@ public class ServicioDB {
            }
            return listaServicios;
        }
+    
+    /**
+     *Obtiene una lista de registros de servicios por nombre
+     * @param nombre
+     * @return
+     * @throws SNMPExceptions
+     * @throws SQLException
+     */
+    public LinkedList<Servicio> obtenerServiciosSegunNombre(String nombre) throws SNMPExceptions, SQLException {
+         //  ResultSet rsPA = null;
+           String strSQL = "";
+           Servicio servicio;
+           LinkedList<Servicio> listaServicios = new LinkedList<Servicio>();
+           
+           try {
+           //  open();
+               strSQL = 
+                       "Select ID, descripcion, IDTipo_Servicio, precio_por_hora, estado from servicio where descripcion='"+nombre+"'";
+               //Se ejecuta la sentencia SQL
+               ResultSet rsSERVICIO = accesoDatos.ejecutaSQLRetornaRS(strSQL);
+               while (rsSERVICIO.next()) {
+                   
+                servicio = new Servicio();
+               
+                servicio.setID(rsSERVICIO.getString("ID"));
+                servicio.setDescripcion(rsSERVICIO.getString("descripcion"));
+                servicio.getTipo().setID(rsSERVICIO.getString("IDTipo_Servicio")); //Solo se trae el ID del tipo servicio para adjuntarle el objeto completo despues  
+                servicio.setPrecioPorHora(rsSERVICIO.getDouble("precio_por_hora"));
+                servicio.setEstado(rsSERVICIO.getBoolean("estado"));   
+               
+               listaServicios.add(servicio);
+               
+               }
+               rsSERVICIO.close();
+               
+           } catch (SQLException e) {
+               throw new SNMPExceptions(SNMPExceptions.SQL_EXCEPTION, 
+                                       e.getMessage(), e.getErrorCode());
+           }catch (Exception e) {
+               throw new SNMPExceptions(SNMPExceptions.SQL_EXCEPTION, 
+                                       e.getMessage());
+           } finally {
+            //  accesoDatos.closeResultSet(rsPA);
+          // close();
+           }
+           return listaServicios;
+       }
+    /**
+     *Obtiene una lista de registros de servicios por tipo
+     * @param tipo
+     * @return
+     * @throws SNMPExceptions
+     * @throws SQLException
+     */
+    public LinkedList<Servicio> obtenerServiciosSegunTipo(String tipo) throws SNMPExceptions, SQLException {
+         //  ResultSet rsPA = null;
+           String strSQL = "";
+           Servicio servicio;
+           LinkedList<Servicio> listaServicios = new LinkedList<Servicio>();
+           
+           try {
+           //  open();
+               strSQL = 
+                       "select servicio.ID, servicio.descripcion, servicio.IDTipo_Servicio, precio_por_hora, servicio.estado from servicio join TipoServicio on servicio.IDTipo_Servicio = TipoServicio.ID where TipoServicio.descripcion ='"+tipo+"'";
+               //Se ejecuta la sentencia SQL
+               ResultSet rsSERVICIO = accesoDatos.ejecutaSQLRetornaRS(strSQL);
+               while (rsSERVICIO.next()) {
+                   
+                servicio = new Servicio();
+               
+                servicio.setID(rsSERVICIO.getString("ID"));
+                servicio.setDescripcion(rsSERVICIO.getString("descripcion"));
+                servicio.getTipo().setID(rsSERVICIO.getString("IDTipo_Servicio")); //Solo se trae el ID del tipo servicio para adjuntarle el objeto completo despues  
+                servicio.setPrecioPorHora(rsSERVICIO.getDouble("precio_por_hora"));
+                servicio.setEstado(rsSERVICIO.getBoolean("estado"));   
+               
+               listaServicios.add(servicio);
+               
+               }
+               rsSERVICIO.close();
+               
+           } catch (SQLException e) {
+               throw new SNMPExceptions(SNMPExceptions.SQL_EXCEPTION, 
+                                       e.getMessage(), e.getErrorCode());
+           }catch (Exception e) {
+               throw new SNMPExceptions(SNMPExceptions.SQL_EXCEPTION, 
+                                       e.getMessage());
+           } finally {
+            //  accesoDatos.closeResultSet(rsPA);
+          // close();
+           }
+           return listaServicios;
+       }
+    
     
     /**
      *Desabilita el registro en la base de datos haciendolo inactivo. No lo elimina físicamente del

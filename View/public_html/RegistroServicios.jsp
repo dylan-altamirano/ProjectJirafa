@@ -203,7 +203,8 @@
                                                 <f:selectItem itemValue="#{null}" itemLabel="-- Seleccione uno --"/>
                                                 <f:selectItem itemLabel="Identificador" itemValue="1"/>
                                                 <f:selectItem itemLabel="Nombre" itemValue="2"/>
-                                                <f:selectItem itemLabel="Activos" itemValue="3"/>
+                                                <f:selectItem itemLabel="Tipo" itemValue="3"/>
+                                                <f:selectItem itemLabel="Activos" itemValue="4"/>
                                             </h:selectOneMenu>
                                         </div>
                                         <div class="form-group">
@@ -236,13 +237,13 @@
                                      
                                     <%         
                     beanRegistroServicios servicioBean = new beanRegistroServicios();//Instancia del beans
-                    //EmpresaDB eDB = new EmpresaDB();
+                    
                     
                      //metodo que llena la lista
                     
                     LinkedList<Servicio> lista = new LinkedList<Servicio>();// ArrayList
                     
-                    lista = servicioBean.getListaServicios(); //Se llenar la lista
+                    lista = servicioBean.getListaServicios(); //Se llena la lista
                     
                     for (int i=0;i<lista.size();i++){
                        out.println("<tr id='t"+lista.get(i).getID()+"'>");
@@ -255,7 +256,7 @@
                        else{estado="Inactivo";}
 
                        out.println("<td>"+estado+"</td>");
-                       out.println("<td align='center'>"+"<button type='button' onclick='editar(t"+lista.get(i).getID()+")'>EDITAR</button></td>");
+                       out.println("<td align='center'>"+"<button type='button' class='btn btn-primary' onclick='editar(t"+lista.get(i).getID()+")'>EDITAR</button></td>");
                        out.println("</tr>");
                     }
                      %>

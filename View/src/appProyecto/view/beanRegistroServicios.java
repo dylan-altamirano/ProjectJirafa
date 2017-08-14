@@ -178,6 +178,75 @@ public class beanRegistroServicios {
     }
     
     /**
+     *Obtiene una lista de servicios filtrados segun ola categoria de filtrado
+     * @param valorFiltro
+     * @param categoriaFiltrado
+     * @return
+     */
+    private LinkedList<Servicio> obtenerServiciosSegunFiltrado(String valorFiltro, int categoriaFiltrado){
+        LinkedList<Servicio> listaServicio = new LinkedList<Servicio>();
+        ServicioDB servicioDB = new ServicioDB();
+        TipoServicioDB tipoDB = new TipoServicioDB();
+        
+        switch (categoriaFiltrado) {
+        case 2:
+            
+            try {
+                //Obtiene una lista de servicios segun su categoria de filtro
+                listaServicio = servicioDB.obtenerServiciosSegunNombre(valorFiltro);
+                //recorre el arreglo de servicios y los llena con su respectivo objeto de servicio para cada uno
+                for (Servicio servicio1 : listaServicio) {
+                    //Llena el objeto tipo servicio con la informacion que se encuentra del ID en tipo servicio
+                    servicio1.setTipo(tipoDB.moBuscarTipoServicio(servicio1.getTipo().getID()));
+                }
+            
+            } catch (Exception e) {
+                // TODO: Add catch code
+                e.printStackTrace();
+            }
+            
+            break;
+        case 3:
+            
+            try {
+                //Obtiene una lista de servicios segun su categoria de filtro
+                listaServicio = servicioDB.obtenerServiciosSegunTipo(valorFiltro);
+                //recorre el arreglo de servicios y los llena con su respectivo objeto de servicio para cada uno
+                for (Servicio servicio1 : listaServicio) {
+                    //Llena el objeto tipo servicio con la informacion que se encuentra del ID en tipo servicio
+                    servicio1.setTipo(tipoDB.moBuscarTipoServicio(servicio1.getTipo().getID()));
+                }
+            
+            } catch (Exception e) {
+                // TODO: Add catch code
+                e.printStackTrace();
+            }
+            
+            break;
+            case 4:
+                
+                try {
+                    //Obtiene una lista de servicios segun su categoria de filtro
+                    listaServicio = servicioDB.obtenerServiciosSegunEstado(true);
+                    //recorre el arreglo de servicios y los llena con su respectivo objeto de servicio para cada uno
+                    for (Servicio servicio1 : listaServicio) {
+                        //Llena el objeto tipo servicio con la informacion que se encuentra del ID en tipo servicio
+                        servicio1.setTipo(tipoDB.moBuscarTipoServicio(servicio1.getTipo().getID()));
+                    }
+                
+                } catch (Exception e) {
+                    // TODO: Add catch code
+                    e.printStackTrace();
+                }
+                
+                break;
+        default:
+        }
+
+        return listaServicio;
+    }
+    
+    /**
      *Valida que los datos sean correctos y guarda o modifica los registros segun la necesidad
      * @return
      */
@@ -255,6 +324,16 @@ public class beanRegistroServicios {
             if (this.consultarServicio(this.getValorBuscado())) {
                 this.getListaServicios().add(this.obtenerServicio(this.getValorBuscado()));
             }
+            
+            break;
+        case 2:
+            
+            this.setListaServicios(this.obtenerServiciosSegunFiltrado(this.getValorBuscado(), 2));
+            
+            break;
+        case 3:
+            
+            this.setListaServicios(this.obtenerServiciosSegunFiltrado(this.getValorBuscado(), 3));
             
             break;
         default:
