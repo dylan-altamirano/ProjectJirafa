@@ -116,7 +116,7 @@
                 </nav>
                 <div id="page-wrapper">
                     <div class="row">
-                        <div class="col-lg-6">
+                        <div class="col-lg-12">
                             <h1 class="page-header">
                                 <h:outputText value="Registro Servicios"/>
                             </h1>
@@ -129,64 +129,56 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading">Introducci&oacute;n de datos</div>
                                 <div class="panel-body">
-                                   <!-- <div class="row"> -->
-                                   <!--     <div class="col-lg-6">-->
-                                            <h:form>
-                                                <div class="form-group">
-                                                    <label>
-                                                        <h:outputText value="Identificador:"/>
-                                                    </label><h:inputText value="#{beanRegistroServicios.codigo}"
-                                                                         styleClass="form-control"/>
-                                                    <p class="help-block">Introduzca una identificaci&oacute;n para el
-                                                                          servicio.</p>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>
-                                                        <h:outputText value="Descripcion:"/>
-                                                    </label>
-                                                     
-                                                    <h:inputText styleClass="form-control"
-                                                                 value="#{beanRegistroServicios.descripcion}"/>
-                                                    <p class="help-block">Introduzca una breve descripci&oacute;n del
-                                                                          servicio.</p>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>
-                                                        <h:outputText value="Tipo Servicio"/>
-                                                    </label><h:selectOneMenu styleClass="form-control"
-                                                                             value="#{beanRegistroServicios.tipoServicioSeleccionado}">
-                                                        <f:selectItem itemValue="#{null}" itemLabel="-- select one --"/>
-                                                        <f:selectItems value="#{beanRegistroServicios.tipoServicios}"/>
-                                                    </h:selectOneMenu>
-                                                </div>
-                                                <div class="form-group input-group">
-                                                    <span class="input-group-addon">$</span>
-                                                     
-                                                    <h:inputText styleClass="form-control"
-                                                                 value="#{beanRegistroServicios.costo}"/>
-                                                     
-                                                    <span class="input-group-addon">.00</span>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>
-                                                        <h:outputText value="Estado:"/>
-                                                    </label><h:selectOneMenu styleClass="form-control"
-                                                                             value="#{beanRegistroServicios.estado}">
-                                                        <f:selectItem itemLabel="Activo" itemValue="1"/>
-                                                        <f:selectItem itemLabel="Inactivo" itemValue="2"/>
-                                                    </h:selectOneMenu>
-                                                </div>
-                                                <h:commandButton value="Registrar" styleClass="btn btn-primary"
-                                                                 action="#{beanRegistroServicios.validar}"/>
-                                                <h:commandButton value="Eliminar" styleClass="btn btn-primary"
-                                                                 style="margin-left:10px"/>
-                                                <h:commandButton value="Cancelar" styleClass="btn btn-primary"
-                                                                 style="margin-left:10px"/>
-                                            </h:form>
-                                       <!-- </div>-->
-                                        <!-- /.col-lg-6 (nested) -->
-                                    <!--</div>-->
-                                    <!-- /.row (nested) -->
+                                    <h:form>
+                                        <div class="form-group">
+                                            <label>
+                                                <h:outputText value="Identificador:"/>
+                                            </label><h:inputText value="#{beanRegistroServicios.codigo}"
+                                                                 styleClass="form-control"/>
+                                            <p class="help-block">Introduzca una identificaci&oacute;n para el servicio.</p>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>
+                                                <h:outputText value="Descripcion:"/>
+                                            </label>
+                                             
+                                            <h:inputText styleClass="form-control"
+                                                         value="#{beanRegistroServicios.descripcion}"/>
+                                            <p class="help-block">Introduzca una breve descripci&oacute;n del servicio.</p>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>
+                                                <h:outputText value="Tipo Servicio"/>
+                                            </label><h:selectOneMenu styleClass="form-control"
+                                                                     value="#{beanRegistroServicios.tipoServicioSeleccionado}">
+                                                <f:selectItem itemValue="#{null}" itemLabel="-- select one --"/>
+                                                <f:selectItems value="#{beanRegistroServicios.tipoServicios}"/>
+                                            </h:selectOneMenu>
+                                        </div>
+                                        <div class="form-group input-group">
+                                            <span class="input-group-addon">$</span>
+                                             
+                                            <h:inputText styleClass="form-control"
+                                                         value="#{beanRegistroServicios.costo}"/>
+                                             
+                                            <span class="input-group-addon">.00</span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>
+                                                <h:outputText value="Estado:"/>
+                                            </label><h:selectOneMenu styleClass="form-control"
+                                                                     value="#{beanRegistroServicios.estado}">
+                                                <f:selectItem itemLabel="Activo" itemValue="1"/>
+                                                <f:selectItem itemLabel="Inactivo" itemValue="2"/>
+                                            </h:selectOneMenu>
+                                        </div>
+                                        <h:commandButton value="Registrar" styleClass="btn btn-primary"
+                                                         action="#{beanRegistroServicios.validar}"/>
+                                        <h:commandButton value="Eliminar" styleClass="btn btn-primary"
+                                                         style="margin-left:10px"/>
+                                        <h:commandButton value="Cancelar" styleClass="btn btn-primary"
+                                                         style="margin-left:10px"/>
+                                    </h:form>
                                 </div>
                                 <!-- /.panel-body -->
                             </div>
@@ -197,37 +189,42 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading">Consulta</div>
                                 <div class="panel-body">
-                                   <!-- <div class="row">-->
-                                      <!--  <div class="col-lg-6">-->
-                                            <h:form>
-                                                <div class="form-group">
-                                                    <label>
-                                                        <h:outputText value="Buscar por:"/>
-                                                    </label><h:selectOneMenu styleClass="form-control">
-                                                        <f:selectItem itemValue="#{null}"
-                                                                      itemLabel="-- Seleccione uno --"/>
-                                                        <f:selectItem itemLabel="Identificador" itemValue="1"/>
-                                                        <f:selectItem itemLabel="Nombre" itemValue="2"/>
-                                                        <f:selectItem itemLabel="Activos" itemValue="3"/>
-                                                    </h:selectOneMenu>
-                                                </div>
-                                                <div class="form-group">
-                                                     <h:inputText value="#{beanRegistroServicios.codigo}"
-                                                                 styleClass="form-control"/>
-                                                    <p class="help-block">Introduzca el valor a buscar.</p>
-                                                </div>
-                                                <h:commandButton value="BUSCAR" styleClass="btn btn-primary"/>
-                                            </h:form>
-                                      <!--  </div>-->
-                                        <!--/.col-lg-12-->
-                                    <!--</div>-->
-                                    <!--/.row-->
+                                    <h:form>
+                                        <div class="form-group">
+                                            <label>
+                                                <h:outputText value="Buscar por:"/>
+                                            </label><h:selectOneMenu styleClass="form-control">
+                                                <f:selectItem itemValue="#{null}" itemLabel="-- Seleccione uno --"/>
+                                                <f:selectItem itemLabel="Identificador" itemValue="1"/>
+                                                <f:selectItem itemLabel="Nombre" itemValue="2"/>
+                                                <f:selectItem itemLabel="Activos" itemValue="3"/>
+                                            </h:selectOneMenu>
+                                        </div>
+                                        <div class="form-group">
+                                            <h:inputText value="#{beanRegistroServicios.codigo}"
+                                                         styleClass="form-control"/>
+                                            <p class="help-block">Introduzca el valor a buscar.</p>
+                                        </div>
+                                        <h:commandButton value="BUSCAR" styleClass="btn btn-primary"/>
+                                    </h:form>
                                 </div>
                                 <!--/.panel-body-->
                             </div>
                             <!--/.panel-->
                         </div>
-                        <!--/.col-lg-12-->
+                        <!--/.col-lg-6-->
+                        <!--Resultados-->
+                        <div class="col-lg-6">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">Consulta</div>
+                                <div class="panel-body">
+                                    
+                                </div>
+                                <!--/.panel-body-->
+                            </div>
+                            <!--/.panel-->
+                        </div>
+                        <!--/.col-lg-6-->
                     </div>
                     <!-- /.row -->
                 </div>
