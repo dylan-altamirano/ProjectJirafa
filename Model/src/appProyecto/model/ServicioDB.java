@@ -67,7 +67,7 @@ public class ServicioDB {
            try {
            //  open();
                strSQL = 
-                       "Select descripcion, IDTipo_Servicio, precio_por_hora, estado from Servicio where ID="+codigo;
+                       "Select descripcion, IDTipo_Servicio, precio_por_hora, estado from servicio where ID='"+codigo+"'";
                //Se ejecuta la sentencia SQL
                ResultSet rsSERVICIO = accesoDatos.ejecutaSQLRetornaRS(strSQL);
                while (rsSERVICIO.next()) {
@@ -179,7 +179,7 @@ public class ServicioDB {
             //  open();
                boolean existe = false;
                select = 
-               "Select ID, descripcion, IDTipo_Servicio, precio_por_hora, estado where ID ="+codigo;
+               "Select ID, descripcion, IDTipo_Servicio, precio_por_hora, estado from servicio where ID ='"+codigo+"'";
 
                
                //Se ejecuta la sentencia SQL

@@ -245,7 +245,7 @@ public class beanRegistroServicios {
      */
     public void obtenerLista(){
         
-        switch (Integer.getInteger(this.getOpcionFiltrado())) {
+        switch (Integer.parseInt(this.getOpcionFiltrado())) {
         case 1:
             
             if (this.consultarServicio(this.getValorBuscado())) {
