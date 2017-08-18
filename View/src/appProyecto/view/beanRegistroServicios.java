@@ -352,6 +352,25 @@ public class beanRegistroServicios {
         
         
     }
+    /**
+     *Metodo encargado de "eliminar" el registro de la base de datos.
+     * @param id
+     * @return
+     */
+    public void eliminar(String id){
+        
+        ServicioDB servicioDB = new ServicioDB();
+        
+        try {
+            
+            servicioDB.eliminarServicio(id);
+            
+        } catch (Exception e) {
+            // TODO: Add catch code
+            e.printStackTrace();
+        }
+        
+    }
     
     public void limpiarControles(){
         this.setCodigo("");

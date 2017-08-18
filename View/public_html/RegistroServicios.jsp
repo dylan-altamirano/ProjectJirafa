@@ -31,7 +31,7 @@
                   var codigo = document.getElementById("registro:txtCodigo");
                   codigo.value = objeto.cells[0].childNodes[0].nodeValue;
 
-                 var descripcion = document.getElementById('registro:txtDescripcion');
+                  var descripcion = document.getElementById('registro:txtDescripcion');
                   descripcion.value = objeto.cells[1].childNodes[0].nodeValue;
 
                   var tipo = document.getElementById('registro:cboTipo');
@@ -259,17 +259,17 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading">Consulta</div>
                                 <h:form id="resultados">
-                                <table class="table" style="table-layout:fixed;" cellspacing="1" cellpadding="2">
-                                    <tr>
-                                        <th>Codigo</th>
-                                        <th>Descripcion</th>
-                                        <th>Tipo</th>
-                                        <th>Precio</th>
-                                        <th>Estado</th>
-                                        <th></th>
-                                    </tr>
-                                     
-                                    <%         
+                                    <table class="table" style="table-layout:fixed;" cellspacing="1" cellpadding="2">
+                                        <tr>
+                                            <th>Codigo</th>
+                                            <th>Descripcion</th>
+                                            <th>Tipo</th>
+                                            <th>Precio</th>
+                                            <th>Estado</th>
+                                            <th></th>
+                                        </tr>
+                                         
+                                        <%         
                                 beanRegistroServicios servicioBean = new beanRegistroServicios();//Instancia del beans
                                 
                                 
@@ -295,9 +295,8 @@
                                    out.println("</tr>");
                                 }
                             %>
-                                </table>
-                                </h:form>
-                                <!--/.panel-body-->
+                                    </table>
+                                </h:form><!--/.panel-body-->
                             </div>
                             <!--/.panel-->
                         </div>
@@ -322,14 +321,13 @@
             <script type="text/javascript" src="recursos/js/metisMenu.min.js"></script>
             <!-- Custom Theme JavaScript -->
             <script type="text/javascript" src="recursos/js/sb-admin-2.js"></script>
-            
             <script type="text/javascript">
                   $(document).ready(function () {
                       $('#cmdRegistrar').click(function showMessage() {
                           $('#mensajeConfirmacion').fadeOut(3000);
                       });
-                      
-                      $('#registro').attr('name','formulario-registro');
+
+                      $('#registro').attr('name', 'formulario-registro');
 
                   });
             </script>

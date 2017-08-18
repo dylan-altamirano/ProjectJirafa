@@ -244,12 +244,12 @@ public class ServicioDB {
      * @throws SNMPExceptions
      * @throws SQLException
      */
-    public void eliminarServicio(int cod)throws SNMPExceptions, SQLException{
+    public void eliminarServicio(String cod)throws SNMPExceptions, SQLException{
         
         try {
             
             String strSQL = 
-                    "Update Servicio set estado=0 where ID="+cod;
+                    "Update servicio set estado=0 where ID='"+cod+"'";
             //Se ejecuta la sentencia SQL
             accesoDatos.ejecutaSQL(strSQL/*, sqlBitacora*/);
         
