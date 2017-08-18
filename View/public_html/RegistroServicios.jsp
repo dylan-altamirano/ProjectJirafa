@@ -259,7 +259,7 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading">Consulta</div>
                                 <h:form id="resultados">
-                                <table class="table">
+                                <table class="table" style="table-layout:fixed;" cellspacing="1" cellpadding="2">
                                     <tr>
                                         <th>Codigo</th>
                                         <th>Descripcion</th>
@@ -281,7 +281,7 @@
                                 
                                 for (int i=0;i<lista.size();i++){
                                    out.println("<tr id='t"+lista.get(i).getID()+"'>");
-                                   out.println("<td>"+lista.get(i).getID()+"</td>");
+                                   out.println("<td style='word-wrap:break-word;'>"+lista.get(i).getID()+"</td>");
                                    out.println("<td>"+lista.get(i).getDescripcion()+"</td>");
                                    out.println("<td style='display:none;'>"+lista.get(i).getTipo().getID()+"</td>");
                                    out.println("<td>"+lista.get(i).getTipo().getDescripcion()+"</td>");

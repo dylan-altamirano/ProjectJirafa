@@ -3,7 +3,6 @@
     background-color:#ffffff;
     border-color:#ffcccc;
 }
-
 .clearfix:after{
     clear: both;
     display: table;
