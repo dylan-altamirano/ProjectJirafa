@@ -23,12 +23,39 @@
             <link href="recursos/css/sb-admin-2.css" rel="stylesheet"></link>
             <!-- Custom Fonts -->
             <link href="recursos/css/font-awesome.min.css" rel="stylesheet" type="text/css"></link>
+            <!--FCUNCION JAVA SCRIPT PARA EXTRAER LOS VALORES DE LA TABLA-->
+            <script type="text/javascript">
+              function editar(objeto) {
+
+                  var codigo = document.getElementById("frmRegistro:txtCodigo");
+                  codigo.value = objeto.cells[0].childNodes[0].nodeValue;
+
+                 /* var descripcion = document.getElementById('frmRegistro:txtDescripcion');
+                  descripcion.value = objeto.cells[1].childNodes[0].nodeValue;
+
+                  var tipo = document.getElementById('frmRegistro:cboTipo');
+                  tipo.value = objeto.cells[2].childNodes[0].nodeValue;
+
+                  var costo = document.getElementById('frmRegistro:txtCosto');
+                  costo.value = objeto.cells[3].childNodes[0].nodeValue;
+
+                  var estado = document.getElementById('frmRegistro:cboEstado');
+
+                  if (objeto.cells[4].childNodes[0].nodeValue == 'Activo') {
+                      estado.value = 1;
+                  }
+                  else {
+                      estado.value = 2;
+                  }*/
+
+              }
+            </script>
         </head>
         <body>
             <!--main container-->
             <div id="wrapper">
                 <!-- Navigation -->
-                <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+                <div class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
                     <div class="navbar-header">
                         <button type="button" class="navbar-toggle" data-toggle="collapse"
                                 data-target=".navbar-collapse">
@@ -118,7 +145,7 @@
                         <!-- /.sidebar-collapse -->
                     </div>
                     <!-- /.navbar-static-side -->
-                </nav>
+                </div>
                 <div id="page-wrapper">
                     <div class="row">
                         <div class="col-lg-12">
@@ -139,7 +166,7 @@
                                             <label>
                                                 <h:outputText value="Identificador:"/>
                                             </label><h:inputText value="#{beanRegistroServicios.codigo}"
-                                                                 styleClass="form-control"/>
+                                                                 styleClass="form-control" id="txtCodigo"/>
                                             <p class="help-block">Introduzca una identificaci&oacute;n para el servicio.</p>
                                         </div>
                                         <div class="form-group">
@@ -148,14 +175,16 @@
                                             </label>
                                              
                                             <h:inputText styleClass="form-control"
-                                                         value="#{beanRegistroServicios.descripcion}"/>
+                                                         value="#{beanRegistroServicios.descripcion}"
+                                                         id="txtDescripcion"/>
                                             <p class="help-block">Introduzca una breve descripci&oacute;n del servicio.</p>
                                         </div>
                                         <div class="form-group">
                                             <label>
                                                 <h:outputText value="Tipo Servicio"/>
                                             </label><h:selectOneMenu styleClass="form-control"
-                                                                     value="#{beanRegistroServicios.tipoServicioSeleccionado}">
+                                                                     value="#{beanRegistroServicios.tipoServicioSeleccionado}"
+                                                                     id="cboTipo">
                                                 <f:selectItem itemValue="#{null}" itemLabel="-- select one --"/>
                                                 <f:selectItems value="#{beanRegistroServicios.tipoServicios}"/>
                                             </h:selectOneMenu>
@@ -164,7 +193,7 @@
                                             <span class="input-group-addon">$</span>
                                              
                                             <h:inputText styleClass="form-control"
-                                                         value="#{beanRegistroServicios.costo}"/>
+                                                         value="#{beanRegistroServicios.costo}" id="txtCosto"/>
                                              
                                             <span class="input-group-addon">.00</span>
                                         </div>
@@ -172,7 +201,8 @@
                                             <label>
                                                 <h:outputText value="Estado:"/>
                                             </label><h:selectOneMenu styleClass="form-control"
-                                                                     value="#{beanRegistroServicios.estado}">
+                                                                     value="#{beanRegistroServicios.estado}"
+                                                                     id="cboEstado">
                                                 <f:selectItem itemLabel="Activo" itemValue="1"/>
                                                 <f:selectItem itemLabel="Inactivo" itemValue="2"/>
                                             </h:selectOneMenu>
@@ -258,7 +288,7 @@
                        else{estado="Inactivo";}
 
                        out.println("<td>"+estado+"</td>");
-                       out.println("<td align='center'>"+"<button type='button' class='btn btn-primary' onclick='editar(t"+lista.get(i).getID()+")'>EDITAR</button></td>");
+                       out.println("<td align='center'>"+"<button type='button' class='btn btn-primary' onclick='editar(\"t"+lista.get(i).getID()+"\")'>EDITAR</button></td>");
                        out.println("</tr>");
                     }
                      %>
@@ -269,7 +299,7 @@
                         </div>
                         <!--/.col-lg-6-->
                         <div class="col-lg-6">
-                            <div class="alert alert-info" style="display:none" role="alert" id="mensajeConfirmacion">
+                            <div class="text-primary" id="mensajeConfirmacion">
                                 <h:outputText value="#{beanRegistroServicios.mensajeConfirmacion}" id="mensaje"/>
                             </div>
                         </div>
@@ -280,11 +310,7 @@
             </div>
             <!-- /#wrapper -->
             <!-- /#wrapper -->
-            <script type="text/javascript">
-              function showMessage() {
-                  $('#mensajeConfirmacion').toggle();
-              }
-            </script>
+            <script type="text/javascript" src="recursos/js/jquery.js"></script>
             <script type="text/javascript" src="recursos/js/jquery.min.js"></script>
             <!-- Bootstrap Core JavaScript -->
             <script type="text/javascript" src="recursos/js/bootstrap.min.js"></script>
@@ -292,6 +318,17 @@
             <script type="text/javascript" src="recursos/js/metisMenu.min.js"></script>
             <!-- Custom Theme JavaScript -->
             <script type="text/javascript" src="recursos/js/sb-admin-2.js"></script>
+            
+            <script type="text/javascript">
+                  $(document).ready(function () {
+                      $('#cmdRegistrar').click(function showMessage() {
+                          $('#mensajeConfirmacion').fadeOut(3000);
+                      });
+                      
+                      $('#frmRegistro').attr('name','formulario-registro');
+
+                  });
+            </script>
         </body>
     </html>
 </f:view>

@@ -278,7 +278,7 @@ public class beanRegistroServicios {
                 //construimos el objeto servicio
                 servicio.setDescripcion(this.getDescripcion());
                 servicio.setID(this.getCodigo());
-                servicio.setEstado(this.getEstado()=="1"?true:false);
+                servicio.setEstado(this.getEstado().equalsIgnoreCase("1")?true:false);
                 servicio.setPrecioPorHora(Double.parseDouble(this.getCosto()));
                 servicio.setTipo(tipo);
                 
@@ -306,13 +306,13 @@ public class beanRegistroServicios {
                 //construimos el objeto servicio
                 servicio.setDescripcion(this.getDescripcion());
                 servicio.setID(this.getCodigo());
-                servicio.setEstado(this.getEstado()=="1"?true:false);
+                servicio.setEstado(this.getEstado().equalsIgnoreCase("1")?true:false);
                 servicio.setPrecioPorHora(Double.parseDouble(this.getCosto()));
                 servicio.setTipo(tipo);
                 //guardamos el objeto servicio ya que este no existe en la base de datos
                 this.insertarServicio(servicio);
                 
-                this.setMensajeConfirmacion("Se ha guardao el registro con exito");
+                this.setMensajeConfirmacion("Se ha guardado el registro con exito");
                 
                this.limpiarControles();
             }
