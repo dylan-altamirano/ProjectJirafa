@@ -257,6 +257,7 @@
                         <div class="col-lg-6">
                             <div class="panel panel-default">
                                 <div class="panel-heading">Consulta</div>
+                                <h:form>
                                 <table class="table">
                                     <tr>
                                         <th>Codigo</th>
@@ -268,31 +269,32 @@
                                     </tr>
                                      
                                     <%         
-                    beanRegistroServicios servicioBean = new beanRegistroServicios();//Instancia del beans
-                    
-                    
-                     //metodo que llena la lista
-                    
-                    LinkedList<Servicio> lista = new LinkedList<Servicio>();// ArrayList
-                    
-                    lista = servicioBean.getListaServicios(); //Se llena la lista
-                    
-                    for (int i=0;i<lista.size();i++){
-                       out.println("<tr id='t"+lista.get(i).getID()+"'>");
-                       out.println("<td>"+lista.get(i).getID()+"</td>");
-                       out.println("<td>"+lista.get(i).getDescripcion()+"</td>");
-                       out.println("<td>"+lista.get(i).getTipo().getDescripcion()+"</td>");
-                       out.println("<td>"+lista.get(i).getPrecioPorHora()+"</td>");
-                       String estado="";
-                       if(lista.get(i).isEstado()==true){estado="Activo";}
-                       else{estado="Inactivo";}
-
-                       out.println("<td>"+estado+"</td>");
-                       out.println("<td align='center'>"+"<button type='button' class='btn btn-primary' onclick='editar(\"t"+lista.get(i).getID()+"\")'>EDITAR</button></td>");
-                       out.println("</tr>");
-                    }
-                     %>
+                                beanRegistroServicios servicioBean = new beanRegistroServicios();//Instancia del beans
+                                
+                                
+                                 //metodo que llena la lista
+                                
+                                LinkedList<Servicio> lista = new LinkedList<Servicio>();// ArrayList
+                                
+                                lista = servicioBean.getListaServicios(); //Se llena la lista
+                                
+                                for (int i=0;i<lista.size();i++){
+                                   out.println("<tr id='t"+lista.get(i).getID()+"'>");
+                                   out.println("<td>"+lista.get(i).getID()+"</td>");
+                                   out.println("<td>"+lista.get(i).getDescripcion()+"</td>");
+                                   out.println("<td>"+lista.get(i).getTipo().getDescripcion()+"</td>");
+                                   out.println("<td>"+lista.get(i).getPrecioPorHora()+"</td>");
+                                   String estado="";
+                                   if(lista.get(i).isEstado()==true){estado="Activo";}
+                                   else{estado="Inactivo";}
+            
+                                   out.println("<td>"+estado+"</td>");
+                                   out.println("<td align='center'>"+"<button type='button' class='btn btn-primary' onclick='editar(\"t"+lista.get(i).getID()+"\")'>EDITAR</button></td>");
+                                   out.println("</tr>");
+                                }
+                            %>
                                 </table>
+                                </h:form>
                                 <!--/.panel-body-->
                             </div>
                             <!--/.panel-->
