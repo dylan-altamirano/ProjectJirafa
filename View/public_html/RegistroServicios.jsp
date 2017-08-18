@@ -38,11 +38,11 @@
                   tipo.value = objeto.cells[2].childNodes[0].nodeValue;
 
                   var costo = document.getElementById('registro:txtCosto');
-                  costo.value = objeto.cells[3].childNodes[0].nodeValue;
+                  costo.value = objeto.cells[4].childNodes[0].nodeValue;
 
                   var estado = document.getElementById('registro:cboEstado');
 
-                  if (objeto.cells[4].childNodes[0].nodeValue == 'Activo') {
+                  if (objeto.cells[4].childNodes[5].nodeValue == 'Activo') {
                       estado.value = 1;
                   }
                   else {
@@ -283,6 +283,7 @@
                                    out.println("<tr id='t"+lista.get(i).getID()+"'>");
                                    out.println("<td>"+lista.get(i).getID()+"</td>");
                                    out.println("<td>"+lista.get(i).getDescripcion()+"</td>");
+                                   out.println("<td style='display:none;'>"+lista.get(i).getTipo().getID()+"</td>");
                                    out.println("<td>"+lista.get(i).getTipo().getDescripcion()+"</td>");
                                    out.println("<td>"+lista.get(i).getPrecioPorHora()+"</td>");
                                    String estado="";
