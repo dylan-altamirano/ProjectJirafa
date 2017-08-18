@@ -7,6 +7,7 @@
 <%@ page import="appProyecto.model.Servicio"%>
 <%@ page import="appProyecto.model.ServicioDB"%>
 <%@ page import="appProyecto.model.TipoServicio"%>
+<%@ page import="utilidades.conversion"%>
 <f:view>
     <html>
         <head>
@@ -27,26 +28,26 @@
             <script type="text/javascript">
               function editar(objeto) {
 
-                  var codigo = document.getElementById("frmRegistro:txtCodigo");
+                  var codigo = document.getElementById("registro:txtCodigo");
                   codigo.value = objeto.cells[0].childNodes[0].nodeValue;
 
-                 /* var descripcion = document.getElementById('frmRegistro:txtDescripcion');
+                 var descripcion = document.getElementById('registro:txtDescripcion');
                   descripcion.value = objeto.cells[1].childNodes[0].nodeValue;
 
-                  var tipo = document.getElementById('frmRegistro:cboTipo');
+                  var tipo = document.getElementById('registro:cboTipo');
                   tipo.value = objeto.cells[2].childNodes[0].nodeValue;
 
-                  var costo = document.getElementById('frmRegistro:txtCosto');
+                  var costo = document.getElementById('registro:txtCosto');
                   costo.value = objeto.cells[3].childNodes[0].nodeValue;
 
-                  var estado = document.getElementById('frmRegistro:cboEstado');
+                  var estado = document.getElementById('registro:cboEstado');
 
                   if (objeto.cells[4].childNodes[0].nodeValue == 'Activo') {
                       estado.value = 1;
                   }
                   else {
                       estado.value = 2;
-                  }*/
+                  }
 
               }
             </script>
@@ -161,7 +162,7 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading">Introducci&oacute;n de datos</div>
                                 <div class="panel-body">
-                                    <h:form id="frmRegistro">
+                                    <h:form id="registro">
                                         <div class="form-group">
                                             <label>
                                                 <h:outputText value="Identificador:"/>
@@ -225,7 +226,7 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading">Consulta</div>
                                 <div class="panel-body">
-                                    <h:form>
+                                    <h:form id="busqueda">
                                         <div class="form-group">
                                             <label>
                                                 <h:outputText value="Buscar por:"/>
@@ -257,7 +258,7 @@
                         <div class="col-lg-6">
                             <div class="panel panel-default">
                                 <div class="panel-heading">Consulta</div>
-                                <h:form>
+                                <h:form id="resultados">
                                 <table class="table">
                                     <tr>
                                         <th>Codigo</th>
@@ -289,7 +290,7 @@
                                    else{estado="Inactivo";}
             
                                    out.println("<td>"+estado+"</td>");
-                                   out.println("<td align='center'>"+"<button type='button' class='btn btn-primary' onclick='editar(\"t"+lista.get(i).getID()+"\")'>EDITAR</button></td>");
+                                   out.println("<td align='center'>"+"<button type='button' class='btn btn-primary' onclick='editar(t"+lista.get(i).getID()+")'>EDITAR</button></td>");
                                    out.println("</tr>");
                                 }
                             %>
@@ -327,7 +328,7 @@
                           $('#mensajeConfirmacion').fadeOut(3000);
                       });
                       
-                      $('#frmRegistro').attr('name','formulario-registro');
+                      $('#registro').attr('name','formulario-registro');
 
                   });
             </script>
