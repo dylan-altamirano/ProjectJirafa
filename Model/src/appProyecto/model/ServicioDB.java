@@ -25,7 +25,7 @@ public class ServicioDB {
             try {
             
                 strSQL = 
-                        "INSERT INTO Servicio VALUES ('" + servicio.getID() +"','" +servicio.getDescripcion()+ "','" +servicio.getTipo().getID()+ "','" + servicio.getPrecioPorHora() +"','" + servicio.isEstado() +"')";
+                        "INSERT INTO servicio VALUES ('" + servicio.getID() +"','" +servicio.getDescripcion()+ "','" +servicio.getTipo().getID()+ "','" + servicio.getPrecioPorHora() +"','" + servicio.isEstado() +"')";
                 //Se ejecuta la sentencia SQL
                 accesoDatos.ejecutaSQL(strSQL/*, sqlBitacora*/);
             
@@ -45,7 +45,7 @@ public class ServicioDB {
             String strSQL = "";
             try {
             
-                strSQL = "UPDATE Servicio SET descripcion='"+ servicio.getDescripcion()+"', IDTipoServicio="+ servicio.getTipo().getID()+", precio_por_hora='"+ servicio.getPrecioPorHora()+"', estado='"+ servicio.isEstado()+"' WHERE ID ="+ servicio.getID();
+                strSQL = "UPDATE servicio SET descripcion='"+ servicio.getDescripcion()+"', IDTipo_Servicio='"+ servicio.getTipo().getID()+"', precio_por_hora="+ servicio.getPrecioPorHora()+", estado="+ (servicio.isEstado()?1:0)+" WHERE ID ='"+ servicio.getID()+"'";
                 //Se ejecuta la sentencia SQL
                 accesoDatos.ejecutaSQL(strSQL/*, sqlBitacora*/);
             

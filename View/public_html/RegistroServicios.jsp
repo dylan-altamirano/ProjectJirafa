@@ -50,6 +50,23 @@
                   }
 
               }
+              
+              function limpiar(){
+                   var codigo = document.getElementById("registro:txtCodigo");
+                  codigo.value = "";
+
+                  var descripcion = document.getElementById('registro:txtDescripcion');
+                  descripcion.value = "";
+
+                  var tipo = document.getElementById('registro:cboTipo');
+                  tipo.value = "";
+
+                  var costo = document.getElementById('registro:txtCosto');
+                  costo.value = "";
+
+                  var estado = document.getElementById('registro:cboEstado');
+                  estado ="";
+              }
             </script>
         </head>
         <body>
@@ -212,9 +229,11 @@
                                                          action="#{beanRegistroServicios.validar}" id="cmdRegistrar"
                                                          onclick="showMessage()"/>
                                         <h:commandButton value="Eliminar" styleClass="btn btn-primary"
-                                                         style="margin-left:10px"/>
+                                                         style="margin-left:10px"
+                                                         action="#{beanRegistroServicios.eliminarDatos}"/>
                                         <h:commandButton value="Cancelar" styleClass="btn btn-primary"
-                                                         style="margin-left:10px"/>
+                                                         style="margin-left:10px" id="limpiar" onclick="limpiar()"
+                                                         action="#{beanRegistroServicios.limpiarControles}"/>
                                     </h:form>
                                 </div>
                                 <!-- /.panel-body -->
@@ -322,14 +341,9 @@
             <!-- Custom Theme JavaScript -->
             <script type="text/javascript" src="recursos/js/sb-admin-2.js"></script>
             <script type="text/javascript">
-                  $(document).ready(function () {
-                      $('#cmdRegistrar').click(function showMessage() {
-                          $('#mensajeConfirmacion').fadeOut(3000);
-                      });
-
-                      $('#registro').attr('name', 'formulario-registro');
-
-                  });
+                  $('#registro:cmdRegistrar').click(function () {
+                          $('#mensajeConfirmacion').fadeOut(5000);
+                  });     
             </script>
         </body>
     </html>

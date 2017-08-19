@@ -365,11 +365,31 @@ public class beanRegistroServicios {
             
             servicioDB.eliminarServicio(id);
             
+            this.setMensajeConfirmacion("Se ha eliminiado el registro solicitado");
+            
         } catch (Exception e) {
             // TODO: Add catch code
+            this.setMensajeConfirmacion("No se ha podido eliminar el registro solicitado");
             e.printStackTrace();
         }
         
+    }
+    
+    /**
+     *Llama al método para eliminar el registro que se presente 
+     * para suprimir.
+     * @return
+     */
+    public String eliminarDatos(){
+        
+        this.setTipoServicio(this.getTipoServicioSeleccionado());
+        
+        if (this.validaNulos()) {
+            this.eliminar(this.getCodigo());
+        }
+        
+        
+        return "";
     }
     
     public void limpiarControles(){
