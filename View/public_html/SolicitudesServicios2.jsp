@@ -122,122 +122,34 @@
                     </div>
                     <!-- /.row -->
                         <div class="row">
-                        <div class="col-lg-12">
+                         <div class="col-lg-12">
                             <div class="panel panel-default">
-                                <div class="panel-heading">Introducci&oacute;n de datos</div>
+                                <div class="panel-heading">Cliente a solcitar el servicio </div>
                                 <div class="panel-body">
-                                  <div class="row">
-                                    <div class="col-lg-12">
-                                                <h:form>
-                                                    <div class="form-group">
-                                                        <label>
-                                                            <h:outputText value="Identificador:"/>
-                                                        </label>
-                                                         
-                                                        <h:inputText styleClass="form-control" value=""/>
-                                                    </div>
-                                                    <div class="form-group input-group">
-                                                        <span class="input-group-addon">Usuario</span>
-                                                         
-                                                        <h:selectOneMenu styleClass="form-control" value="">
-                                                            <f:selectItem itemLabel="USUARIO 1" itemValue="USUARIO 1"/>
-                                                            <f:selectItem itemLabel="USUARIO 2" itemValue="USUARIO 2"/>
-                                                        </h:selectOneMenu>
-                                                    </div>
-                                                    <div class="form-group input-group">
-                                                        <span class="input-group-addon">Cliente</span>
-                                                         
-                                                        <h:selectOneMenu styleClass="form-control" value="">
-                                                            <f:selectItem itemLabel="CLIENTE 1" itemValue="CLIENTE 1"/>
-                                                            <f:selectItem itemLabel="CLIENTE 2" itemValue="CLIENTE 2"/>
-                                                        </h:selectOneMenu>
-                                                    </div>
-                                                    <div class="form-group input-group">
-                                                        <span class="input-group-addon">Servicio</span>
-                                                         
-                                                        <h:selectOneMenu styleClass="form-control" value="">
-                                                            <f:selectItem itemLabel="SERVICIO 1"
-                                                                          itemValue="SERVICIO 1"/>
-                                                            <f:selectItem itemLabel="SERVICIO 2"
-                                                                          itemValue="SERVICIO 2"/>
-                                                        </h:selectOneMenu>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>
-                                                            <h:outputText value="fecha Ejecución:"/>
-                                                        </label>
-                                                         
-                                                        <h:inputText styleClass="form-control" value=""/>
-                                                        <p class="help-block">Introduzca la fecha de ejecuci&oacute;n
-                                                                              del servicio.</p>
-                                                    </div>
-                                                    <div class="form-group input-group">
-                                                        <span class="input-group-addon">#</span>
-                                                         
-                                                        <h:inputText styleClass="form-control" value=""/>
-                                                         
-                                                        <span class="input-group-addon">horas</span>
-                                                    </div>
-                                                    <div class="form-group input-group">
-                                                        <span class="input-group-addon">Lugar de ejecuci&oacute;n</span>
-                                                         
-                                                        <h:selectOneMenu styleClass="form-control" value="">
-                                                            <f:selectItem itemLabel="DIRECCION 1"
-                                                                          itemValue="DIRECCION 1"/>
-                                                            <f:selectItem itemLabel="DIRECCION 2"
-                                                                          itemValue="DIRECCION 2"/>
-                                                        </h:selectOneMenu>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>
-                                                            <h:outputText value="Descripción:"/>
-                                                        </label>
-                                                         
-                                                        <h:inputText styleClass="form-control" value=""/>
-                                                        <p class="help-block">Introduzca el detalle del servicio.</p>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>
-                                                            <h:outputText value="Estado:"/>
-                                                        </label>
-                                                        <div class="checkbox">
-                                                            <label>
-                                                                <h:selectBooleanCheckbox label="Activo" value=""/>
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group input-group">
-                                                        <span class="input-group-addon">$</span>
-                                                         
-                                                        <h:inputText styleClass="form-control" value=""/>
-                                                         
-                                                        <span class="input-group-addon">.00</span>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>
-                                                            <h:outputText value="Observaciones:"/>
-                                                        </label>
-                                                         
-                                                        <h:inputText styleClass="form-control" value=""/>
-                                                    </div>
-                                                    <div class="form-group input-group">
-                                                        <span class="input-group-addon">%</span>
-                                                         
-                                                        <h:inputText styleClass="form-control" value=""/>
-                                                    </div>
-                                                    <h:commandButton value="Registrar" styleClass="btn btn-success"
-                                                                     style="margin-right:10px"/>
-                                                    <h:commandButton value="Cancelar" styleClass="btn btn-success"/>
-                                                </h:form>
+                                    <h:form id="busqueda">
+                                        <div class="form-group">
+                                            <label>
+                                                    <h:outputText value="Buscar por:"/>
+                                                </label><h:selectOneMenu styleClass="form-control">
+                                                    <f:selectItem itemValue="#{null}" itemLabel="-- Seleccione uno --"/>
+                                                    <f:selectItem itemLabel="Identificador" itemValue="1"/>
+                                                    <f:selectItem itemLabel="Nombre" itemValue="2"/>
+                                                    <f:selectItem itemLabel="Correo Electronico" itemValue="3"/>
+                                                    <f:selectItem itemLabel="Estado" itemValue="4"/>
+                                                </h:selectOneMenu>
                                             </div>
-                                  </div>
+                                        <div class="form-group">
+                                            
+                                            <p class="help-block">Introduzca el valor a buscar</p>
+                                        </div>
+                                        
+                                    </h:form>
                                 </div>
-                                </div>
-                                <!-- /.panel-body -->
+                                <!--/.panel-body-->
                             </div>
-                            <!-- /.panel -->
+                            <!--/.panel-->
                         </div>
-                        <!-- /.col-lg-12 -->
+                        <!--/.col-lg-6-->
                     </div>
                     <!-- /.row -->
  
