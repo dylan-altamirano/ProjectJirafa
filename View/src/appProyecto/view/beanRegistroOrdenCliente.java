@@ -9,6 +9,8 @@ import javax.naming.NamingException;
 import appProyecto.model.Cliente;
 import appProyecto.model.ClienteDB;
 
+import appProyecto.model.OrdenServicioDB;
+
 import java.util.List;
 
 import javax.faces.model.SelectItem;
@@ -22,6 +24,7 @@ public class beanRegistroOrdenCliente {
     
     private Cliente cliente;
     private ClienteDB clienteDB;
+    private OrdenServicioDB ordenServicioDB;
     
     public beanRegistroOrdenCliente() {
         
@@ -48,7 +51,7 @@ public class beanRegistroOrdenCliente {
         
         return cliente;
     }
-
+    
     public String buscarCliente(){
      
      
@@ -65,6 +68,22 @@ public class beanRegistroOrdenCliente {
         return "";
     }
     
+    public String guardar(){
+        
+        try {
+            
+            if (this.cliente != null) {
+                
+                
+            }
+            
+        } catch (Exception e) {
+            // TODO: Add catch code
+            e.printStackTrace();
+        }
+        
+        return "";
+    }
     
     public void setIdentificador(String identificador) {
         this.identificador = identificador;
