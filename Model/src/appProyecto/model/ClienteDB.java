@@ -23,7 +23,7 @@ public class ClienteDB {
             try {
             
                 strSQL = 
-                        "INSERT INTO Cliente VALUES ('" + Cliente.getID() +"','" +Cliente.getNombre()+ "','" + Cliente.getFax() +"','" + Cliente.getCorreo() +"','" + Cliente.getDescAplicable() +"','" + Cliente.getEstado()+"')";
+                        "INSERT INTO Cliente VALUES ('" + Cliente.getID() +"','" +Cliente.getNombre()+ "','" + Cliente.getFax() +"','" + Cliente.getCorreo() +"','" + Cliente.getDescAplicable() +"','" + Cliente.getEstado() + "','"+  Cliente.getDireccion().getID() + "')";
                 //Se ejecuta la sentencia SQL
                 accesoDatos.ejecutaSQL(strSQL/*, sqlBitacora*/);
             

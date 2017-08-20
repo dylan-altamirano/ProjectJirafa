@@ -3,15 +3,15 @@ package appProyecto.model;
 public class TipoServicio {
     private String ID;
     private String Descripcion;
-    private boolean Estado;
+    private int Estado;
     
     public TipoServicio() {
         this.ID = "";
         this.Descripcion = "";
-        this.Estado = true;
+        this.Estado = 0;
     }
 
-    public TipoServicio(String ID, String Descripcion, boolean Estado) {
+    public TipoServicio(String ID, String Descripcion, int Estado) {
         this.ID = ID;
         this.Descripcion = Descripcion;
         this.Estado = Estado;
@@ -32,11 +32,11 @@ public class TipoServicio {
         return Descripcion;
     }
 
-    public void setEstado(boolean Estado) {
+    public void setEstado(int Estado) {
         this.Estado = Estado;
     }
 
-    public boolean isEstado() {
+    public int isEstado() {
         return Estado;
     }
 }

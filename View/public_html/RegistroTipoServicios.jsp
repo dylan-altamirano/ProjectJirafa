@@ -5,13 +5,8 @@
 <f:view>
     <html>
         <head>
-            <meta http-equiv="Content-Type" content="text/html; charset=windows-1252"/>
+         <meta http-equiv="Content-Type" content="text/html; charset=windows-1252"/>
             <title>RegistroTipoServicios</title>
-        </head>
-        <body></body>
-    </html>
-    <html>
-        <head>
             <meta http-equiv="X-UA-Compatible" content="IE=edge charset=utf-8"></meta>
             <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
             <meta name="description" content=""></meta>
@@ -43,31 +38,24 @@
                         <a class="navbar-brand" href="#">SISE-Sistema para Gestion de Servicios</a>
                     </div>
                     <!-- /.navbar-header -->
-                    <ul class="nav navbar-top-links navbar-right">
-                        <li class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                                <i class="fa fa-user fa-fw"></i><i class="fa fa-caret-down"></i></a>
-                            <ul class="dropdown-menu dropdown-user">
-                                <li>
-                                    <a href="#">
-                                        <i class="fa fa-user fa-fw"></i>User Profile</a>
-                                </li>
-                                 
-                                <li>
-                                    <a href="#">
-                                        <i class="fa fa-gear fa-fw"></i>Settings</a>
-                                </li>
-                                 
-                                <li class="divider"></li>
-                                 
-                                <li>
-                                    <a href="#">
-                                        <i class="fa fa-sign-out fa-fw"></i>Logout</a>
-                                </li>
-                            </ul>
-                            <!-- /.dropdown-user -->
-                        </li><!-- /.dropdown -->
+              <ul class="nav navbar-top-links navbar-right">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li><a href="#"><i class="fa fa-user fa-fw"></i>Perfil del usuario</a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-gear fa-fw"></i>Ajustes</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li><a href="ingreso.jsp"><i class="fa fa-sign-out fa-fw"></i>Salir</a>
+                        </li>
                     </ul>
+                    <!-- /.dropdown-user -->
+                </li>
+                <!-- /.dropdown -->
+            </ul>
                     <!-- /.navbar-top-links -->
                     <div class="navbar-default sidebar" role="navigation">
                         <div class="sidebar-nav navbar-collapse">
@@ -78,14 +66,12 @@
                                         <h:outputText value="Catalogo de Servicios"/>
                                     </h:outputLink>
                                 </li>
-                                 
-                                <li>
+                                  <li>
                                     <!--<a href="#"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>-->
                                     <h:outputLink value="RegistroTipoServicios.jsp">
                                         <h:outputText value="Tipos de Servicio"/>
                                     </h:outputLink>
                                 </li>
-                                 
                                 <li>
                                     <!--<a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>-->
                                     <h:outputLink value="RegistroClientes.jsp">
@@ -102,7 +88,7 @@
                                     <!-- /.nav-second-level -->
                                 </li>
                                  
-                               <li>
+                                <li>
                                     <!-- <a href="tables.html"><i class="fa fa-table fa-fw"></i> Tables</a>-->
                                     <h:outputLink value="SolicitudesServicios.jsp">
                                         <h:outputText value="Registro de Ordenes de Servicio"/>
@@ -125,7 +111,7 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <h1 class="page-header">
-                                <h:outputText value="Registro Tipo de Servicios"/>
+                                <h:outputText value="Registro de tipos de servicio"/>
                             </h1>
                         </div>
                         <!-- /.col-lg-12 -->
@@ -145,7 +131,7 @@
                                                     </label>
                                                      
                                                     <h:inputText styleClass="form-control"
-                                                                 value=""/>
+                                                                 value="#{beanRegistroTipoServicios.identificador}"/>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>
@@ -153,7 +139,7 @@
                                                     </label>
                                                      
                                                     <h:inputText styleClass="form-control"
-                                                                 value=""/>
+                                                                 value="#{beanRegistroTipoServicios.descripcion}"/>
                                                     <p class="help-block">Introduzca una breve descripci&oacute;n del
                                                                           servicio.</p>
                                                 </div>
@@ -164,17 +150,28 @@
                                                     <div class="checkbox">
                                                         <label>
                                                             <h:selectBooleanCheckbox label="Activo"
-                                                                                     value=""/>
+                                                                                     value="#{beanRegistroTipoServicios.estado}"/>
                                                         </label>
                                                     </div>
                                                 </div>
+                                                  <div class="form-group">
+                                                    <label>
+                                                        <h:outputText value="#{beanRegistroTipoServicios.nulos}"/>
+                                                    </label>
+                                                   
+                                                </div>
                                                 <h:commandButton value="Registrar" styleClass="btn btn-success"
-                                                                 style="margin-right:10px"/>
+                                                                 style="margin-right:10px"
+                                                                 action="#{beanRegistroTipoServicios.ingresaDatos}"/>
                                                 <h:commandButton value="Editar" styleClass="btn btn-success"
-                                                                 style="margin-right:10px"/>
+                                                                 style="margin-right:10px"
+                                                                 action="#{beanRegistroTipoServicios.editarDatos}"/>
                                                 <h:commandButton value="Eliminar" styleClass="btn btn-success"
-                                                                 style="margin-right:10px"/>
-                                                <h:commandButton value="Cancelar" styleClass="btn btn-success"/>
+                                                                 style="margin-right:10px"
+                                                                 action="#{beanRegistroTipoServicios.eliminarDatos}"/>
+                                                <h:commandButton value="Cancelar" styleClass="btn btn-success" style="margin-right:10px"/>
+                                                <h:commandButton value="Buscar" styleClass="btn btn-success"
+                                                                 action="#{beanRegistroTipoServicios.buscarDatos}"/>
                                             </h:form>
                                         </div>
                                         <!-- /.col-lg-6 (nested) -->

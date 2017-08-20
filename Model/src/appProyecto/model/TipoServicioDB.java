@@ -24,9 +24,9 @@ public class TipoServicioDB {
            TipoServicio tips = new TipoServicio();
             tips = servicio;
             strSQL = 
-                    "INSERT INTO TipoServicio (ID,descripcion,estado) VALUES " +
-                    "(" + tips.getID() + ",'" + tips.getDescripcion() + "'," +  
-                    tips.isEstado() + "')";
+                    "insert into TipoServicio (ID,descripcion,estado) VALUES " +
+                    "('" + tips.getID() + "','" + tips.getDescripcion() + "'," +  
+                    tips.isEstado() + ")";
             //Se ejecuta la sentencia SQL
             accesoDatos.ejecutaSQL(strSQL/*, sqlBitacora*/);
         
@@ -46,7 +46,7 @@ public class TipoServicioDB {
             
         String id = tips.getID();
         String descripcion = tips.getDescripcion();
-        boolean estado = tips.isEstado();
+        int estado = tips.isEstado();
         
         
         //Se crea la sentencia de actualización
@@ -71,7 +71,7 @@ public class TipoServicioDB {
             
                 String ID = rsEM.getString("ID");
                 String descripcion = rsEM.getString("descripcion");
-                boolean estado = rsEM.getBoolean("estado");
+                int estado = rsEM.getInt("estado");
                 
                 ts.setID(ID);
                 ts.setDescripcion(descripcion);
@@ -109,7 +109,7 @@ public class TipoServicioDB {
 
                   String ID = rsEM.getString("ID");
                   String descripcion = rsEM.getString("Descripcion");
-                  boolean estado = rsEM.getBoolean("estado");
+                  int estado = rsEM.getInt("estado");
                   
                   
                   TipoServicio tipoServicio = new TipoServicio(ID,descripcion,estado);
@@ -129,4 +129,24 @@ public class TipoServicioDB {
          
           return listaTipoServicio;
       }
+    public void eliminarTipoServicio(String cod)throws SNMPExceptions, SQLException{
+        
+        try {
+            
+            String strSQL = 
+                    "Update TipoServicio set estado=0 where ID='"+cod+"'";
+            //Se ejecuta la sentencia SQL
+            accesoDatos.ejecutaSQL(strSQL/*, sqlBitacora*/);
+        
+        } catch (SQLException e) {
+               throw new SNMPExceptions(SNMPExceptions.SQL_EXCEPTION, 
+                                       e.getMessage(), e.getErrorCode());
+           }catch (Exception e) {
+               throw new SNMPExceptions(SNMPExceptions.SQL_EXCEPTION, 
+                                       e.getMessage());
+           } finally {
+            //  accesoDatos.closeResultSet(rsPA);
+          // close();
+           }
+    }
 }

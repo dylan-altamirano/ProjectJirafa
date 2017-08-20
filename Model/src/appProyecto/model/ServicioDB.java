@@ -25,7 +25,9 @@ public class ServicioDB {
             try {
             
                 strSQL = 
-                        "INSERT INTO servicio VALUES ('" + servicio.getID() +"','" +servicio.getDescripcion()+ "','" +servicio.getTipo().getID()+ "','" + servicio.getPrecioPorHora() +"','" + servicio.isEstado() +"')";
+                        "INSERT INTO servicio VALUES ('" + servicio.getID() +"','" 
+                        +servicio.getDescripcion()+ "','" +servicio.getTipo().getID()+ 
+                "','" + servicio.getPrecioPorHora() +"','" + servicio.isEstado() +"')";
                 //Se ejecuta la sentencia SQL
                 accesoDatos.ejecutaSQL(strSQL/*, sqlBitacora*/);
             
