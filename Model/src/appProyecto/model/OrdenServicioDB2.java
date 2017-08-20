@@ -40,24 +40,113 @@ public class OrdenServicioDB2 {
 
         }
     }
+    
+    public void actualizarCliente(String idOrden, String  idCliente)throws SNMPExceptions, SQLException{
+        
+        String strSQL = "";
+        try {
+        
+            strSQL = "UPDATE  OrdenServicio_Temporal set ID_Cliente ='"+idCliente+"' where ID='"+idOrden+"'";
+            //Se ejecuta la sentencia SQL
+            accesoDatos.ejecutaSQL(strSQL/*, sqlBitacora*/);
+        
+        } catch (SQLException e) {
+            throw new SNMPExceptions(SNMPExceptions.SQL_EXCEPTION, 
+                                    e.getMessage(), e.getErrorCode());
+        }catch (Exception e) {
+            throw new SNMPExceptions(SNMPExceptions.SQL_EXCEPTION, 
+                                    e.getMessage());
+        } finally {
+        
+        }
+        
+    }
+    
+    public void actualizarServicio(String idOrden, String  idServicio)throws SNMPExceptions, SQLException{
+        
+        String strSQL = "";
+        try {
+        
+            strSQL = "UPDATE  OrdenServicio_Temporal set ID_Servicio ='"+idServicio+"' where ID='"+idOrden+"'";
+            //Se ejecuta la sentencia SQL
+            accesoDatos.ejecutaSQL(strSQL/*, sqlBitacora*/);
+        
+        } catch (SQLException e) {
+            throw new SNMPExceptions(SNMPExceptions.SQL_EXCEPTION, 
+                                    e.getMessage(), e.getErrorCode());
+        }catch (Exception e) {
+            throw new SNMPExceptions(SNMPExceptions.SQL_EXCEPTION, 
+                                    e.getMessage());
+        } finally {
+        
+        }
+    }
+        
+    public void actualizarUsuario(String idOrden, String  idUsuario)throws SNMPExceptions, SQLException{
+            
+            String strSQL = "";
+            try {
+            
+                strSQL = "UPDATE  OrdenServicio_Temporal set ID_Usuario ='"+idUsuario+"' where ID='"+idOrden+"'";
+                //Se ejecuta la sentencia SQL
+                accesoDatos.ejecutaSQL(strSQL/*, sqlBitacora*/);
+            
+            } catch (SQLException e) {
+                throw new SNMPExceptions(SNMPExceptions.SQL_EXCEPTION, 
+                                        e.getMessage(), e.getErrorCode());
+            }catch (Exception e) {
+                throw new SNMPExceptions(SNMPExceptions.SQL_EXCEPTION, 
+                                        e.getMessage());
+            } finally {
+            
+            }
+
+    }
+    
+    public void actualizarOrdenSevicio(OrdenServicio orden)throws SNMPExceptions, SQLException{
+        
+        String strSQL = "";
+        try {
+        
+            strSQL = "UPDATE ";
+            //Se ejecuta la sentencia SQL
+            accesoDatos.ejecutaSQL(strSQL/*, sqlBitacora*/);
+        
+        } catch (SQLException e) {
+            throw new SNMPExceptions(SNMPExceptions.SQL_EXCEPTION, 
+                                    e.getMessage(), e.getErrorCode());
+        }catch (Exception e) {
+            throw new SNMPExceptions(SNMPExceptions.SQL_EXCEPTION, 
+                                    e.getMessage());
+        } finally {
+        
+        }
+        
+        
+    }
 
 
-    public OrdenServicio obtenerOrdenServicio(String codigo) throws SNMPExceptions, SQLException {
+    /**
+     *Obtiene siempre el unico registro que exista en la tabla temporal
+     * @return
+     * @throws SNMPExceptions
+     * @throws SQLException
+     */
+    public OrdenServicio obtenerOrdenServicio() throws SNMPExceptions, SQLException {
         //  ResultSet rsPA = null;
         String strSQL = "";
         OrdenServicio OrdenServicio = null;
         try {
             //  open();
             strSQL =
-                    "Select ID, ID_Cliente, ID_Servicio, fecha_ejecucion, estimacion_horas, detalle, estado, costos_variable, observacion, descuento_aplicado, ID_Usuario  from OrdenServicio_Temporal where ID='" +
-                    codigo+"'";
+                    "Select top 1 ID, ID_Cliente, ID_Servicio, fecha_ejecucion, estimacion_horas, detalle, estado, observaciones, descuento_aplicado, ID_Usuario  from OrdenServicio_Temporal";
             //Se ejecuta la sentencia SQL
             ResultSet rsOrdenServicio = accesoDatos.ejecutaSQLRetornaRS(strSQL);
             while (rsOrdenServicio.next()) {
 
                 OrdenServicio = new OrdenServicio();
 
-                OrdenServicio.setId(codigo);
+                OrdenServicio.setId(rsOrdenServicio.getString("ID"));
                 OrdenServicio.getCliente().setID(rsOrdenServicio.getString("ID_Cliente"));
                 OrdenServicio.getServicio().setID(rsOrdenServicio.getString("ID_Servicio")); //Solo se trae el ID del tipo OrdenServicio para adjuntarle el objeto completo despues
                 OrdenServicio.setFecha(rsOrdenServicio.getDate("fecha_ejecucion"));
