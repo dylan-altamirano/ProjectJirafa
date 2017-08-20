@@ -65,7 +65,7 @@ public class ClienteDB {
            try {
            //  open();
                strSQL = 
-                       "Select ID, nombre, fax, correo_electronico, descuento_aplicable, estado from Cliente where ID="+codigo;
+                       "Select ID, nombre, fax, correo_electronico, descuento_aplicable, estado from cliente where ID='"+codigo+"'";
                //Se ejecuta la sentencia SQL
                ResultSet rsCliente = accesoDatos.ejecutaSQLRetornaRS(strSQL);
                while (rsCliente.next()) {
@@ -73,7 +73,7 @@ public class ClienteDB {
                 Cliente = new Cliente();
                
                 Cliente.setID(codigo);
-                Cliente.setNombre(rsCliente.getString("descripcion"));
+                Cliente.setNombre(rsCliente.getString("nombre"));
                 Cliente.setFax(rsCliente.getString("fax")); //Solo se trae el ID del tipo Cliente para adjuntarle el objeto completo despues  
                 Cliente.setCorreo(rsCliente.getString("correo_electronico"));
                 Cliente.setDescAplicable(rsCliente.getDouble("descuento_aplicable"));   
@@ -179,7 +179,7 @@ public class ClienteDB {
             //  open();
                boolean existe = false;
                select = 
-               "Select ID, nombre, fax, correo_electronico, descuento_aplicable, estado where ID ='"+codigo+"'";
+               "Select ID, nombre, fax, correo_electronico, descuento_aplicable, estado from cliente where ID ='"+codigo+"'";
 
                
                //Se ejecuta la sentencia SQL

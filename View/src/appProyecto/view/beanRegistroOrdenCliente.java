@@ -18,6 +18,8 @@ public class beanRegistroOrdenCliente {
     private String identificador;
     private String nombre;
     
+    private String valorBuscado;
+    
     private Cliente cliente;
     private ClienteDB clienteDB;
     
@@ -26,7 +28,7 @@ public class beanRegistroOrdenCliente {
         this.clienteDB = new ClienteDB();
     }
     
-    private boolean consultarCliente(String id){
+    public Cliente consultarCliente(String id){
         
         cliente = new Cliente();
         
@@ -44,6 +46,47 @@ public class beanRegistroOrdenCliente {
             e.printStackTrace();
         }
         
-        return false;
+        return cliente;
+    }
+
+    public String buscarCliente(){
+     
+     
+        if (!this.getValorBuscado().equalsIgnoreCase("")) {
+            this.cliente = this.consultarCliente(this.getValorBuscado());
+            
+            if (this.cliente !=null) {
+                
+                this.setIdentificador(this.cliente.getID());
+                this.setNombre(this.cliente.getNombre());
+            }
+        }   
+
+        return "";
+    }
+    
+    
+    public void setIdentificador(String identificador) {
+        this.identificador = identificador;
+    }
+
+    public String getIdentificador() {
+        return identificador;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setValorBuscado(String valorBuscado) {
+        this.valorBuscado = valorBuscado;
+    }
+
+    public String getValorBuscado() {
+        return valorBuscado;
     }
 }

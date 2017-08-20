@@ -130,7 +130,8 @@
                                         <div class="form-group">
                                             <label>
                                                     <h:outputText value="Buscar por:"/>
-                                                </label><h:selectOneMenu styleClass="form-control">
+                                                </label><h:selectOneMenu styleClass="form-control"
+                                                                         value="">
                                                     <f:selectItem itemValue="#{null}" itemLabel="-- Seleccione uno --"/>
                                                     <f:selectItem itemLabel="Identificador" itemValue="1"/>
                                                     <f:selectItem itemLabel="Nombre" itemValue="2"/>
@@ -138,11 +139,13 @@
                                                 </h:selectOneMenu>
                                             </div>
                                         <div class="form-group">
-                                            
+                                            <h:inputText id="identificador" styleClass="form-control"
+                                                             value="#{beanRegistroOrdenCliente.valorBuscado}"/>
                                             <p class="help-block">Introduzca el valor a buscar</p>
                                         </div>
                                             <h:commandButton value="BUSCAR" id="cmdBuscar"
-                                                             styleClass="btn btn-primary"/>
+                                                             styleClass="btn btn-primary"
+                                                             action="#{beanRegistroOrdenCliente.buscarCliente}"/>
                                         </h:form>
                                 </div>
                                 <!--/.panel-body-->
@@ -158,15 +161,18 @@
                                         <div class="form-group">
                                             <label>
                                                     <h:outputText value="Identificador:"/>
-                                                </label><h:inputText styleClass="form-control" id="codigo"/>
+                                                </label><h:inputText styleClass="form-control" id="codigo"
+                                                                     value="#{beanRegistroOrdenCliente.identificador}"/>
                                             </div>
                                         <div class="form-group">
-                                            <p class="help-block">Introduzca el valor a buscar</p>
+                                                
+                                                <p class="help-block">Introduzca el valor a buscar</p>
                                         </div>
                                         <div class="form-group">
                                             <label>
                                                     <h:outputText value="Nombre:"/>
-                                                </label><h:inputText id="nombre" styleClass="form-control"/>
+                                                </label><h:inputText id="nombre" styleClass="form-control"
+                                                                     value="#{beanRegistroOrdenCliente.nombre}"/>
                                             </div>
                                             <h:commandButton value="Siguiente" id="cmdEnviar"
                                                              styleClass="btn btn-primary"/>
