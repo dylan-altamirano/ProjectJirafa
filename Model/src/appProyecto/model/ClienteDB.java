@@ -172,14 +172,14 @@ public class ClienteDB {
      * @throws SNMPExceptions
      * @throws SQLException
      */
-    public boolean consultarCliente(int codigo) throws SNMPExceptions, SQLException {
+    public boolean consultarCliente(String codigo) throws SNMPExceptions, SQLException {
            ResultSet rsCliente = null;
            String select = "";
            try {
             //  open();
                boolean existe = false;
                select = 
-               "Select ID, nombre, fax, correo_electronico, descuento_aplicable, estado where ID ="+codigo;
+               "Select ID, nombre, fax, correo_electronico, descuento_aplicable, estado where ID ='"+codigo+"'";
 
                
                //Se ejecuta la sentencia SQL

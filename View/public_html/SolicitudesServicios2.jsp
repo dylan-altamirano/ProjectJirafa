@@ -134,22 +134,48 @@
                                                     <f:selectItem itemValue="#{null}" itemLabel="-- Seleccione uno --"/>
                                                     <f:selectItem itemLabel="Identificador" itemValue="1"/>
                                                     <f:selectItem itemLabel="Nombre" itemValue="2"/>
-                                                    <f:selectItem itemLabel="Correo Electronico" itemValue="3"/>
-                                                    <f:selectItem itemLabel="Estado" itemValue="4"/>
+                                                    <f:selectItem itemLabel="Correo Electronico" itemValue="3"/>                                                   
                                                 </h:selectOneMenu>
                                             </div>
                                         <div class="form-group">
                                             
                                             <p class="help-block">Introduzca el valor a buscar</p>
                                         </div>
-                                        
-                                    </h:form>
+                                            <h:commandButton value="BUSCAR" id="cmdBuscar"
+                                                             styleClass="btn btn-primary"/>
+                                        </h:form>
                                 </div>
                                 <!--/.panel-body-->
                             </div>
                             <!--/.panel-->
                         </div>
-                        <!--/.col-lg-6-->
+                        <!--/.col-lg-12-->
+                        <div class="col-lg-12">
+                             <div class="panel panel-default">
+                                <div class="panel-heading">Informacion del cliente</div>
+                                <div class="panel-body">
+                                    <h:form id="cliente">
+                                        <div class="form-group">
+                                            <label>
+                                                    <h:outputText value="Identificador:"/>
+                                                </label><h:inputText styleClass="form-control" id="codigo"/>
+                                            </div>
+                                        <div class="form-group">
+                                            <p class="help-block">Introduzca el valor a buscar</p>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>
+                                                    <h:outputText value="Nombre:"/>
+                                                </label><h:inputText id="nombre" styleClass="form-control"/>
+                                            </div>
+                                            <h:commandButton value="Siguiente" id="cmdEnviar"
+                                                             styleClass="btn btn-primary"/>
+                                        </h:form>
+                                </div>
+                                <!--/.panel-body-->
+                            </div>
+                        </div>
+                        
                     </div>
                     <!-- /.row -->
  
