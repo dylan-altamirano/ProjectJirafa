@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsf/html" prefix="h"%>
 <%@ taglib uri="http://java.sun.com/jsf/core" prefix="f"%>
 <%@ page import="java.util.LinkedList"%>
-<%@ page import="appProyecto.view.beanRegistroServicios"%>
+<%@ page import="appProyecto.view.beanRegistroOrdenServicio"%>
 <%@ page import="appProyecto.model.Servicio"%>
 <%@ page import="appProyecto.model.ServicioDB"%>
 <%@ page import="appProyecto.model.TipoServicio"%>
@@ -34,7 +34,7 @@
                   var descripcion = document.getElementById('registro:txtDescripcion');
                   descripcion.value = objeto.cells[1].childNodes[0].nodeValue;
 
-                  var tipo = document.getElementById('registro:cboTipo');
+                  var tipo = document.getElementById('registro:txtTipo');
                   tipo.value = objeto.cells[2].childNodes[0].nodeValue;
 
                   var costo = document.getElementById('registro:txtCosto');
@@ -58,7 +58,7 @@
                   var descripcion = document.getElementById('registro:txtDescripcion');
                   descripcion.value = "";
 
-                  var tipo = document.getElementById('registro:cboTipo');
+                  var tipo = document.getElementById('registro:txtTipo');
                   tipo.value = "";
 
                   var costo = document.getElementById('registro:txtCosto');
@@ -177,14 +177,14 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="panel panel-default">
-                                <div class="panel-heading">Introducci&oacute;n de datos</div>
+                                <div class="panel-heading">Seleccion del Servicio a contratar</div>
                                 <div class="panel-body">
                                     <h:form id="registro">
                                         <div class="form-group">
                                             <label>
                                                 <h:outputText value="Identificador:"/>
-                                            </label><h:inputText value="#{beanRegistroServicios.codigo}"
-                                                                 styleClass="form-control" id="txtCodigo"/>
+                                            </label><h:inputText value="#{beanRegistroOrdenServicio.codigo}"
+                                                                 styleClass="form-control" id="txtCodigo" readonly="true"/>
                                             <p class="help-block">Introduzca una identificaci&oacute;n para el servicio.</p>
                                         </div>
                                         <div class="form-group">
@@ -193,25 +193,21 @@
                                             </label>
                                              
                                             <h:inputText styleClass="form-control"
-                                                         value="#{beanRegistroServicios.descripcion}"
-                                                         id="txtDescripcion"/>
+                                                         value="#{beanRegistroOrdenServicio.descripcion}"
+                                                         id="txtDescripcion" readonly="true"/>
                                             <p class="help-block">Introduzca una breve descripci&oacute;n del servicio.</p>
                                         </div>
                                         <div class="form-group">
                                             <label>
                                                 <h:outputText value="Tipo Servicio"/>
-                                            </label><h:selectOneMenu styleClass="form-control"
-                                                                     value="#{beanRegistroServicios.tipoServicioSeleccionado}"
-                                                                     id="cboTipo">
-                                                <f:selectItem itemValue="#{null}" itemLabel="-- select one --"/>
-                                                <f:selectItems value="#{beanRegistroServicios.tipoServicios}"/>
-                                            </h:selectOneMenu>
-                                        </div>
+                                            </label><h:inputText id="txtTipo" styleClass="form-control"
+                                                                 value="#{beanRegistroOrdenServicio.tipoServicio}"/>
+                    </div>
                                         <div class="form-group input-group">
                                             <span class="input-group-addon">$</span>
                                              
                                             <h:inputText styleClass="form-control"
-                                                         value="#{beanRegistroServicios.costo}" id="txtCosto"/>
+                                                         value="#{beanRegistroOrdenServicio.costo}" id="txtCosto" readonly="true"/>
                                              
                                             <span class="input-group-addon">.00</span>
                                         </div>
@@ -219,21 +215,19 @@
                                             <label>
                                                 <h:outputText value="Estado:"/>
                                             </label><h:selectOneMenu styleClass="form-control"
-                                                                     value="#{beanRegistroServicios.estado}"
-                                                                     id="cboEstado">
+                                                                     value="#{beanRegistroOrdenServicio.estado}"
+                                                                     id="cboEstado" readonly="true">
                                                 <f:selectItem itemLabel="Activo" itemValue="1"/>
                                                 <f:selectItem itemLabel="Inactivo" itemValue="2"/>
                                             </h:selectOneMenu>
                                         </div>
-                                        <h:commandButton value="Registrar" styleClass="btn btn-primary"
-                                                         action="#{beanRegistroServicios.validar}" id="cmdRegistrar"
+                                        <h:commandButton value="Siguiente" styleClass="btn btn-primary"
+                                                         action="" id="cmdRegistrar"
                                                          onclick="showMessage()"/>
-                                        <h:commandButton value="Eliminar" styleClass="btn btn-primary"
-                                                         style="margin-left:10px"
-                                                         action="#{beanRegistroServicios.eliminarDatos}"/>
+                                        
                                         <h:commandButton value="Cancelar" styleClass="btn btn-primary"
                                                          style="margin-left:10px" id="limpiar" onclick="limpiar()"
-                                                         action="#{beanRegistroServicios.limpiarControles}"/>
+                                                         action=""/>
                                     </h:form>
                                 </div>
                                 <!-- /.panel-body -->
@@ -250,7 +244,7 @@
                                             <label>
                                                 <h:outputText value="Buscar por:"/>
                                             </label><h:selectOneMenu styleClass="form-control"
-                                                                     value="#{beanRegistroServicios.opcionFiltrado}">
+                                                                     value="#{beanRegistroOrdenServicio.opcionFiltrado}">
                                                 <f:selectItem itemValue="#{null}" itemLabel="-- Seleccione uno --"/>
                                                 <f:selectItem itemLabel="Identificador" itemValue="1"/>
                                                 <f:selectItem itemLabel="Nombre" itemValue="2"/>
@@ -259,12 +253,12 @@
                                             </h:selectOneMenu>
                                         </div>
                                         <div class="form-group">
-                                            <h:inputText value="#{beanRegistroServicios.valorBuscado}"
+                                            <h:inputText value="#{beanRegistroOrdenServicio.valorBuscado}"
                                                          styleClass="form-control"/>
                                             <p class="help-block">Introduzca el valor a buscar.</p>
                                         </div>
                                         <h:commandButton value="BUSCAR" styleClass="btn btn-primary"
-                                                         action="#{beanRegistroServicios.obtenerLista}"
+                                                         action="#{beanRegistroOrdenServicio.obtenerLista}"
                                                          onclick="showMessage()"/>
                                     </h:form>
                                 </div>
@@ -289,7 +283,7 @@
                                         </tr>
                                          
                                         <%         
-                                beanRegistroServicios servicioBean = new beanRegistroServicios();//Instancia del beans
+                                beanRegistroOrdenServicio servicioBean = new beanRegistroOrdenServicio();//Instancia del beans
                                 
                                 
                                  //metodo que llena la lista
@@ -310,7 +304,7 @@
                                    else{estado="Inactivo";}
             
                                    out.println("<td>"+estado+"</td>");
-                                   out.println("<td align='center'>"+"<button type='button' class='btn btn-primary' onclick='editar(t"+lista.get(i).getID()+")'>EDITAR</button></td>");
+                                   out.println("<td align='center'>"+"<button type='button' class='btn btn-primary' onclick='editar(t"+lista.get(i).getID()+")'>SELECCIONAR</button></td>");
                                    out.println("</tr>");
                                 }
                             %>
