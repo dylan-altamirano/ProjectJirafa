@@ -175,6 +175,10 @@ public class beanRegistroOrdenServicio {
             this.setListaServicios(this.obtenerServiciosSegunFiltrado(this.getValorBuscado(), 3));
             
             break;
+        case 4:
+            this.setListaServicios(this.obtenerServiciosSegunFiltrado(this.getValorBuscado(), 4));
+            
+            break;
         default:
         }
         
