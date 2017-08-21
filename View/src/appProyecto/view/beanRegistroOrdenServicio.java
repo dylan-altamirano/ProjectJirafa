@@ -205,7 +205,7 @@ public class beanRegistroOrdenServicio {
                 ordenServicio = this.ordenServicioDB2.obtenerOrdenServicio();
                 
                 //se procede a guardar el cliente a esa orden de servicio
-                this.ordenServicioDB2.actualizarCliente(ordenServicio.getId(), this.getCodigo());
+                this.ordenServicioDB2.actualizarServicio(ordenServicio.getId(), this.getCodigo());
                 
             }
             

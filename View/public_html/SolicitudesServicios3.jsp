@@ -186,7 +186,7 @@
                                                 <h:outputText value="Identificador:"/>
                                             </label><h:inputText id="txtCodigo"
                                                                  value="#{beanRegistroOrdenServicio.codigo}"
-                                                                 styleClass="form-control" readonly="false"/>
+                                                                 styleClass="form-control" />
                                             <p class="help-block">Introduzca una identificaci&oacute;n para el servicio.</p>
                                         </div>
                                         <div class="form-group">
@@ -207,7 +207,7 @@
                                         <div class="form-group input-group">
                                             <span class="input-group-addon">$</span><h:inputText styleClass="form-control"
                                                                                                  id="txtCosto"
-                                                                                                 value="#{beanRegistroOrdenServicio.costo}"/>
+                                                                                                 value="#{beanRegistroOrdenServicio.costo}" readonly="true"/>
                                              
                                             <span class="input-group-addon">.00</span>
                                         </div>
