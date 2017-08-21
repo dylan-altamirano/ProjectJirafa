@@ -16,7 +16,33 @@ public class OrdenServicioDB2 {
     public OrdenServicioDB2() {
         super();
     }
+    
+    /**
+     *Crea una orden de servicio en la tabla temporal
+     * @throws SNMPExceptions
+     * @throws SQLException
+     */
+    public void crearOrdenServicio() throws SNMPExceptions, SQLException{
+        
+        try {
 
+            String strSQL = "insert into OrdenServicio_Temporal values(CAST((next value for serial_ordenes) as varchar(50)),'unknown','unknown','unknown',GETDATE(),0,'unspecified',1,'unspecified',0.0)";
+            //Se ejecuta la sentencia SQL
+            accesoDatos.ejecutaSQL(strSQL) /*, sqlBitacora*/;
+
+        } catch (SQLException e) {
+            throw new SNMPExceptions(SNMPExceptions.SQL_EXCEPTION, e.getMessage(), e.getErrorCode());
+        } catch (Exception e) {
+            throw new SNMPExceptions(SNMPExceptions.SQL_EXCEPTION, e.getMessage());
+        } finally {
+            //  accesoDatos.closeResultSet(rsPA);
+            // close();
+        }
+        
+        
+    }
+    
+    
     public void insertar(OrdenServicio OrdenServicio) throws SNMPExceptions, SQLException {
 
         String strSQL = "";
@@ -228,6 +254,29 @@ public class OrdenServicioDB2 {
         try {
 
             String strSQL = "Update OrdenServicio_Temporal set estado=0 where ID='" + cod+"'";
+            //Se ejecuta la sentencia SQL
+            accesoDatos.ejecutaSQL(strSQL) /*, sqlBitacora*/;
+
+        } catch (SQLException e) {
+            throw new SNMPExceptions(SNMPExceptions.SQL_EXCEPTION, e.getMessage(), e.getErrorCode());
+        } catch (Exception e) {
+            throw new SNMPExceptions(SNMPExceptions.SQL_EXCEPTION, e.getMessage());
+        } finally {
+            //  accesoDatos.closeResultSet(rsPA);
+            // close();
+        }
+    }
+    
+    /**
+     *Borra la tabla de orden de servicio
+     * @throws SNMPExceptions
+     * @throws SQLException
+     */
+    public void eliminarOrdenesServicio() throws SNMPExceptions, SQLException {
+
+        try {
+
+            String strSQL = "delete from OrdenServicio_Temporal";
             //Se ejecuta la sentencia SQL
             accesoDatos.ejecutaSQL(strSQL) /*, sqlBitacora*/;
 

@@ -36,4 +36,9 @@
     <managed-bean-class>appProyecto.view.beanRegistroOrdenCliente</managed-bean-class>
     <managed-bean-scope>request</managed-bean-scope>
   </managed-bean>
+  <managed-bean>
+    <managed-bean-name>beanRegistroOrdenServicio</managed-bean-name>
+    <managed-bean-class>appProyecto.view.beanRegistroOrdenServicio</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+  </managed-bean>
 </faces-config>
