@@ -279,7 +279,7 @@
                                 beanRegistroOrdenServicio servicioBean = new beanRegistroOrdenServicio();//Instancia del beans
                                 
                                 
-                                 //metodo que llena la lista
+                                 //metodo que llena la lista que procede del bean
                                 
                                 LinkedList<Servicio> lista = new LinkedList<Servicio>();// ArrayList
                                 
