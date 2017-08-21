@@ -59,4 +59,50 @@
       <property
          name="sdm:polyPoints">R46,191.68262,244.24707,331.6953,99.09766,L50</property>
    </NavigationCase>
+   <Page
+      id="Page7">
+      <property
+         name="wildcard">false</property>
+      <property
+         name="y">449.44824</property>
+      <property
+         name="x">159.69629</property>
+      <property
+         name="jspName">/SolicitudesServicios2.jsp</property>
+   </Page>
+   <Page
+      id="Page8">
+      <property
+         name="wildcard">false</property>
+      <property
+         name="y">446.44824</property>
+      <property
+         name="x">447.6963</property>
+      <property
+         name="jspName">/SolicitudesServicios3.jsp</property>
+   </Page>
+   <NavigationCase
+      islink="true"
+      id="NavigationCase9"
+      from="Page7"
+      to="Page8">
+      <property
+         name="fromOutcome">success</property>
+      <property
+         name="description">Navigation Case</property>
+      <property
+         name="sdm:polyPoints">R50,200.69629,449.09766,406.6963,446.09766,L50</property>
+   </NavigationCase>
+   <NavigationCase
+      islink="true"
+      id="NavigationCase10"
+      from="Page7"
+      to="Page7">
+      <property
+         name="fromOutcome">fail</property>
+      <property
+         name="description">Navigation Case</property>
+      <property
+         name="sdm:polyPoints">T44,156.19629,395.09766,163.19629,395.09766,T56</property>
+   </NavigationCase>
 </SDM>

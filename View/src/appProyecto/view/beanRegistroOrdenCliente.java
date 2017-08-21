@@ -54,7 +54,7 @@ public class beanRegistroOrdenCliente {
         return cliente;
     }
     
-    public String buscarCliente(){
+    public void buscarCliente(){
      
      
         if (!this.getValorBuscado().equalsIgnoreCase("")) {
@@ -66,8 +66,6 @@ public class beanRegistroOrdenCliente {
                 this.setNombre(this.cliente.getNombre());
             }
         }   
-
-        return "";
     }
     
     /**
@@ -75,6 +73,8 @@ public class beanRegistroOrdenCliente {
      * de configuracion de la misma
      */
     public void crearOrdenServicio(){
+        
+        this.ordenServicioDB2 = new OrdenServicioDB2();
         
         try {
             
@@ -100,18 +100,24 @@ public class beanRegistroOrdenCliente {
         
         try {
             
-            if (this.cliente != null) {
-                //Se crea la orden de servicio primero
-                this.crearOrdenServicio();
+            if (!this.getIdentificador().equalsIgnoreCase("")) {
+                    
+                    //Se crea la orden de servicio primero
+                    this.crearOrdenServicio();
+                    
+                    //se procede a obtener esa orden de servicio
+                    ordenServicio = this.ordenServicioDB2.obtenerOrdenServicio();
+                    
+                    //se procede a guardar el cliente a esa orden de servicio
+                    this.ordenServicioDB2.actualizarCliente(ordenServicio.getId(), this.getIdentificador());
+                    
+                    
+                    return "success";
+                    
+                    }else{
+                    return "fail";
+                    }
                 
-                //se procede a obtener esa orden de servicio
-                ordenServicio = this.ordenServicioDB2.obtenerOrdenServicio();
-                
-                //se procede a guardar el cliente a esa orden de servicio
-                this.ordenServicioDB2.actualizarCliente(ordenServicio.getId(), this.getIdentificador());
-                
-            }
-            
         } catch (Exception e) {
             // TODO: Add catch code
             e.printStackTrace();
@@ -119,7 +125,6 @@ public class beanRegistroOrdenCliente {
             return "fail";
         }
         
-        return "success";
     }
     
     public void setIdentificador(String identificador) {

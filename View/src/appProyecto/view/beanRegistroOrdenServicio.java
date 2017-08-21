@@ -38,6 +38,8 @@ public class beanRegistroOrdenServicio {
     
     
     public beanRegistroOrdenServicio() {
+        
+        this.codigo = "";
     }
     
     /**
@@ -175,10 +177,46 @@ public class beanRegistroOrdenServicio {
             this.setListaServicios(this.obtenerServiciosSegunFiltrado(this.getValorBuscado(), 3));
             
             break;
+        case 4:
+            this.setListaServicios(this.obtenerServiciosSegunFiltrado(this.getValorBuscado(), 4));
+            
+            break;
         default:
         }
         
         
+    }
+    
+    
+    /**
+     *Guarda el servicio en la orden de servicio pre-creada. Es el paso numero del workflow
+     * @return
+     */
+    public String guardar(){
+        
+        ordenServicio = new OrdenServicio();
+        ordenServicioDB2 = new OrdenServicioDB2();
+        
+        try {
+            
+            if (!this.getCodigo().equalsIgnoreCase("")) {
+                               
+                //se procede a obtener esa orden de servicio
+                ordenServicio = this.ordenServicioDB2.obtenerOrdenServicio();
+                
+                //se procede a guardar el cliente a esa orden de servicio
+                this.ordenServicioDB2.actualizarServicio(ordenServicio.getId(), this.getCodigo());
+                
+            }
+            
+        } catch (Exception e) {
+            // TODO: Add catch code
+            e.printStackTrace();
+            
+            return "fail";
+        }
+        
+        return "success";
     }
 
     public void setCodigo(String codigo) {
