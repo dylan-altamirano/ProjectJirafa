@@ -138,7 +138,7 @@ public class OrdenServicioDB {
 
         try {
 
-            String strSQL = "Update OrdenServicio set estado='Inactivo' where ID='" + cod+"'";
+            String strSQL = "Update OrdenServicio set estado='INACTIVO' where ID='" + cod+"'";
             //Se ejecuta la sentencia SQL
             accesoDatos.ejecutaSQL(strSQL) /*, sqlBitacora*/;
 

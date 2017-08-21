@@ -120,21 +120,23 @@
                                 <div class="panel panel-default">
                                     <div class="panel-heading">Detalle del Servicio</div>
                                     <div class="panel-body">
-                                        <div class="row">
-                                            <div class="col-lg-12">
+        
                                                 <h:form id="detalleOrden">
                                                     <div class="form-group">
                                                         <label>
                                                             <h:outputText value="Fecha:"/>
                                                         </label>
                                                          
-                                                        <h:inputText styleClass="form-control" value=""
-                                                                     id="datepicker"/>
+                                                        <h:inputText styleClass="form-control"
+                                                                     value="#{beanRegistroDetalle.fecha}"
+                                                                     id="datepicker">
+                                                </h:inputText>
                                                     </div>
                                                     <div class="form-group input-group">
                                                         <span class="input-group-addon">Duracion(Estimacion en horas)</span>
                                                          
-                                                        <h:selectOneMenu styleClass="form-control" value="">
+                                                        <h:selectOneMenu styleClass="form-control"
+                                                                         value="#{beanRegistroDetalle.horas}">
                                                             <f:selectItem itemValue="#{null}"
                                                                           itemLabel="-- Seleccione uno --"/>
                                                             <f:selectItems value="#{beanRegistroDetalle.listaHoras}"/>
@@ -144,88 +146,24 @@
                                                         <label>
                                                             <h:outputText value="Detalle del servicio:"/>
                                                         </label>
-                                                        <h:inputTextarea id="txaDetalle" styleClass="form-control" rows="5" cols="60"/>
+                                                        <h:inputTextarea id="txaDetalle" styleClass="form-control" rows="5" cols="60"
+                                                                         value="#{beanRegistroDetalle.detalle}"/>
                                                     </div>
-                                                    <div class="form-group input-group">
-                                                        <span class="input-group-addon">Estado</span>
-                                                         
-                                                        <h:selectOneMenu styleClass="form-control" value="">
-                                                        <f:selectItem itemValue="#{null}"
-                                                                          itemLabel="-- Seleccione uno --"/>
-                                                            <f:selectItem itemLabel="PENDIENTE"
-                                                                          itemValue="PENDIENTE"/>
-                                                            <f:selectItem itemLabel="FACTURADA"
-                                                                          itemValue="FACTURADA"/>
-                                                        </h:selectOneMenu>
-                                                    </div>
+                                                   
                                                     <div class="form-group">
                                                         <label>
                                                             <h:outputText value="Observaciones:"/>
                                                         </label><h:inputTextarea id="txaObservaciones" rows="5"
-                                                                                 cols="60" styleClass="form-control"/>
+                                                                                 cols="60" styleClass="form-control"
+                                                                                 value="#{beanRegistroDetalle.observaciones}"/>
                                                         <p class="help-block">Describa algunas observaciones o notas importantes del servicio.</p>
                                                     </div>
-                                                    <div class="form-group input-group">
-                                                        <span class="input-group-addon">#</span>
-                                                         
-                                                        <h:inputText styleClass="form-control" value=""/>
-                                                         
-                                                        <span class="input-group-addon">horas</span>
-                                                    </div>
-                                                    <div class="form-group input-group">
-                                                        <span class="input-group-addon">Lugar de ejecuci&oacute;n</span>
-                                                         
-                                                        <h:selectOneMenu styleClass="form-control" value="">
-                                                            <f:selectItem itemLabel="DIRECCION 1"
-                                                                          itemValue="DIRECCION 1"/>
-                                                            <f:selectItem itemLabel="DIRECCION 2"
-                                                                          itemValue="DIRECCION 2"/>
-                                                        </h:selectOneMenu>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>
-                                                            <h:outputText value="Descripción:"/>
-                                                        </label>
-                                                         
-                                                        <h:inputText styleClass="form-control" value=""/>
-                                                        <p class="help-block">Introduzca el detalle del servicio.</p>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>
-                                                            <h:outputText value="Estado:"/>
-                                                        </label>
-                                                        <div class="checkbox">
-                                                            <label>
-                                                                <h:selectBooleanCheckbox label="Activo" value=""/>
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group input-group">
-                                                        <span class="input-group-addon">$</span>
-                                                         
-                                                        <h:inputText styleClass="form-control" value=""/>
-                                                         
-                                                        <span class="input-group-addon">.00</span>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>
-                                                            <h:outputText value="Observaciones:"/>
-                                                        </label>
-                                                         
-                                                        <h:inputText styleClass="form-control" value=""/>
-                                                    </div>
-                                                    <div class="form-group input-group">
-                                                        <span class="input-group-addon">%</span>
-                                                         
-                                                        <h:inputText styleClass="form-control" value=""/>
-                                                    </div>
-                                                    <h:commandButton value="Registrar" styleClass="btn btn-success"
-                                                                     style="margin-right:10px"/>
-                                                    <h:commandButton value="Cancelar" styleClass="btn btn-success"/>
+                                            <h:commandButton value="Siguiente" id="cmdSiguiente"
+                                                             action="#{beanRegistroDetalle.guardar}"
+                                                             styleClass="btn btn-primary"/>
+                                            <h:commandButton value="Cancelar" styleClass="btn btn-primary"/>
                                                 </h:form>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    </div>                
                                 </div>
                                 <!-- /.panel-body -->
                             </div>

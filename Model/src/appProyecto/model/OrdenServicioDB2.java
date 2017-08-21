@@ -26,7 +26,7 @@ public class OrdenServicioDB2 {
         
         try {
 
-            String strSQL = "insert into OrdenServicio_Temporal values(CAST((next value for serial_ordenes) as varchar(50)),'unknown','unknown','unknown',GETDATE(),0,'unspecified',1,'unspecified',0.0)";
+            String strSQL = "insert into OrdenServicio_Temporal values(CAST((next value for serial_ordenes) as varchar(50)),'unknown','unknown','unknown',GETDATE(),0,'unspecified','PENDIENTE','unspecified',0.0)";
             //Se ejecuta la sentencia SQL
             accesoDatos.ejecutaSQL(strSQL) /*, sqlBitacora*/;
 
@@ -129,12 +129,18 @@ public class OrdenServicioDB2 {
 
     }
     
+    /**
+     *Actualiza los detalles de la solicitud.
+     * @param orden
+     * @throws SNMPExceptions
+     * @throws SQLException
+     */
     public void actualizarOrdenSevicio(OrdenServicio orden)throws SNMPExceptions, SQLException{
         
         String strSQL = "";
         try {
         
-            strSQL = "UPDATE ";
+            strSQL = "UPDATE OrdenServicio_Temporal set fecha_ejecucion='"+orden.getFecha()+"', estimacion_horas="+orden.getEstimacion_horas()+", detalle='"+orden.getDetalle()+"', estado='"+orden.getEstado()+"', observaciones='"+orden.getObservaciones()+"' where ID='"+orden.getId()+"'";
             //Se ejecuta la sentencia SQL
             accesoDatos.ejecutaSQL(strSQL/*, sqlBitacora*/);
         

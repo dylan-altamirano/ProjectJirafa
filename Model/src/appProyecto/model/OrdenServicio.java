@@ -27,7 +27,7 @@ public class OrdenServicio {
         this.estimacion_horas = 0;
         this.lugarEjecucion = new Direccion();
         this.detalle = "";
-        this.estado = "";
+        this.estado = "PENDIENTE";
         this.arrayCostos_Variables = new LinkedList<Costo_Variable>();
         this.descuentoAplicado = 0.0;
         this.observaciones = "";
