@@ -37,6 +37,34 @@ public class Costo_VariableDB {
             }
         }
     
+    /**
+     *Inserta el registro en la tabla temporal
+     * @param costoVariable
+     * @param idOrden
+     * @throws SNMPExceptions
+     * @throws SQLException
+     */
+    public void insertarRegistoTemporal(Costo_Variable costoVariable, String idOrden) throws SNMPExceptions, SQLException {
+        
+            String strSQL = "";
+            try {
+            
+                strSQL = 
+                        "INSERT INTO Costo_Variable_temporal VALUES ('" + costoVariable.getId() +"','" +idOrden+ "','" + costoVariable.getTipo().toString() +"'," + costoVariable.getMonto() +")";
+                //Se ejecuta la sentencia SQL
+                accesoDatos.ejecutaSQL(strSQL/*, sqlBitacora*/);
+            
+            } catch (SQLException e) {
+                throw new SNMPExceptions(SNMPExceptions.SQL_EXCEPTION, 
+                                        e.getMessage(), e.getErrorCode());
+            }catch (Exception e) {
+                throw new SNMPExceptions(SNMPExceptions.SQL_EXCEPTION, 
+                                        e.getMessage());
+            } finally {
+            
+            }
+        }
+    
     public LinkedList<Costo_Variable> obtenerCosto_VariablesSegunOrdenServicio(String idOrden) throws SNMPExceptions, SQLException {
          //  ResultSet rsPA = null;
            String strSQL = "";
@@ -46,7 +74,7 @@ public class Costo_VariableDB {
            try {
            //  open();
                strSQL = 
-                       "Select ID, IDOrdenServicio, tipo, monto from Costo_Variable where IDOrdenServicio="+idOrden;
+                       "Select ID, IDOrdenServicio, tipo, monto from Costo_Variable where IDOrdenServicio='"+idOrden+"'";
                //Se ejecuta la sentencia SQL
                ResultSet rsCosto_Variable = accesoDatos.ejecutaSQLRetornaRS(strSQL);
                while (rsCosto_Variable.next()) {
@@ -74,4 +102,24 @@ public class Costo_VariableDB {
            }
            return listaCosto_Variables;
        }
+    
+    /**
+     * Elimina los datos de la tabla temporal
+     */
+    public void eliminarDatosTablaTemporal()throws SNMPExceptions, SQLException{
+        try {
+
+            String strSQL = "delete from Costo_Variable_temporal";
+            //Se ejecuta la sentencia SQL
+            accesoDatos.ejecutaSQL(strSQL) /*, sqlBitacora*/;
+
+        } catch (SQLException e) {
+            throw new SNMPExceptions(SNMPExceptions.SQL_EXCEPTION, e.getMessage(), e.getErrorCode());
+        } catch (Exception e) {
+            throw new SNMPExceptions(SNMPExceptions.SQL_EXCEPTION, e.getMessage());
+        } finally {
+            //  accesoDatos.closeResultSet(rsPA);
+            // close();
+        }
+    }
 }

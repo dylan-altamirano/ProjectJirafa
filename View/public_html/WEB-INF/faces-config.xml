@@ -68,4 +68,9 @@
       <to-view-id>/SolicitudesServicios3.jsp</to-view-id>
     </navigation-case>
   </navigation-rule>
+  <managed-bean>
+    <managed-bean-name>beanRegistroCostosVariables</managed-bean-name>
+    <managed-bean-class>appProyecto.view.beanRegistroCostosVariables</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+  </managed-bean>
 </faces-config>
