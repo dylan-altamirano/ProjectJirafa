@@ -134,21 +134,21 @@
                                             </tr>
                                             <tr>
                                                 <td colspan="2">Nº Solicitud: </td><td colspan="0">
-                                                        <h:outputText value="#{beanSolictudFormalizacion.codigoSolicitud}" id="codigo"/>
+                                                        <h:outputText value="#{beanFacturacion.codigoSolicitud}" id="codigo"/>
                                                     </td><td colspan="2">Fecha de Registro:</td><td colspan="0">
-                                                        <h:outputText value="#{beanSolictudFormalizacion.fechaRegistro}" id="fecRegistro"/>
+                                                        <h:outputText value="#{beanFacturacion.fechaRegistro}" id="fecRegistro"/>
                                                     </td>
                                             </tr>
                                             <tr>
                                                 <td colspan="2">Fecha de Ejecucion: </td><td colspan="0">
-                                                        <h:outputText value="#{beanSolictudFormalizacion.fecEjecucion}" id="fecEjecucion"/>
+                                                        <h:outputText value="#{beanFacturacion.fecEjecucion}" id="fecEjecucion"/>
                                                     </td><td colspan="2">Duracion(horas):</td><td colspan="0">
-                                                        <h:outputText value="#{beanSolictudFormalizacion.estimacionHoras}" id="estimacionHoras"/>
+                                                        <h:outputText value="#{beanFacturacion.estimacionHoras}" id="estimacionHoras"/>
                                                     </td>
                                             </tr>
                                             <tr>
                                                 <td colspan="3">Estado: </td><td colspan="3">
-                                                        <h:outputText value="#{beanSolictudFormalizacion.estado}" id="estado"/>
+                                                        <h:outputText value="#{beanFacturacion.estado}" id="estado"/>
                                                     </td>
                                             </tr>
                                             <tr>
@@ -157,14 +157,14 @@
                                             <tr>
                                             <td>ID: </td><td>
                                                         <h:outputText id="clienteID"
-                                                                      value="#{beanSolictudFormalizacion.idCliente}"/>
+                                                                      value="#{beanFacturacion.idCliente}"/>
                                                     </td>
                                                 <td>Nombre: </td><td>
                                                         <h:outputText id="clienteNombre"
-                                                                      value="#{beanSolictudFormalizacion.nombreCliente}"/>
+                                                                      value="#{beanFacturacion.nombreCliente}"/>
                                                     </td><td>Correo electrónico:</td><td>
                                                         <h:outputText id="clienteCorreo"
-                                                                      value="#{beanSolictudFormalizacion.correoCliente}"/>
+                                                                      value="#{beanFacturacion.correoCliente}"/>
                                                     </td>
                                             </tr>
                                              <tr>
@@ -173,14 +173,14 @@
                                             <tr>
                                             <td>Nº Servicio: </td><td>
                                                         <h:outputText id="servicioID"
-                                                                      value="#{beanSolictudFormalizacion.idServicio}"/>
+                                                                      value="#{beanFacturacion.idServicio}"/>
                                                     </td>
                                                 <td>Nombre: </td><td>
                                                         <h:outputText id="servicioNombre"
-                                                                      value="#{beanSolictudFormalizacion.nombreServicio}"/>
+                                                                      value="#{beanFacturacion.nombreServicio}"/>
                                                     </td><td>Tipo:</td><td>
                                                         <h:outputText id="servicioTipo"
-                                                                      value="#{beanSolictudFormalizacion.tipoServicio}"/>
+                                                                      value="#{beanFacturacion.tipoServicio}"/>
                                                     </td>
                                             </tr>
                                             <tr>
@@ -189,31 +189,31 @@
                                             <tr>
                                             <td>Costo por hora: </td><td>
                                                         <h:outputText id="servicioCostoHora"
-                                                                      value="#{beanSolictudFormalizacion.costoHora}"/>
+                                                                      value="#{beanFacturacion.costoHora}"/>
                                                     </td>
                                                 <td>Subtotal: </td><td>
                                                         <h:outputText id="servicioParcial"
-                                                                      value="#{beanSolictudFormalizacion.subtotal}"/>
+                                                                      value="#{beanFacturacion.subtotal}"/>
                                                     </td><td>Total:</td><td>
                                                         <h:outputText id="servicioTotal"
-                                                                      value="#{beanSolictudFormalizacion.total}"/>
+                                                                      value="#{beanFacturacion.total}"/>
                                                     </td>
                                             </tr><tr>
                                                 <td colspan="3" style="text-align:left;">Descuento aplicado</td>
                                                 <td colspan="3" style="text-align:left;">
-                                                        <h:outputText value="#{beanSolictudFormalizacion.deascuentoAplicado}" id="descAplicado"/>
+                                                        <h:outputText value="#{beanFacturacion.deascuentoAplicado}" id="descAplicado"/>
                                                     </td>
                                             </tr>
                                             <tr>
                                                <td colspan="3" style="text-align:left;">Detalles:</td>
                                                 <td colspan="3" style="text-align:left;">
-                                                        <h:outputText value="#{beanSolictudFormalizacion.detalles}" id="servicioDetalle"/>
+                                                        <h:outputText value="#{beanFacturacion.detalles}" id="servicioDetalle"/>
                                                     </td>
                                             </tr>
                                              <tr>
                                                <td colspan="3" style="text-align:left;">Observaciones:</td>
                                                 <td colspan="3" style="text-align:left;">
-                                                        <h:outputText value="#{beanSolictudFormalizacion.observaciones}" id="servicioObservaciones"/>
+                                                        <h:outputText value="#{beanFacturacion.observaciones}" id="servicioObservaciones"/>
                                                     </td>
                                             </tr>
                                             <tr>
@@ -221,7 +221,7 @@
                                                         <h:commandButton value="Formalizar Solicitud"
                                                                          id="cmdFormalizar"
                                                                          styleClass="btn btn-primary"
-                                                                         action="#{beanSolictudFormalizacion.formalizar}"/>
+                                                                         action="#{beanFacturacion.formalizar}"/>
                                                     </td>
                                                 <td colspan="3" style="text-align:left;">
                                                         <h:commandButton value="Cancelar" id="idCancelar"
