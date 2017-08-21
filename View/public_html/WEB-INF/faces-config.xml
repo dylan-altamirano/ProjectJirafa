@@ -73,4 +73,9 @@
     <managed-bean-class>appProyecto.view.beanRegistroCostosVariables</managed-bean-class>
     <managed-bean-scope>request</managed-bean-scope>
   </managed-bean>
+  <managed-bean>
+    <managed-bean-name>beanSolictudFormalizacion</managed-bean-name>
+    <managed-bean-class>appProyecto.view.beanSolictudFormalizacion</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+  </managed-bean>
 </faces-config>
