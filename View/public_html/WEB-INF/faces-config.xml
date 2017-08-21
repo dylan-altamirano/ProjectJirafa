@@ -41,4 +41,15 @@
     <managed-bean-class>appProyecto.view.beanRegistroOrdenServicio</managed-bean-class>
     <managed-bean-scope>request</managed-bean-scope>
   </managed-bean>
+  <navigation-rule>
+    <from-view-id>/SolicitudesServicios2.jsp</from-view-id>
+    <navigation-case>
+      <from-outcome>success</from-outcome>
+      <to-view-id>/SolicitudesServicios3.jsp</to-view-id>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>fail</from-outcome>
+      <to-view-id>/SolicitudesServicios2.jsp</to-view-id>
+    </navigation-case>
+  </navigation-rule>
 </faces-config>

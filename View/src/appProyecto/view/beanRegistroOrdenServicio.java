@@ -38,6 +38,8 @@ public class beanRegistroOrdenServicio {
     
     
     public beanRegistroOrdenServicio() {
+        
+        this.codigo = "";
     }
     
     /**
@@ -183,6 +185,38 @@ public class beanRegistroOrdenServicio {
         }
         
         
+    }
+    
+    
+    /**
+     *Guarda el servicio en la orden de servicio pre-creada. Es el paso numero del workflow
+     * @return
+     */
+    public String guardar(){
+        
+        ordenServicio = new OrdenServicio();
+        ordenServicioDB2 = new OrdenServicioDB2();
+        
+        try {
+            
+            if (!this.getCodigo().equalsIgnoreCase("")) {
+                               
+                //se procede a obtener esa orden de servicio
+                ordenServicio = this.ordenServicioDB2.obtenerOrdenServicio();
+                
+                //se procede a guardar el cliente a esa orden de servicio
+                this.ordenServicioDB2.actualizarCliente(ordenServicio.getId(), this.getCodigo());
+                
+            }
+            
+        } catch (Exception e) {
+            // TODO: Add catch code
+            e.printStackTrace();
+            
+            return "fail";
+        }
+        
+        return "success";
     }
 
     public void setCodigo(String codigo) {

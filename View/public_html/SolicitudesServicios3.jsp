@@ -186,16 +186,15 @@
                                                 <h:outputText value="Identificador:"/>
                                             </label><h:inputText id="txtCodigo"
                                                                  value="#{beanRegistroOrdenServicio.codigo}"
-                                                                 styleClass="form-control" readonly="true"/>
+                                                                 styleClass="form-control" readonly="false"/>
                                             <p class="help-block">Introduzca una identificaci&oacute;n para el servicio.</p>
                                         </div>
                                         <div class="form-group">
                                             <label>
                                                 <h:outputText value="Descripcion:"/>
                                             </label><h:inputText id="txtDescripcion"
-                                                                               value="#{beanRegistroOrdenServicio.descripcion}"
-                                                                               styleClass="form-control"
-                                                                               readonly="true"/>
+                                                                 value="#{beanRegistroOrdenServicio.descripcion}"
+                                                                 styleClass="form-control" readonly="true"/>
                                             <p class="help-block">Introduzca una breve descripci&oacute;n del servicio.</p>
                                         </div>
                                         <div class="form-group">
@@ -222,6 +221,9 @@
                                                 <f:selectItem itemLabel="Inactivo" itemValue="0"/>
                                             </h:selectOneMenu>
                                         </div>
+                                        <h:commandButton value="Siguiente" id="cmdSiguient"
+                                                         action="#{beanRegistroOrdenServicio.guardar}"
+                                                         styleClass="btn btn-primary"/>
                                     </h:form>
                                 </div>
                                 <!-- /.panel-body -->
@@ -274,7 +276,7 @@
                                             <th>Tipo</th>
                                             <th>Precio</th>
                                             <th>Estado</th>
-                                            <th></th>
+                                            <th>Accion</th>
                                         </tr>
                                          
                                         <%         
@@ -299,7 +301,7 @@
                                    else{estado="Inactivo";}
             
                                    out.println("<td>"+estado+"</td>");
-                                   out.println("<td align='center'>"+"<button type='button' class='btn btn-primary' onclick='editar(t"+lista.get(i).getID()+")'>SELECCIONAR</button></td>");
+                                   out.println("<td align='center'>"+"<button type='button' class='btn btn-primary' onclick='editar(t"+lista.get(i).getID()+")'>ESCOGER</button></td>");
                                    out.println("</tr>");
                                 }
                             %>

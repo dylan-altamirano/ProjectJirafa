@@ -175,7 +175,8 @@
                                                                      value="#{beanRegistroOrdenCliente.nombre}"/>
                                             </div>
                                             <h:commandButton value="Siguiente" id="cmdEnviar"
-                                                             styleClass="btn btn-primary"/>
+                                                             styleClass="btn btn-primary"
+                                                             action="#{beanRegistroOrdenCliente.guardar}"/>
                                         </h:form>
                                 </div>
                                 <!--/.panel-body-->
