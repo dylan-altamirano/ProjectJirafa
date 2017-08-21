@@ -109,7 +109,7 @@
                         <div class="jumbotron">
                             <h1 class="display-3">Bienvenido al Sistema</h1>
                             <p class="lead">Realice su facturaci&oacute;n desde un sitio
-                                            centralizado </p>
+                                            centralizado, ademas administre sus clientes desde aca</p>
                             <hr class="my-4"></hr>
                             <p>Utiliza una estructura sencilla de manejar con resultados concretos y precisos.</p>
                             <p class="lead">
