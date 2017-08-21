@@ -31,6 +31,7 @@ public class OrdenServicio {
         this.descuentoAplicado = 0.0;
         this.observaciones = "";
         this.usuario = new Usuario();
+        this.usuario.setId("administrador");
     }
 
     public OrdenServicio(String id, Cliente cliente, Servicio servicio, Date fecha, int estimacion_horas,

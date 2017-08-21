@@ -7,6 +7,8 @@ import appProyecto.SNMPExceptions;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import java.text.SimpleDateFormat;
+
 import java.util.LinkedList;
 
 public class OrdenServicioDB {
@@ -18,17 +20,18 @@ public class OrdenServicioDB {
     }
 
     public void insertar(OrdenServicio OrdenServicio) throws SNMPExceptions, SQLException {
-
+    
+        SimpleDateFormat smp = new SimpleDateFormat("dd/MM/yyyy");
+    
         String strSQL = "";
         try {
 
             strSQL =
                     "INSERT INTO OrdenServicio VALUES ('" + OrdenServicio.getId() + "','" + OrdenServicio.getCliente().getID() +
-                    "','" + OrdenServicio.getServicio().getID() + "','" + OrdenServicio.getFecha() + "','" +
+                    "','" + OrdenServicio.getServicio().getID() + "','" + OrdenServicio.getUsuario().getId() +"','" + smp.format(OrdenServicio.getFecha()) + "','" +
                     OrdenServicio.getEstimacion_horas() + "','" + OrdenServicio.getDetalle() + "','" +
-                    OrdenServicio.getEstado() + "','" + OrdenServicio.montoTotalCostosVariables() + "','" +
-                    OrdenServicio.getObservaciones() + "','" + OrdenServicio.getDescuentoAplicado() + "','" +
-                    OrdenServicio.getUsuario().getId() + "')";
+                    OrdenServicio.getEstado() + "','" +
+                    OrdenServicio.getObservaciones() + "','" + OrdenServicio.getDescuentoAplicado() + "')";
             //Se ejecuta la sentencia SQL
             accesoDatos.ejecutaSQL(strSQL) /*, sqlBitacora*/;
 

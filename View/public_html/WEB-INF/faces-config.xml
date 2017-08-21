@@ -78,4 +78,37 @@
     <managed-bean-class>appProyecto.view.beanSolictudFormalizacion</managed-bean-class>
     <managed-bean-scope>request</managed-bean-scope>
   </managed-bean>
+  <navigation-rule>
+    <from-view-id>/SolicitudesServicios.jsp</from-view-id>
+    <navigation-case>
+      <from-outcome>success</from-outcome>
+      <to-view-id>/SolicitudesServicios4.jsp</to-view-id>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>fail</from-outcome>
+      <to-view-id>/SolicitudesServicios.jsp</to-view-id>
+    </navigation-case>
+  </navigation-rule>
+  <navigation-rule>
+    <from-view-id>/SolicitudesServicios4.jsp</from-view-id>
+    <navigation-case>
+      <from-outcome>success</from-outcome>
+      <to-view-id>/SolicitudesServicios5.jsp</to-view-id>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>fail</from-outcome>
+      <to-view-id>/SolicitudesServicios4.jsp</to-view-id>
+    </navigation-case>
+  </navigation-rule>
+  <navigation-rule>
+    <from-view-id>/SolicitudesServicios5.jsp</from-view-id>
+    <navigation-case>
+      <from-outcome>success</from-outcome>
+      <to-view-id>/confirmacion.jsp</to-view-id>
+    </navigation-case>
+    <navigation-case>
+      <from-outcome>fail</from-outcome>
+      <to-view-id>/errorOperacionSinExito.jsp</to-view-id>
+    </navigation-case>
+  </navigation-rule>
 </faces-config>

@@ -103,6 +103,45 @@ public class Costo_VariableDB {
            return listaCosto_Variables;
        }
     
+    public LinkedList<Costo_Variable> obtenerCosto_VariablesSegunOrdenServicioTemporal(String idOrden) throws SNMPExceptions, SQLException {
+         //  ResultSet rsPA = null;
+           String strSQL = "";
+           Costo_Variable Costo_Variable;
+           LinkedList<Costo_Variable> listaCosto_Variables = new LinkedList<Costo_Variable>();
+           
+           try {
+           //  open();
+               strSQL = 
+                       "Select ID, IDOrdenServicio, tipo, monto from Costo_Variable_temporal where IDOrdenServicio='"+idOrden+"'";
+               //Se ejecuta la sentencia SQL
+               ResultSet rsCosto_Variable = accesoDatos.ejecutaSQLRetornaRS(strSQL);
+               while (rsCosto_Variable.next()) {
+                   
+                Costo_Variable = new Costo_Variable();
+               
+                Costo_Variable.setId(rsCosto_Variable.getString("ID"));
+                Costo_Variable.setTipo(TipoCosto.valueOf(rsCosto_Variable.getString("tipo")));
+                Costo_Variable.setMonto(rsCosto_Variable.getDouble("monto")); //Solo se trae el ID del tipo Costo_Variable para adjuntarle el objeto completo despues   
+               
+               listaCosto_Variables.add(Costo_Variable);
+               
+               }
+               rsCosto_Variable.close();
+               
+           } catch (SQLException e) {
+               throw new SNMPExceptions(SNMPExceptions.SQL_EXCEPTION, 
+                                       e.getMessage(), e.getErrorCode());
+           }catch (Exception e) {
+               throw new SNMPExceptions(SNMPExceptions.SQL_EXCEPTION, 
+                                       e.getMessage());
+           } finally {
+            //  accesoDatos.closeResultSet(rsPA);
+          // close();
+           }
+           return listaCosto_Variables;
+       }
+    
+    
     /**
      * Elimina los datos de la tabla temporal
      */
