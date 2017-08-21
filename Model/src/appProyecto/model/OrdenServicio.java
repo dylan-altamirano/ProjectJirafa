@@ -69,8 +69,13 @@ public class OrdenServicio {
         
         return monto;
     }
-
-
+    /**
+     *Agrega un costo variable al array de costos variables
+     * @param costo
+     */
+    public void agregarCostoVariable(Costo_Variable costo){
+        this.arrayCostos_Variables.add(costo);
+    }
 
 
     public void setId(String id) {

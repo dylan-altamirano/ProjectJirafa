@@ -50,7 +50,7 @@ public class Costo_VariableDB {
             try {
             
                 strSQL = 
-                        "INSERT INTO Costo_Variable_temporal VALUES ('" + costoVariable.getId() +"','" +idOrden+ "','" + costoVariable.getTipo().toString() +"'," + costoVariable.getMonto() +")";
+                        "INSERT INTO Costo_Variable_temporal VALUES (CAST(next value for serial_costovariable as varchar(50)),'" +idOrden+ "','" + costoVariable.getTipo().toString() +"'," + costoVariable.getMonto() +")";
                 //Se ejecuta la sentencia SQL
                 accesoDatos.ejecutaSQL(strSQL/*, sqlBitacora*/);
             
