@@ -1,5 +1,16 @@
 package appProyecto.view;
 
+import appProyecto.model.Distrito;
+import appProyecto.model.DistritoDB;
+import appProyecto.model.TipoServicio;
+
+import appProyecto.model.TipoServicioDB;
+
+import java.util.LinkedList;
+import java.util.List;
+
+import javax.faces.model.SelectItem;
+
 public class beanRegistroClientes {
     public String ID;
     public String Nombre;
@@ -11,10 +22,33 @@ public class beanRegistroClientes {
     public String Distrito;
     public String Estado;
     public String Telefono;
+    
+    private LinkedList<Distrito> listaDistritos;
+    private List<SelectItem> itemDistritos = new LinkedList<SelectItem>();
+    
 
     public String Nulos;
     
     public beanRegistroClientes() {
+    }
+    
+    public void cargaComboDistritos(){
+        
+        DistritoDB distritoDB = new DistritoDB();
+
+               try {
+                  // this.listaDistritos = distritoDB.cargarDistritoPorCanton(true);
+
+                   for (Distrito destrito : listaDistritos) {
+
+                       this.itemDistritos.add(new SelectItem(destrito.getIdDistrito(), destrito.getDescripcion()));
+                   }
+
+
+               } catch (Exception e) {
+                   // TODO: Add catch code
+                   e.printStackTrace();
+               } 
     }
     
     public String validaTelefono(){
@@ -156,5 +190,21 @@ public class beanRegistroClientes {
 
     public String getNulos() {
         return Nulos;
+    }
+
+    public void setListaDistritos(LinkedList<Distrito> listaDistritos) {
+        this.listaDistritos = listaDistritos;
+    }
+
+    public LinkedList<Distrito> getListaDistritos() {
+        return listaDistritos;
+    }
+
+    public void setItemDistritos(List<SelectItem> itemDistritos) {
+        this.itemDistritos = itemDistritos;
+    }
+
+    public List<SelectItem> getItemDistritos() {
+        return itemDistritos;
     }
 }
