@@ -13,7 +13,7 @@ public class OrdenServicio {
     private int estimacion_horas;
     private Direccion lugarEjecucion;
     private String detalle;
-    private boolean estado;
+    private String estado;
     private LinkedList<Costo_Variable> arrayCostos_Variables;
     private double descuentoAplicado;
     private String observaciones;
@@ -27,7 +27,7 @@ public class OrdenServicio {
         this.estimacion_horas = 0;
         this.lugarEjecucion = new Direccion();
         this.detalle = "";
-        this.estado = true;
+        this.estado = "";
         this.arrayCostos_Variables = new LinkedList<Costo_Variable>();
         this.descuentoAplicado = 0.0;
         this.observaciones = "";
@@ -35,7 +35,7 @@ public class OrdenServicio {
     }
 
     public OrdenServicio(String id, Cliente cliente, Servicio servicio, Date fecha, int estimacion_horas,
-                         Direccion lugarEjecucion, String detalle, boolean estado,
+                         Direccion lugarEjecucion, String detalle, String estado,
                          LinkedList<Costo_Variable> arrayCostos_Variables, double descuentoAplicado,
                          String observaciones, Usuario usuario) {
        
@@ -129,11 +129,11 @@ public class OrdenServicio {
         return detalle;
     }
 
-    public void setEstado(boolean estado) {
+    public void setEstado(String estado) {
         this.estado = estado;
     }
 
-    public boolean isEstado() {
+    public String getEstado() {
         return estado;
     }
 

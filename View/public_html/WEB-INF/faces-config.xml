@@ -52,4 +52,9 @@
       <to-view-id>/SolicitudesServicios2.jsp</to-view-id>
     </navigation-case>
   </navigation-rule>
+  <managed-bean>
+    <managed-bean-name>beanRegistroDetalle</managed-bean-name>
+    <managed-bean-class>appProyecto.view.beanRegistroDetalle</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+  </managed-bean>
 </faces-config>

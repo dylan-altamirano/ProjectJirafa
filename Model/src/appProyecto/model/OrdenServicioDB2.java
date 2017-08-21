@@ -52,7 +52,7 @@ public class OrdenServicioDB2 {
                     "INSERT INTO OrdenServicio_Temporal VALUES ('" + OrdenServicio.getId() + "','" + OrdenServicio.getCliente().getID() +
                     "','" + OrdenServicio.getServicio().getID() + "','" + OrdenServicio.getFecha() + "','" +
                     OrdenServicio.getEstimacion_horas() + "','" + OrdenServicio.getDetalle() + "','" +
-                    OrdenServicio.isEstado() + "','" + OrdenServicio.montoTotalCostosVariables() + "','" +
+                    OrdenServicio.getEstado() + "','" + OrdenServicio.montoTotalCostosVariables() + "','" +
                     OrdenServicio.getObservaciones() + "','" + OrdenServicio.getDescuentoAplicado() + "','" +
                     OrdenServicio.getUsuario().getId() + "')";
             //Se ejecuta la sentencia SQL
@@ -178,7 +178,7 @@ public class OrdenServicioDB2 {
                 OrdenServicio.setFecha(rsOrdenServicio.getDate("fecha_ejecucion"));
                 OrdenServicio.setEstimacion_horas(rsOrdenServicio.getInt("estimacion_horas"));
                 OrdenServicio.setDetalle(rsOrdenServicio.getString("detalle"));
-                OrdenServicio.setEstado(rsOrdenServicio.getBoolean("estado"));
+                OrdenServicio.setEstado(rsOrdenServicio.getString("estado"));
                 OrdenServicio.setObservaciones(rsOrdenServicio.getString("observaciones"));
                 OrdenServicio.setDescuentoAplicado(rsOrdenServicio.getDouble("descuento_aplicado"));
                 OrdenServicio.getUsuario().setId(rsOrdenServicio.getString("ID_Usuario"));
@@ -220,7 +220,7 @@ public class OrdenServicioDB2 {
                 OrdenServicio.setFecha(rsOrdenServicio.getDate("fecha_ejecucion"));
                 OrdenServicio.setEstimacion_horas(rsOrdenServicio.getInt("estimacion_horas"));
                 OrdenServicio.setDetalle(rsOrdenServicio.getString("detalle"));
-                OrdenServicio.setEstado(rsOrdenServicio.getBoolean("estado"));
+                OrdenServicio.setEstado(rsOrdenServicio.getString("estado"));
                 OrdenServicio.setObservaciones(rsOrdenServicio.getString("observaciones"));
                 OrdenServicio.setDescuentoAplicado(rsOrdenServicio.getDouble("descuento_aplicado"));
                 OrdenServicio.getUsuario().setId(rsOrdenServicio.getString("ID_Usuario"));
@@ -253,7 +253,7 @@ public class OrdenServicioDB2 {
 
         try {
 
-            String strSQL = "Update OrdenServicio_Temporal set estado=0 where ID='" + cod+"'";
+            String strSQL = "Update OrdenServicio_Temporal set estado='Inactivo' where ID='" + cod+"'";
             //Se ejecuta la sentencia SQL
             accesoDatos.ejecutaSQL(strSQL) /*, sqlBitacora*/;
 

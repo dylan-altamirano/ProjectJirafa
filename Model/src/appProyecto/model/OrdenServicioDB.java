@@ -26,7 +26,7 @@ public class OrdenServicioDB {
                     "INSERT INTO OrdenServicio VALUES ('" + OrdenServicio.getId() + "','" + OrdenServicio.getCliente().getID() +
                     "','" + OrdenServicio.getServicio().getID() + "','" + OrdenServicio.getFecha() + "','" +
                     OrdenServicio.getEstimacion_horas() + "','" + OrdenServicio.getDetalle() + "','" +
-                    OrdenServicio.isEstado() + "','" + OrdenServicio.montoTotalCostosVariables() + "','" +
+                    OrdenServicio.getEstado() + "','" + OrdenServicio.montoTotalCostosVariables() + "','" +
                     OrdenServicio.getObservaciones() + "','" + OrdenServicio.getDescuentoAplicado() + "','" +
                     OrdenServicio.getUsuario().getId() + "')";
             //Se ejecuta la sentencia SQL
@@ -63,10 +63,10 @@ public class OrdenServicioDB {
                 OrdenServicio.setFecha(rsOrdenServicio.getDate("fecha_ejecucion"));
                 OrdenServicio.setEstimacion_horas(rsOrdenServicio.getInt("estimacion_horas"));
                 OrdenServicio.setDetalle(rsOrdenServicio.getString("detalle"));
-                OrdenServicio.setEstado(rsOrdenServicio.getBoolean("estado"));
+                OrdenServicio.setEstado(rsOrdenServicio.getString("estado"));
                 OrdenServicio.setObservaciones(rsOrdenServicio.getString("observacion"));
                 OrdenServicio.setDescuentoAplicado(rsOrdenServicio.getDouble("descuento_aplicado"));
-                OrdenServicio.getUsuario().setId(rsOrdenServicio.getString("ID"));
+                OrdenServicio.getUsuario().setId(rsOrdenServicio.getString("ID_Usuario"));
             }
             rsOrdenServicio.close();
 
@@ -82,7 +82,7 @@ public class OrdenServicioDB {
     }
 
 
-    public LinkedList<OrdenServicio> obtenerOrdenServiciosSegunEstado(boolean estado) throws SNMPExceptions,
+    public LinkedList<OrdenServicio> obtenerOrdenServiciosSegunEstado(String estado) throws SNMPExceptions,
                                                                                              SQLException {
         //  ResultSet rsPA = null;
         String strSQL = "";
@@ -91,8 +91,8 @@ public class OrdenServicioDB {
 
         try {
             strSQL =
-                    "Select ID_Solicitud, ID_Cliente, ID_Servicio, fecha_ejecucion, estimacion_horas, detalle, estado, costos_variable, observacion, descuento_aplicado, ID_Usuario  from OrdenServicio where estado=" +
-                    estado;
+                    "Select ID_Solicitud, ID_Cliente, ID_Servicio, fecha_ejecucion, estimacion_horas, detalle, estado, costos_variable, observacion, descuento_aplicado, ID_Usuario  from OrdenServicio where estado='" +
+                    estado+"'";
             //Se ejecuta la sentencia SQL
             ResultSet rsOrdenServicio = accesoDatos.ejecutaSQLRetornaRS(strSQL);
             while (rsOrdenServicio.next()) {
@@ -105,7 +105,7 @@ public class OrdenServicioDB {
                 OrdenServicio.setFecha(rsOrdenServicio.getDate("fecha_ejecucion"));
                 OrdenServicio.setEstimacion_horas(rsOrdenServicio.getInt("estimacion_horas"));
                 OrdenServicio.setDetalle(rsOrdenServicio.getString("detalle"));
-                OrdenServicio.setEstado(rsOrdenServicio.getBoolean("estado"));
+                OrdenServicio.setEstado(rsOrdenServicio.getString("estado"));
                 OrdenServicio.setObservaciones(rsOrdenServicio.getString("observacion"));
                 OrdenServicio.setDescuentoAplicado(rsOrdenServicio.getDouble("descuento_aplicado"));
                 OrdenServicio.getUsuario().setId(rsOrdenServicio.getString("ID"));
@@ -134,11 +134,11 @@ public class OrdenServicioDB {
      * @throws SNMPExceptions
      * @throws SQLException
      */
-    public void eliminarOrdenServicio(int cod) throws SNMPExceptions, SQLException {
+    public void eliminarOrdenServicio(String  cod) throws SNMPExceptions, SQLException {
 
         try {
 
-            String strSQL = "Update OrdenServicio set estado=0 where ID=" + cod;
+            String strSQL = "Update OrdenServicio set estado='Inactivo' where ID='" + cod+"'";
             //Se ejecuta la sentencia SQL
             accesoDatos.ejecutaSQL(strSQL) /*, sqlBitacora*/;
 
@@ -159,13 +159,13 @@ public class OrdenServicioDB {
      * @throws SNMPExceptions
      * @throws SQLException
      */
-    public boolean consultarOrdenServicio(int codigo) throws SNMPExceptions, SQLException {
+    public boolean consultarOrdenServicio(String codigo) throws SNMPExceptions, SQLException {
         ResultSet rsOrdenServicio = null;
         String select = "";
         try {
             //  open();
             boolean existe = false;
-            select = "Select ID from OrdenServicio where ID =" + codigo;
+            select = "Select ID from OrdenServicio where ID ='" + codigo+"'";
 
 
             //Se ejecuta la sentencia SQL

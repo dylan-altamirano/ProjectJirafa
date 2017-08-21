@@ -25,6 +25,15 @@
             <link href="recursos/css/sb-admin-2.css" rel="stylesheet"></link>
             <!-- Custom Fonts -->
             <link href="recursos/css/font-awesome.min.css" rel="stylesheet" type="text/css"></link>
+            
+            <script type="text/javascript" src="recursos/js/jquery.min.js"></script>
+            <!-- Bootstrap Core JavaScript -->
+            <script type="text/javascript" src="recursos/js/bootstrap.min.js"></script>
+            <!-- Metis Menu Plugin JavaScript -->
+            <script type="text/javascript" src="recursos/js/metisMenu.min.js"></script>
+            <!-- Custom Theme JavaScript -->
+            <script type="text/javascript" src="recursos/js/sb-admin-2.js"></script>
+            
             <!--FCUNCION JAVA SCRIPT PARA EXTRAER LOS VALORES DE LA TABLA-->
             <script type="text/javascript">
               function editar(objeto) {
@@ -68,6 +77,7 @@
                   var estado = document.getElementById('registro:cboEstado');
                   estado = "";
               }
+
             </script>
         </head>
         <body>
@@ -322,20 +332,6 @@
                 <!-- /#page-wrapper -->
             </div>
             <!-- /#wrapper -->
-            <!-- /#wrapper -->
-            <script type="text/javascript" src="recursos/js/jquery.js"></script>
-            <script type="text/javascript" src="recursos/js/jquery.min.js"></script>
-            <!-- Bootstrap Core JavaScript -->
-            <script type="text/javascript" src="recursos/js/bootstrap.min.js"></script>
-            <!-- Metis Menu Plugin JavaScript -->
-            <script type="text/javascript" src="recursos/js/metisMenu.min.js"></script>
-            <!-- Custom Theme JavaScript -->
-            <script type="text/javascript" src="recursos/js/sb-admin-2.js"></script>
-            <script type="text/javascript">
-                  $('#registro:cmdRegistrar').click(function () {
-                      $('#mensajeConfirmacion').fadeOut(5000);
-                  });
-            </script>
         </body>
     </html>
 </f:view>
