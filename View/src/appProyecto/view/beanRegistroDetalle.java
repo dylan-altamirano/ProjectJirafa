@@ -3,6 +3,8 @@ package appProyecto.view;
 import appProyecto.model.OrdenServicio;
 import appProyecto.model.OrdenServicioDB2;
 
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 import java.util.Date;
@@ -10,6 +12,8 @@ import java.util.LinkedList;
 import java.util.List;
 
 import javax.faces.model.SelectItem;
+
+import javax.swing.JOptionPane;
 
 public class beanRegistroDetalle {
     
@@ -77,6 +81,7 @@ public class beanRegistroDetalle {
         
         this.ordenServicio = new OrdenServicio();
         this.ordenDB2 = new OrdenServicioDB2();
+        Date fecha = new Date();
         
         if (this.validarNulos()) {
             
@@ -85,7 +90,9 @@ public class beanRegistroDetalle {
                 //se procede a obtener esa orden de servicio
                 ordenServicio = this.ordenDB2.obtenerOrdenServicio();
                 
-                ordenServicio.setFecha(new SimpleDateFormat("dd-MM-yyyy HH:mm:ss").parse(this.getFecha()+" 00:00:00"));
+                fecha = this.stringToDate(this.getFecha());
+                
+                ordenServicio.setFecha(fecha);
                 ordenServicio.setEstimacion_horas(Integer.parseInt(this.getHoras()));
                 ordenServicio.setDetalle(this.getDetalle());
                 ordenServicio.setObservaciones(this.getObservaciones());
@@ -109,6 +116,20 @@ public class beanRegistroDetalle {
         return "success";
     }
     
+    //Método que convierte la cadena de texto que cotiene la fecha y la convierte a un objeto de tipo DATE
+        public static Date stringToDate(String text){
+                
+             DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+             Date fecha=null;
+              
+                try { 
+                    fecha =formatter.parse(text);
+                } catch (ParseException ex) {
+                    JOptionPane.showMessageDialog(null, ex.getMessage());
+                }
+               return fecha;
+        }
+        
 
     public void setHoras(String horas) {
         this.horas = horas;

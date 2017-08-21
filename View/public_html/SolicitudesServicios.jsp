@@ -160,7 +160,7 @@
                                                     </div>
                                             <h:commandButton value="Siguiente" id="cmdSiguiente"
                                                              action="#{beanRegistroDetalle.guardar}"
-                                                             styleClass="btn btn-primary"/>
+                                                             styleClass="btn btn-primary" style="margin-right:10px"/>
                                             <h:commandButton value="Cancelar" styleClass="btn btn-primary"/>
                                                 </h:form>
                                     </div>                

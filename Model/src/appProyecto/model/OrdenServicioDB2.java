@@ -4,8 +4,11 @@ import appProyecto.AccesoDatos;
 
 import appProyecto.SNMPExceptions;
 
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
+import java.text.SimpleDateFormat;
 
 import java.util.LinkedList;
 
@@ -137,10 +140,12 @@ public class OrdenServicioDB2 {
      */
     public void actualizarOrdenSevicio(OrdenServicio orden)throws SNMPExceptions, SQLException{
         
+        SimpleDateFormat smp = new SimpleDateFormat("dd/MM/yyyy");
+        
         String strSQL = "";
         try {
         
-            strSQL = "UPDATE OrdenServicio_Temporal set fecha_ejecucion='"+orden.getFecha()+"', estimacion_horas="+orden.getEstimacion_horas()+", detalle='"+orden.getDetalle()+"', estado='"+orden.getEstado()+"', observaciones='"+orden.getObservaciones()+"' where ID='"+orden.getId()+"'";
+            strSQL = "UPDATE OrdenServicio_Temporal set fecha_ejecucion='"+smp.format(orden.getFecha())+"', estimacion_horas="+orden.getEstimacion_horas()+", detalle='"+orden.getDetalle()+"', estado='"+orden.getEstado()+"', observaciones='"+orden.getObservaciones()+"' where ID='"+orden.getId()+"'";
             //Se ejecuta la sentencia SQL
             accesoDatos.ejecutaSQL(strSQL/*, sqlBitacora*/);
         
