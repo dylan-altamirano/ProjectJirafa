@@ -144,7 +144,8 @@
                                                              styleClass="btn btn-primary" style="margin-right:10px"
                                                              action="#{beanRegistroCostosVariables.agregarCosto}"/>
                                             <h:commandButton value="Limpiar" id="cmdLimpiar"
-                                                             styleClass="btn btn-primary"/>
+                                                             styleClass="btn btn-primary"
+                                                             action="#{beanRegistroCostosVariables.limpiarControles}"/>
                                         </h:form>
                                     </div>
                                 </div>
@@ -189,12 +190,20 @@
                                 <div class="panel panel-default">
                                     <div class="panel-heading">Resumen Costos Variables</div>
                                     <div class="panel-body">
+                                        <h:form id="montoFinal">
                                         <div class="form-group">
                                                 <label>
                                                 <h:outputText value="Total: "/>
                                             </label><h:outputText value="#{beanRegistroCostosVariables.totalCostos}" id="lblResultado"
                                                                   style="text-align:right"/>
                                         </div>
+                                            <h:commandButton value="Siguiente" id="cmdSiguiente"
+                                                             styleClass="btn btn-primary" style="margin-right:10px"
+                                                             action="#{beanRegistroCostosVariables.continuar}"/>
+                                            <h:commandButton value="Cancelar" styleClass="btn btn-primary"
+                                                             id="cmdCancelar"
+                                                             action="#{beanRegistroCostosVariables.cancelar}"/>
+                                        </h:form>
                                     </div>
                                 </div>
                         </div>

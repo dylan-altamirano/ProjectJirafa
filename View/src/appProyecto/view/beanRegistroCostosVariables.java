@@ -150,6 +150,30 @@ public class beanRegistroCostosVariables {
         return this.ordenServicio.montoTotalCostosVariables();
     }
     
+    public void limpiarControles(){
+        
+        this.identificador ="";
+        this.idOrden ="";
+        this.tipo = "";
+        this.monto ="";  
+    }
+    
+    public void cancelar(){
+        
+        limpiarControles();
+        this.listaCostos = new LinkedList<Costo_Variable>();
+        borrarTablaTemporalCostosVariables();
+        
+    }
+    
+    /**
+     *Continua a la siguiente pagina
+     * @return
+     */
+    public String continuar(){
+        
+        return "success";
+    }
     
     public void setIdentificador(String identificador) {
         this.identificador = identificador;

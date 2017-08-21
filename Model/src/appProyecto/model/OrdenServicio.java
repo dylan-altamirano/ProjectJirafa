@@ -14,7 +14,7 @@ public class OrdenServicio {
     private Direccion lugarEjecucion;
     private String detalle;
     private String estado;
-    private LinkedList<Costo_Variable> arrayCostos_Variables;
+    private static LinkedList<Costo_Variable> arrayCostos_Variables  = new LinkedList<Costo_Variable>();;
     private double descuentoAplicado;
     private String observaciones;
     private Usuario usuario;
@@ -28,7 +28,6 @@ public class OrdenServicio {
         this.lugarEjecucion = new Direccion();
         this.detalle = "";
         this.estado = "PENDIENTE";
-        this.arrayCostos_Variables = new LinkedList<Costo_Variable>();
         this.descuentoAplicado = 0.0;
         this.observaciones = "";
         this.usuario = new Usuario();
@@ -76,8 +75,38 @@ public class OrdenServicio {
     public void agregarCostoVariable(Costo_Variable costo){
         this.arrayCostos_Variables.add(costo);
     }
-
-
+    
+    /**
+     *Calcula el descuento del servicio deacuerdo al cliente
+     * @return
+     */
+    public double calculaDescuento(){
+        
+        double monto = 0.0;
+        
+        monto =+ this.calculaPrecioParcial()*(this.cliente.getDescAplicable()/100);
+        
+        return monto;
+    }
+    
+    /**
+     *Calcula el precio parcial del servicio
+     * @return
+     */
+    public double calculaPrecioParcial(){
+        
+        return (this.servicio.getPrecioPorHora()*this.getEstimacion_horas())+this.montoTotalCostosVariables();
+    }
+    
+    /**
+     *Calcula el precio total, incluyendo el descuento aplicable del cliente al servicio contratado
+     * @return
+     */
+    public double calculaPrecioTotal(){
+        
+        return this.calculaPrecioParcial()-this.calculaDescuento();
+    }
+    
     public void setId(String id) {
         this.id = id;
     }
