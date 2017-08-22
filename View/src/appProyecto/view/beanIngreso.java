@@ -64,7 +64,7 @@ public class beanIngreso {
         UsuarioDB usuarioDb = new UsuarioDB();
         LinkedList<Rol> roles = new LinkedList<Rol>();
         RolDB rolDb = new RolDB();
-
+        int i=0;
         //Valida que los campos no esten nulos
         if (this.validaNulos()) {
 
@@ -80,7 +80,13 @@ public class beanIngreso {
                     //Por ultimo se revisa que el rol seleccionado se encuentre de los roles que el posee el usuario
                     for (Rol rol : roles) {
                         if (rol.getDescripcion().equalsIgnoreCase(this.getRol())) {
-                            return "correcto";
+                            if (rol.getDescripcion().equalsIgnoreCase("Administrador")) {
+                                return "correcto";
+                            }
+                            if (rol.getDescripcion().equalsIgnoreCase("Corriente")) {
+                                return "corriente";
+                            }
+                           
                         }
                     }
 

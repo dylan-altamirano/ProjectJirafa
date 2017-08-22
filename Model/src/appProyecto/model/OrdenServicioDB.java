@@ -52,22 +52,22 @@ public class OrdenServicioDB {
         try {
             //  open();
             strSQL =
-                    "Select ID_Solicitud, ID_Cliente, ID_Servicio, fecha_ejecucion, estimacion_horas, detalle, estado, costos_variable, observacion, descuento_aplicado, ID_Usuario  from OrdenServicio where ID=" +
-                    codigo;
+                    "Select ID, ID_Cliente, ID_Servicio,ID_Usuario, fecha_ejecucion, estimacion_horas, detalle, estado, observaciones, descuento_aplicado  from OrdenServicio where ID='" +
+                    codigo+"'";
             //Se ejecuta la sentencia SQL
             ResultSet rsOrdenServicio = accesoDatos.ejecutaSQLRetornaRS(strSQL);
             while (rsOrdenServicio.next()) {
 
                 OrdenServicio = new OrdenServicio();
 
-                OrdenServicio.setId(codigo);
+                OrdenServicio.setId(rsOrdenServicio.getString("ID"));
                 OrdenServicio.getCliente().setID(rsOrdenServicio.getString("ID_Cliente"));
                 OrdenServicio.getServicio().setID(rsOrdenServicio.getString("ID_Servicio")); //Solo se trae el ID del tipo OrdenServicio para adjuntarle el objeto completo despues
                 OrdenServicio.setFecha(rsOrdenServicio.getDate("fecha_ejecucion"));
                 OrdenServicio.setEstimacion_horas(rsOrdenServicio.getInt("estimacion_horas"));
                 OrdenServicio.setDetalle(rsOrdenServicio.getString("detalle"));
                 OrdenServicio.setEstado(rsOrdenServicio.getString("estado"));
-                OrdenServicio.setObservaciones(rsOrdenServicio.getString("observacion"));
+                OrdenServicio.setObservaciones(rsOrdenServicio.getString("observaciones"));
                 OrdenServicio.setDescuentoAplicado(rsOrdenServicio.getDouble("descuento_aplicado"));
                 OrdenServicio.getUsuario().setId(rsOrdenServicio.getString("ID_Usuario"));
             }
@@ -142,6 +142,29 @@ public class OrdenServicioDB {
         try {
 
             String strSQL = "Update OrdenServicio set estado='INACTIVO' where ID='" + cod+"'";
+            //Se ejecuta la sentencia SQL
+            accesoDatos.ejecutaSQL(strSQL) /*, sqlBitacora*/;
+
+        } catch (SQLException e) {
+            throw new SNMPExceptions(SNMPExceptions.SQL_EXCEPTION, e.getMessage(), e.getErrorCode());
+        } catch (Exception e) {
+            throw new SNMPExceptions(SNMPExceptions.SQL_EXCEPTION, e.getMessage());
+        } finally {
+            //  accesoDatos.closeResultSet(rsPA);
+            // close();
+        }
+    }
+    /**
+     *Factura la solicitud de servicio
+     * @param cod
+     * @throws SNMPExceptions
+     * @throws SQLException
+     */
+    public void facturarOrdenServicio(String  cod) throws SNMPExceptions, SQLException {
+
+        try {
+
+            String strSQL = "Update OrdenServicio set estado='FACTURAR' where ID='" + cod+"'";
             //Se ejecuta la sentencia SQL
             accesoDatos.ejecutaSQL(strSQL) /*, sqlBitacora*/;
 

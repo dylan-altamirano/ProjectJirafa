@@ -64,7 +64,7 @@
                         <ul class="nav" id="side-menu">  
                             <li>
                                 <!--<a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>-->
-                                <h:outputLink value="RegistroClientes.jsp">
+                                <h:outputLink value="RegistroClientes2.jsp">
                                     <h:outputText value="Administracion de Clientes"/>
                                 </h:outputLink>
                                 <!--<ul class="nav nav-second-level">
@@ -80,14 +80,14 @@
                              
                             <li>
                                 <!-- <a href="tables.html"><i class="fa fa-table fa-fw"></i> Tables</a>-->
-                                <h:outputLink value="SolicitudesServicios.jsp">
+                                <h:outputLink value="SolicitudesServicios2.0.jsp">
                                     <h:outputText value="Registro de Ordenes de Servicio"/>
                                 </h:outputLink>
                             </li>
                              
                             <li>
                                 <!--<a href="forms.html"><i class="fa fa-edit fa-fw"></i> Forms</a>-->
-                                <h:outputLink>
+                                <h:outputLink value="Facturacion2.jsp">
                                     <h:outputText value="Facturacion"/>
                                 </h:outputLink>
                             </li>

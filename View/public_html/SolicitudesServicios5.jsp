@@ -102,7 +102,7 @@
                                  
                                 <li>
                                     <!--<a href="forms.html"><i class="fa fa-edit fa-fw"></i> Forms</a>-->
-                                    <h:outputLink>
+                                    <h:outputLink value="Facturacion.jsp">
                                         <h:outputText value="Facturacion"/>
                                     </h:outputLink>
                                 </li>
@@ -224,8 +224,7 @@
                                                                          action="#{beanSolictudFormalizacion.formalizar}"/>
                                                     </td>
                                                 <td colspan="3" style="text-align:left;">
-                                                        <h:commandButton value="Cancelar" id="idCancelar"
-                                                                         styleClass="btn btn-primary"/>
+                                                        
                                                     </td>
                                             </tr>
                                         </table>

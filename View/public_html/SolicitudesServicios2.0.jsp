@@ -1,4 +1,4 @@
-<!DOCTYPE HTML>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ page contentType="text/html;charset=windows-1252"%>
 <%@ taglib uri="http://java.sun.com/jsf/html" prefix="h"%>
 <%@ taglib uri="http://java.sun.com/jsf/core" prefix="f"%>
@@ -19,7 +19,8 @@
             <!-- Custom Fonts -->
             <link href="recursos/css/font-awesome.min.css" rel="stylesheet" type="text/css"></link>
         </head>
-        <div id="wrapper">
+        <body>
+            <div id="wrapper">
             <!-- Navigation -->
             <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
                 <div class="navbar-header">
@@ -94,14 +95,14 @@
                              
                             <li>
                                 <!-- <a href="tables.html"><i class="fa fa-table fa-fw"></i> Tables</a>-->
-                                <h:outputLink value="SolicitudesServicios2.jsp">
+                                <h:outputLink value="SolicitudesServicios.jsp">
                                     <h:outputText value="Registro de Ordenes de Servicio"/>
                                 </h:outputLink>
                             </li>
                              
                             <li>
                                 <!--<a href="forms.html"><i class="fa fa-edit fa-fw"></i> Forms</a>-->
-                                <h:outputLink value="Facturacion.jsp">
+                                <h:outputLink>
                                     <h:outputText value="Facturacion"/>
                                 </h:outputLink>
                             </li>
@@ -115,27 +116,76 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-12">
-                            <h1 class="page-header">Consola de Administraci&oacute;n</h1>
+                            <h1 class="page-header">Registro de solicitudes de servicio</h1>
                         </div>
                         <!-- /.col-lg-12 -->
                     </div>
-                    <div class="row">
-                        <div class="jumbotron">
-                            <h1 class="display-3">Bienvenido al Sistema</h1>
-                            <p class="lead">Administre los servicios, clientes y facturaci&oacute;n desde un sitio
-                                            centralizado como es la consola de administraci&oacute;n del sistema.</p>
-                            <hr class="my-4"></hr>
-                            <p>Utiliza una estructura sencilla de manejar con resultados concretos y precisos.</p>
-                            <p class="lead">
-                                <a class="btn btn-primary btn-lg" href="#" role="button">Aprenda m&aacute;s</a>
-                            </p>
-                        </div>
-                    </div>
                     <!-- /.row -->
-                    <div class="row">
+                        <div class="row">
+                         <div class="col-lg-12">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">Cliente a solcitar el servicio </div>
+                                <div class="panel-body">
+                                    <h:form id="busqueda">
+                                        <div class="form-group">
+                                            <label>
+                                                    <h:outputText value="Buscar por:"/>
+                                                </label><h:selectOneMenu styleClass="form-control"
+                                                                         value="">
+                                                    <f:selectItem itemValue="#{null}" itemLabel="-- Seleccione uno --"/>
+                                                    <f:selectItem itemLabel="Identificador" itemValue="1"/>
+                                                    <f:selectItem itemLabel="Nombre" itemValue="2"/>
+                                                    <f:selectItem itemLabel="Correo Electronico" itemValue="3"/>                                                   
+                                                </h:selectOneMenu>
+                                            </div>
+                                        <div class="form-group">
+                                            <h:inputText id="identificador" styleClass="form-control"
+                                                             value="#{beanRegistroOrdenCliente.valorBuscado}"/>
+                                            <p class="help-block">Introduzca el valor a buscar</p>
+                                        </div>
+                                            <h:commandButton value="BUSCAR" id="cmdBuscar"
+                                                             styleClass="btn btn-primary"
+                                                             action="#{beanRegistroOrdenCliente.buscarCliente}"/>
+                                        </h:form>
+                                </div>
+                                <!--/.panel-body-->
+                            </div>
+                            <!--/.panel-->
+                        </div>
+                        <!--/.col-lg-12-->
+                        <div class="col-lg-12">
+                             <div class="panel panel-default">
+                                <div class="panel-heading">Informacion del cliente</div>
+                                <div class="panel-body">
+                                    <h:form id="cliente">
+                                        <div class="form-group">
+                                            <label>
+                                                    <h:outputText value="Identificador:"/>
+                                                </label><h:inputText styleClass="form-control" id="codigo"
+                                                                     value="#{beanRegistroOrdenCliente.identificador}"/>
+                                            </div>
+                                        <div class="form-group">
+                                                
+                                                <p class="help-block">Introduzca el valor a buscar</p>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>
+                                                    <h:outputText value="Nombre:"/>
+                                                </label><h:inputText id="nombre" styleClass="form-control"
+                                                                     value="#{beanRegistroOrdenCliente.nombre}"/>
+                                            </div>
+                                            <h:commandButton value="Siguiente" id="cmdEnviar"
+                                                             styleClass="btn btn-primary"
+                                                             action="#{beanRegistroOrdenCliente.guardar}"/>
+                                        </h:form>
+                                </div>
+                                <!--/.panel-body-->
+                            </div>
+                        </div>
                         
                     </div>
                     <!-- /.row -->
+ 
                 </div>
                 <!-- /.container-fluid -->
             </div>
@@ -150,5 +200,6 @@
         <script type="text/javascript" src="recursos/js/metisMenu.min.js"></script>
         <!-- Custom Theme JavaScript -->
         <script type="text/javascript" src="recursos/js/sb-admin-2.js"></script>
+        </body>
     </html>
 </f:view>

@@ -20,6 +20,8 @@ import java.util.Date;
 
 public class beanFacturacion {
     
+    private String valorBuscado;
+    
     private String codigoSolicitud;
     private String fechaRegistro;
     private String fecEjecucion;
@@ -45,23 +47,27 @@ public class beanFacturacion {
     private String observaciones;
     
     //Orden
-    private OrdenServicio orden = new OrdenServicio();
-    private OrdenServicioDB ordenDB = new OrdenServicioDB();
+    private static OrdenServicio orden = new OrdenServicio();
+    private static OrdenServicioDB ordenDB = new OrdenServicioDB();
     private OrdenServicioDB2 ordenDB2 = new OrdenServicioDB2();
     
-    private Cliente cliente = new Cliente();
-    private ClienteDB clienteDB = new ClienteDB();
+    private static Cliente cliente = new Cliente();
+    private static ClienteDB clienteDB = new ClienteDB();
     
-    private Servicio servicio = new Servicio();
-    private ServicioDB servicioDB = new ServicioDB();
+    private static Servicio servicio = new Servicio();
+    private static ServicioDB servicioDB = new ServicioDB();
     
-    private TipoServicio tipoServ = new TipoServicio();
-    private TipoServicioDB tipoServDB = new TipoServicioDB();
+    private static TipoServicio tipoServ = new TipoServicio();
+    private static TipoServicioDB tipoServDB = new TipoServicioDB();
     
-    private Costo_Variable costo = new Costo_Variable();
-    private Costo_VariableDB costoDB = new Costo_VariableDB();
+    private static Costo_Variable costo = new Costo_Variable();
+    private static Costo_VariableDB costoDB = new Costo_VariableDB();
     
     public beanFacturacion() {
+        
+        
+        
+        
     }
     
     /**
@@ -70,11 +76,19 @@ public class beanFacturacion {
     public void obtenerOrden(){
                 
         try {
-
-                //se procede a obtener esa orden de servicio
-                orden = this.ordenDB2.obtenerOrdenServicio();
-
             
+            
+            if (!this.getValorBuscado().equalsIgnoreCase("")) {
+                
+                orden = ordenDB.obtenerOrdenServicio(this.getValorBuscado());
+                
+                obtenerCliente();
+                
+                obtenerServicio();
+                
+                obtenerCostosVariables();
+            }
+   
         } catch (Exception e) {
             // TODO: Add catch code
             e.printStackTrace();
@@ -97,6 +111,8 @@ public class beanFacturacion {
                cliente = clienteDB.obtenerCliente(idCliente);
             
                orden.setCliente(cliente); 
+            
+               mostrarOrden(); 
 
             
         } catch (Exception e) {
@@ -197,33 +213,19 @@ public class beanFacturacion {
      *Formaliza la solicitud del servicio
      * @return
      */
-    public String formalizar(){
+    public String Facturar(){
         
-        if (orden != null) {
+        try {
             
-            try {
-                
-                //guardamos la orden dentro de la base de datos
-                ordenDB.insertar(orden);
-                
-                if (orden.getArrayCostos_Variables().size()>0) {
-                    //Insertamos los costos variables
-                    for (Costo_Variable costo_Variable : orden.getArrayCostos_Variables()) {
-                        
-                        costoDB.insertar(costo_Variable, orden.getId());
-                        
-                        
-                    }
-                }
-
-            } catch (Exception e) {
-                // TODO: Add catch code
-                e.printStackTrace();
-                return "fail";
-            }
+            ordenDB.facturarOrdenServicio(orden.getId());
             
             
+        } catch (Exception e) {
+            // TODO: Add catch code
+            e.printStackTrace();
+            return "fail";
         }
+        
         
         return "success";
     }
@@ -435,5 +437,29 @@ public class beanFacturacion {
 
     public ServicioDB getServicioDB() {
         return servicioDB;
+    }
+
+    public void setValorBuscado(String valorBuscado) {
+        this.valorBuscado = valorBuscado;
+    }
+
+    public String getValorBuscado() {
+        return valorBuscado;
+    }
+
+    public void setCosto(Costo_Variable costo) {
+        this.costo = costo;
+    }
+
+    public Costo_Variable getCosto() {
+        return costo;
+    }
+
+    public void setCostoDB(Costo_VariableDB costoDB) {
+        this.costoDB = costoDB;
+    }
+
+    public Costo_VariableDB getCostoDB() {
+        return costoDB;
     }
 }
